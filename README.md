@@ -1,6 +1,9 @@
 # HoopShooters
  _hoopshooters.com_
 
+Google Docs Documentation: 
+_https://docs.google.com/document/d/1xyKK3HZJWcTu-FQt0D4eE4jL0h1QM5KMkQPc_QuNXwI/edit?usp=sharing_
+
 made by nlukic97 
 _https://www.github.com/nlukic97_
 
@@ -19,10 +22,10 @@ On this app, users can find other people looking to play basketball, reserve a s
     - Location (city and court address).
     - Time and Date.
     - Number of players.
-    - Payment fee (if necesary for covering court rental).
+    - Payment fee (if necessary for covering court rental).
 - Users can join games hosted by others:
     - Search games by county, city, court location, price, or number of players.
-    - Reserve a spot by paying fee with card - free cancelation until 24h.
+    - Reserve a spot by paying a fee with a card - free cancelation until 24h.
 - Users can rate other users they played with:
     - User's experience: positive, netural, or negative.
     - Comment.
