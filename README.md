@@ -9,7 +9,7 @@ _https://www.github.com/nlukic97_
 
 # About
 Picture a situation: You like playing basketball, but none of your friends are into it, or you moved to a new city and 
-you don't know anynobody who plays basketball. This is the exact question a developer was faced with. After much 
+you don't know anybody who plays basketball. This is the exact question a developer was faced with. After much 
 thought, the 'HoopShooters' platform was born.
 On this app, users can find other people looking to play basketball, reserve a spot in existing matches or host a match themselves, meet up, and then - play a basketball match together.
 
