@@ -44,4 +44,34 @@ class User extends Authenticatable
     public function location(){
         return $this->belongsTo(Location::class);
     }
+
+
+    //----- friendship handling -----
+    public function friendshipsSent()
+    {
+        return $this->hasMany(Friendship::class,'requester_id','id');
+    }
+
+    public function friendshipsReceived()
+    {
+        return $this->hasMany(Friendship::class,'receiver_id','id');
+    }  
+
+    //getting friendlist - updated function
+    public function getFriendsAttribute()
+    {
+        $friendlist = [];
+        
+        $sentRequests =  $this->friendshipsSent->where('status','accepted');
+        foreach ($sentRequests as $key => $friendship) {
+            array_push($friendlist,$friendship->usersReceivers);
+        }
+
+        $receivedRequests =  $this->friendshipsReceived->where('status','accepted');
+        foreach ($receivedRequests as $key => $friendship) {
+            array_push($friendlist,$friendship->usersRequesters);
+        }
+
+        return $friendlist;
+    }
 }
