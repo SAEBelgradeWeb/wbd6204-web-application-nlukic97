@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // dd('e'); //I am not sure how this was supposed to register any users !
     }
 
     /**

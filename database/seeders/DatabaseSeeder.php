@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            LocationSeeder::class, //this must be seeded first. Otherwise, the user seeder will have no foreign key(s) to reference.
+            UserSeeder::class,
+            FriendshipSeeder::class
+        ]);
     }
 }
