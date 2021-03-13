@@ -22,9 +22,17 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $sexes = ['male','female'];
+        $num = 0;
+        
         return [
             'name' => $this->faker->name,
+            'age' => $this->faker->numberBetween(16,50),
+            'sex' => $sexes[$this->faker->numberBetween(0,1)],
+            'location_id' => $this->faker->numberBetween(1,10),
             'email' => $this->faker->unique()->safeEmail,
+            'username' => $this->faker->unique()->username,
+            'image_url' => $this->faker->url,
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
