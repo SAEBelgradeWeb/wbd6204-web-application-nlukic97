@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->integer('age');
             $table->string('sex');
-            $table->integer('location_id');
+            $table->foreignId('location_id');
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('image_url');
@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
     }
 
     /**
