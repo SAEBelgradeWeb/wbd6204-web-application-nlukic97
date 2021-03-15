@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFriendshipsTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateFriendshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('friendships', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('receiver_id');
-            $table->foreignId('requester_id');
-            $table->text('status');
+            $table->foreignId('rater_id');
+            $table->foreignId('rated_id');
+            $table->string('rating');
+            $table->mediumText('comment')->nullable();
             $table->timestamps();
 
-            $table->foreign('receiver_id')
+            $table->foreign('rater_id')
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete();
 
-            $table->foreign('requester_id')
+            $table->foreign('rated_id')
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete();
@@ -39,6 +40,6 @@ class CreateFriendshipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('friendships');
+        Schema::dropIfExists('ratings');
     }
 }
