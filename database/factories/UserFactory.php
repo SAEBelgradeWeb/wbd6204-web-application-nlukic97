@@ -23,8 +23,7 @@ class UserFactory extends Factory
     public function definition()
     {
         $sexes = ['male','female'];
-        $num = 0;
-        
+
         return [
             'name' => $this->faker->name,
             'age' => $this->faker->numberBetween(16,50),

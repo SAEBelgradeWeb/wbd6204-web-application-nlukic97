@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             EventUserSeeder::class,
             RatingSeeder::class,
             MessageSeeder::class,
+            PaymentSeeder::class,
         ]);
     }
 }
