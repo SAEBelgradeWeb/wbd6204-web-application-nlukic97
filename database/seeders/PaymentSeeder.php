@@ -18,6 +18,7 @@ class PaymentSeeder extends Seeder
      */
     public function run()
     {
+        //1st row  ------
         $event = Event::where('court_id','!=','null')->first();
         $court = Court::find($event->court_id);
         $eventUser = EventUser::where('event_id',$event->id)->first();
@@ -29,7 +30,9 @@ class PaymentSeeder extends Seeder
             'description' => 'User has paid the amount to play',
         ]);
 
-        $event2 = Event::where('court_id','!=','null')->get()[1];
+
+        // 2nd row  ------
+        $event2 = Event::where('court_id','!=','null')->get()[1]; //just get any other playing a game
         $court2 = Court::find($event2->court_id);
         $eventUser2 = EventUser::where('event_id',$event2->id)->first();
         $amount = $court2->price / $event2->player_num;
@@ -41,6 +44,8 @@ class PaymentSeeder extends Seeder
             'description' => 'User has paid the amount to play',
         ]);
 
+
+        // 3 row ------ uses all the previous data from row 2
         $amountRefunded = -$amount;
 
         DB::table('payments')->insert([
