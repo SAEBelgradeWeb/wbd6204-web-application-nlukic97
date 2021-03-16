@@ -17,7 +17,7 @@ class CreateFriendshipsTable extends Migration
             $table->id();
             $table->foreignId('receiver_id');
             $table->foreignId('requester_id');
-            $table->text('status');
+            $table->enum('status',['pending','accepted','denied']);
             $table->timestamps();
 
             $table->foreign('receiver_id')

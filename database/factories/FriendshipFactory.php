@@ -21,8 +21,8 @@ class FriendshipFactory extends Factory
      */
     public function definition()
     {
-        $options = ['pending','accepted','null'];
-        
+        $options = ['pending','accepted','denied'];
+
         $num1 = $this->faker->numberBetween(0,100);
         $num2= $this->faker->numberBetween(0,100);
         while($num2 === $num1){

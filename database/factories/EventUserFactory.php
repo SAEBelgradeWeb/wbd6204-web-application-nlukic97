@@ -21,7 +21,7 @@ class EventUserFactory extends Factory
      */
     public function definition()
     {
-        $statuses = ['pending','accepted','rejected']; //I might remove this feature, users can simply join any game
+        $statuses = ['pending','accepted','denied']; //I might remove this feature, users can simply join any game
 
         return [
             'user_id'=>$this->faker->unique()->numberBetween(1,100),

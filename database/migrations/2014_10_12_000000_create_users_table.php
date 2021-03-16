@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('age');
-            $table->string('sex');
+            $table->enum('sex',['male','female']);
             $table->foreignId('location_id');
             $table->string('email')->unique();
             $table->string('username')->unique();
