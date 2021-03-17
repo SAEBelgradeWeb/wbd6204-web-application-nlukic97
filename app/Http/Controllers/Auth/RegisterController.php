@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers; //***overridden function
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -77,5 +77,15 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'location_id'=>$data['location_id'],
         ]);
+    }
+
+
+    /** overriding the function in: Illuminate\Foundation\Auth\RegistersUsers   */
+    public function showRegistrationForm()
+    {
+        $locations = \App\Models\Location::orderBy('city','asc')->get();
+
+//        dd($locations);
+        return view('auth.register',compact('locations'));
     }
 }

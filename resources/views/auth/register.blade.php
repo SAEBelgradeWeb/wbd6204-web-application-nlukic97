@@ -39,12 +39,16 @@
                             </div>
                         </div>
 
+                        <!-- Male and Female. Maybe you should make this a dropdown  -->
                         <div class="form-group row">
                             <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
 
                             <div class="col-md-6">
-                                <input id="sex" type="text" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') }}" required autocomplete="sex" autofocus>
-
+                                <select id="sex" type="number" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') }}" required autocomplete="sex" autofocus >
+                                    <option value=""></option>
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                </select>
                                 @error('sex')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -53,14 +57,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group row"> <!-- Just adding this here for now -->
+                        <!-- Adding a select option for location.  -->
+                        <div class="form-group row">
                             <label for="location_id" class="col-md-4 col-form-label text-md-right">{{ __('Locaton') }}</label>
 
                             <div class="col-md-6">
-                                <input id="location_id" type="number" class="form-control @error('location_id') is-invalid @enderror" name="location_id" value="{{ old('location_id') }}" required autocomplete="location_id" autofocus>
+                                <select id="location_id" type="number" class="form-control @error('location_id') is-invalid @enderror" name="location_id" value="{{ old('location_id') }}" required autocomplete="location_id" autofocus >
+                                        <option value=""></option>
+                                    @foreach($locations as $location)
+                                        <option value="{{$location->id}}">{{$location->city}}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('location_id')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
