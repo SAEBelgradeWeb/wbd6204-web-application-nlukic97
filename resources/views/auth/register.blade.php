@@ -29,7 +29,7 @@
                             <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
 
                             <div class="col-md-6">
-                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus min="0" max="130">
 
                                 @error('age')
                                     <span class="invalid-feedback" role="alert">
@@ -44,10 +44,10 @@
                             <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
 
                             <div class="col-md-6">
-                                <select id="sex" type="number" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') }}" required autocomplete="sex" autofocus >
+                                <select id="sex" type="number" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') }}" required autocomplete="sex" autofocus > <!-- can i remove value, autocomplete ? -->
                                     <option value=""></option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
+                                    <option value="male" {{old('sex') === 'male' ? 'selected' : ''}}>male</option>
+                                    <option value="female" {{old('sex') === 'female' ? 'selected' : ''}}>female</option>
                                 </select>
                                 @error('sex')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                                 <select id="location_id" type="number" class="form-control @error('location_id') is-invalid @enderror" name="location_id" value="{{ old('location_id') }}" required autocomplete="location_id" autofocus >
                                         <option value=""></option>
                                     @foreach($locations as $location)
-                                        <option value="{{$location->id}}">{{$location->city}}</option>
+                                        <option value="{{$location->id}}" {{(old('location_id') == $location->id) ? 'selected':''}} >{{$location->city}}</option>
                                     @endforeach
                                 </select>
 

@@ -52,11 +52,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'], //how does this work ?
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'age' => ['required','integer'],
-            'sex' => ['required', 'string'],
-            'location_id' => ['required', 'integer'],
-            'username' => ['required', 'string', 'min:5', 'unique:users'],
+            'sex' => ['required', 'string','in:male,female'],
+            'location_id' => ['required', 'integer','exists:locations,id'], //checks if this location_id is present in the id field of locations table
+            'username' => ['required', 'string', 'min:4', 'unique:users'],
         ]);
     }
 
@@ -70,12 +70,12 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
             'age' => $data['age'],
             'sex' => $data['sex'],
-            'username' => $data['username'],
             'location_id'=>$data['location_id'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 
@@ -86,6 +86,7 @@ class RegisterController extends Controller
         $locations = \App\Models\Location::orderBy('city','asc')->get();
 
 //        dd($locations);
+
         return view('auth.register',compact('locations'));
     }
 }
