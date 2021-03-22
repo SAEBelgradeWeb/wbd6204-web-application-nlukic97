@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/my_account', [App\Http\Controllers\HomeController::class, 'getAccountData'])->name('my-account');
 
 // Route::get('/friends', [App\Http\Controllers\HomeController::class, 'showUserFriends']); //return to this later
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends']);
