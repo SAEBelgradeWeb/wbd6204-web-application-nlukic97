@@ -58,8 +58,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('my-account') }}">
-                                        {{ __('Settings') }}
+                                    <a class="dropdown-item" href="{{ route('myAccount') }}">
+                                        {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

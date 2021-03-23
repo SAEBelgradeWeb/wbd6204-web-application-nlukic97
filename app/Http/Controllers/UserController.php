@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected function getAccountData()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('my_account',compact('user'));
+    }
+
+    public function editAccountData()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('editAccountData',compact('user'));
+    }
+
     public function showUserFriends($id)
     {
         // $user = User::find(Auth::user()->id);

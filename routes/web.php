@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/my_account', [App\Http\Controllers\HomeController::class, 'getAccountData'])->name('my-account');
+Route::get('/myAccount', [App\Http\Controllers\UserController::class, 'getAccountData'])->name('myAccount');
+Route::get('/editAccountData', [App\Http\Controllers\UserController::class, 'editAccountData'])->name('editAccountData'); //fix the naming for the method
+
 
 // Route::get('/friends', [App\Http\Controllers\HomeController::class, 'showUserFriends']); //return to this later
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends']);

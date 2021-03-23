@@ -27,10 +27,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    protected function getAccountData()
-    {
-        $user = User::find(Auth::user()->id);
-        return view('my_account',compact('user'));
-    }
 }
