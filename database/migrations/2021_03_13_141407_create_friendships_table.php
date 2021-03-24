@@ -20,15 +20,15 @@ class CreateFriendshipsTable extends Migration
             $table->enum('status',['pending','accepted','denied']);
             $table->timestamps();
 
-            $table->foreign('receiver_id')
-                ->references('id')
-                ->on('users')
-                ->cascadeOnDelete();
-
-            $table->foreign('requester_id')
-                ->references('id')
-                ->on('users')
-                ->cascadeOnDelete();
+//            $table->foreign('receiver_id')
+//                ->references('id')
+//                ->on('users')
+//                ->cascadeOnDelete();
+//
+//            $table->foreign('requester_id')
+//                ->references('id')
+//                ->on('users')
+//                ->cascadeOnDelete();
         });
     }
 

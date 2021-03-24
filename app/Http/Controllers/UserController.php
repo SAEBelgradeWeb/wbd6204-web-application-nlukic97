@@ -8,27 +8,28 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    protected function getAccountData()
+    protected function index()
     {
         $user = User::find(Auth::user()->id);
-        return view('my_account',compact('user'));
+        return view('user-index',compact('user'));
     }
 
-    public function editAccountData()
+    public function getAccountData()
     {
         $user = User::find(Auth::user()->id);
-        return view('editAccountData',compact('user'));
+        return view('account-settings',compact('user'));
     }
 
-    public function showUserFriends($id)
+    public function showUserFriends()
     {
-        // $user = User::find(Auth::user()->id);
+
         if(Auth::user() === null){
             return redirect('/login');
         }
-        $user = User::find($id);
+
+        $user = User::find(Auth::user()->id);
         $friends = $user->friends;
 
-        return view('friends',compact(['friends']));
+        return view('friends',compact('friends'));
     }
 }
