@@ -1,5 +1,6 @@
 <template>
     <div>
+<!--        <profile-modal></profile-modal>-->
         <div class="row">
             <div class="col-lg-1 col-md-1 col-1"></div> <!--phantom div -->
             <div class=" col-lg-4 col-md-10 col-10">
@@ -8,7 +9,7 @@
                 <span>About:</span>
                 <ul class="list-group position-relative">
                     <li class="position-absolute">
-                        <a href="#" class="btn btn-secondary rounded-circle"><i class="fas fa-pen"></i></a>
+                        <span @click='aboutModal' class="btn btn-secondary rounded-circle"><i class="fas fa-pen"></i></span>
                     </li>  <!--button to open popup adn edit data-->
                     <li class="list-group-item">Age: {{this.age}}</li>
                     <li class="list-group-item">sex: {{this.sex}}</li>
@@ -70,13 +71,33 @@
 </template>
 
 <script>
+    // import ProfileModal from './ProfileModal.vue';
+
     export default {
         name: "ProfileContent",
         props:[
             'age',
             'sex',
             'city'
-        ]
+        ],
+        // components:{
+        //   ProfileModal
+        // },
+        data:function(){
+            return {
+                modalOpen:false
+            }
+        },
+        methods:{
+            aboutModal(){
+                console.log('about model open: '+ this.modalOpen)
+                if(this.modalOpen === false){
+                    this.modalOpen = true
+                } else {
+                    this.modalOpen = false
+                }
+            }
+        }
     }
 </script>
 
