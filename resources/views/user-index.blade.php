@@ -16,6 +16,10 @@
 
 
         {{-- Personal user information box + content on their page      --}}
-        <profile-content></profile-content>
+        <profile-content
+            age="{{$user->age}}"
+            sex="{{$user->sex}}"
+            city="{{$user->location->city}}"
+        ></profile-content>
     </div>
 @endsection
