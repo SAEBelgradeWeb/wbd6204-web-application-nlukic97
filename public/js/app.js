@@ -1862,19 +1862,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
   props: ['viewModal', 'age', 'sex', 'city'],
-  data: function data() {
-    return {
-      viewable: false
-      /*if this is set to true, it works*/
-
-    };
-  },
   methods: {
     closeModal: function closeModal() {
-      this.viewModal = false; //Do not mutate a prop directly. Find a way to have this viewModal change the viewable.
+      /*Telling the parent component (ProfileContent) that to change the viewModal prop to false.*/
+      this.$emit('closeAboutModal', false);
     }
   }
 });
@@ -1953,6 +1949,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _AboutProfileModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AboutProfileModal.vue */ "./resources/js/components/AboutProfileModal.vue");
+//
 //
 //
 //
@@ -6654,7 +6651,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#modal.true[data-v-9e948954] {\n    background-color: rgba(0, 0, 0, 0.45);\n    width:100%;\n    height:100%;\n    position: fixed;\n    left:0;\n    top:0;\n    bottom:10px;\n    z-index:3;\n    padding-top: 20vh;\n}\n#modal.false[data-v-9e948954] {\n    display:none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#modal.true[data-v-9e948954] {\n    background-color: rgba(0, 0, 0, 0.65);\n    width:100%;\n    height:100%;\n    position: fixed;\n    left:0;\n    top:0;\n    bottom:10px;\n    z-index:3;\n    padding-top: 20vh;\n}\n#modal.false[data-v-9e948954] {\n    display:none;\n}\nul[data-v-9e948954] {\n    padding:20px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38518,52 +38515,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { class: this.viewable.toString(), attrs: { id: "modal" } }, [
+    _c("div", { class: this.viewModal.toString(), attrs: { id: "modal" } }, [
       _c("div", { staticClass: "row d-flex justify-content-center" }, [
         _c(
           "div",
-          { staticClass: "col-lg-6 col-md-8 col-10", attrs: { id: "box" } },
+          {
+            staticClass: "col-lg-6 col-md-8 col-10 bg-white pt-3",
+            attrs: { id: "box" }
+          },
           [
-            _c(
-              "ul",
-              {
-                staticClass: "list-group bg-white",
-                on: { click: _vm.closeModal }
-              },
-              [
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Age: " + _vm._s(this.age))
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Sex: " + _vm._s(this.sex))
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("From: " + _vm._s(this.city))
-                ]),
-                _vm._v(" "),
-                _vm._m(0)
-              ]
-            )
+            _c("ul", { staticClass: "list-group bg-white" }, [
+              _c("li", { staticClass: "list-group-item" }, [
+                _vm._v("Age: " + _vm._s(this.age))
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _vm._v("Sex: " + _vm._s(this.sex))
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _vm._v("From: " + _vm._s(this.city))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-center" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "btn btn-primary mb-3",
+                  on: { click: _vm.closeModal }
+                },
+                [_vm._v("Save")]
+              )
+            ])
           ]
         )
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "text-center" }, [
-      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-        _vm._v("Save")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38683,6 +38674,11 @@ var render = function() {
           age: _vm.age,
           sex: _vm.sex,
           city: _vm.city
+        },
+        on: {
+          closeAboutModal: function($event) {
+            _vm.modalOpen = $event
+          }
         }
       }),
       _vm._v(" "),

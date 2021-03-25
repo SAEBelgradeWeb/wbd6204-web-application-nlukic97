@@ -2,6 +2,7 @@
     <div>
         <about-profile-modal
             :viewModal="modalOpen"
+            @closeAboutModal="modalOpen = $event"
             :age="age"
             :sex="sex"
             :city="city"
