@@ -1861,24 +1861,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
   props: ['viewModal', 'age', 'sex', 'city'],
   data: function data() {
     return {
       viewable: false
+      /*if this is set to true, it works*/
+
     };
   },
   methods: {
-    toggleModal: function toggleModal() {
-      return this.viewModal.toString();
-    },
     closeModal: function closeModal() {
-      this.viewModal = 'false'; //Do not mutate a prop directly
+      this.viewModal = false; //Do not mutate a prop directly. Find a way to have this viewModal change the viewable.
     }
-  },
-  mounted: function mounted() {
-    console.log(this.viewModal);
   }
 });
 
@@ -38521,7 +38518,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { class: _vm.toggleModal(), attrs: { id: "modal" } }, [
+    _c("div", { class: this.viewable.toString(), attrs: { id: "modal" } }, [
       _c("div", { staticClass: "row d-flex justify-content-center" }, [
         _c(
           "div",
@@ -38529,7 +38526,10 @@ var render = function() {
           [
             _c(
               "ul",
-              { staticClass: "list-group", on: { click: _vm.closeModal } },
+              {
+                staticClass: "list-group bg-white",
+                on: { click: _vm.closeModal }
+              },
               [
                 _c("li", { staticClass: "list-group-item" }, [
                   _vm._v("Age: " + _vm._s(this.age))
@@ -38541,7 +38541,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("li", { staticClass: "list-group-item" }, [
                   _vm._v("From: " + _vm._s(this.city))
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
               ]
             )
           ]
@@ -38550,7 +38552,18 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "text-center" }, [
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+        _vm._v("Save")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
