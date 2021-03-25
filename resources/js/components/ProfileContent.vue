@@ -1,6 +1,11 @@
 <template>
     <div>
-        <about-profile-modal :viewModal="modalOpen"/>
+        <about-profile-modal
+            :viewModal="modalOpen"
+            :age="age"
+            :sex="sex"
+            :city="city"
+        />
 
         <div class="row">
             <div class="col-lg-1 col-md-1 col-1"></div> <!--phantom div -->
@@ -91,8 +96,6 @@
         },
         methods:{
             aboutModal(){
-                console.log('clicked btn - from profile content')
-                console.log(this.modalOpen)
                 if(this.modalOpen === true){
                     this.modalOpen = false //this is necessary, since the modal will remain true once we exit it.
                     this.modalOpen = true

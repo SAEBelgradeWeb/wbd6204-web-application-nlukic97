@@ -4,9 +4,9 @@
              <div class="row d-flex justify-content-center">
                  <div id="box" class="col-lg-6 col-md-8 col-10">
                      <ul @click='closeModal' class="list-group"> <!-- add a button here -->
-                         <li class="list-group-item"></li>
-                         <li class="list-group-item"></li>
-                         <li class="list-group-item"></li>
+                         <li class="list-group-item">Age: {{this.age}}</li>
+                         <li class="list-group-item">Sex: {{this.sex}}</li>
+                         <li class="list-group-item">From: {{this.city}}</li>
                      </ul>
                  </div>
              </div>
@@ -18,15 +18,26 @@
     export default {
         name: "AboutProfileModal",
         props:[
-            'viewModal'
+            'viewModal',
+            'age',
+            'sex',
+            'city'
         ],
+        data:function(){
+            return {
+                viewable: false
+            }
+        },
         methods:{
             toggleModal(){
                 return this.viewModal.toString()
             },
             closeModal(){
-                this.viewModal = 'false'
+                this.viewModal = 'false' //Do not mutate a prop directly
             }
+        },
+        mounted(){
+            console.log(this.viewModal)
         }
 
     }

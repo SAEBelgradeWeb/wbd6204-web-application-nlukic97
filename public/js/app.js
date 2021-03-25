@@ -1863,14 +1863,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
-  props: ['viewModal'],
+  props: ['viewModal', 'age', 'sex', 'city'],
+  data: function data() {
+    return {
+      viewable: false
+    };
+  },
   methods: {
     toggleModal: function toggleModal() {
       return this.viewModal.toString();
     },
     closeModal: function closeModal() {
-      this.viewModal = 'false';
+      this.viewModal = 'false'; //Do not mutate a prop directly
     }
+  },
+  mounted: function mounted() {
+    console.log(this.viewModal);
   }
 });
 
@@ -2021,6 +2029,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
@@ -2035,9 +2048,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     aboutModal: function aboutModal() {
-      console.log('clicked btn - from profile content');
-      console.log(this.modalOpen);
-
       if (this.modalOpen === true) {
         this.modalOpen = false; //this is necessary, since the modal will remain true once we exit it.
 
@@ -38521,11 +38531,17 @@ var render = function() {
               "ul",
               { staticClass: "list-group", on: { click: _vm.closeModal } },
               [
-                _c("li", { staticClass: "list-group-item" }),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Age: " + _vm._s(this.age))
+                ]),
                 _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Sex: " + _vm._s(this.sex))
+                ]),
                 _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" })
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("From: " + _vm._s(this.city))
+                ])
               ]
             )
           ]
@@ -38648,7 +38664,14 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("about-profile-modal", { attrs: { viewModal: _vm.modalOpen } }),
+      _c("about-profile-modal", {
+        attrs: {
+          viewModal: _vm.modalOpen,
+          age: _vm.age,
+          sex: _vm.sex,
+          city: _vm.city
+        }
+      }),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-1 col-md-1 col-1" }),
