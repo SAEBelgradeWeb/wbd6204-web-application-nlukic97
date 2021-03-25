@@ -1,6 +1,7 @@
 <template>
     <div>
-<!--        <profile-modal></profile-modal>-->
+        <about-profile-modal :viewModal="modalOpen"/>
+
         <div class="row">
             <div class="col-lg-1 col-md-1 col-1"></div> <!--phantom div -->
             <div class=" col-lg-4 col-md-10 col-10">
@@ -71,7 +72,7 @@
 </template>
 
 <script>
-    // import ProfileModal from './ProfileModal.vue';
+    import AboutProfileModal from './AboutProfileModal.vue';
 
     export default {
         name: "ProfileContent",
@@ -80,9 +81,9 @@
             'sex',
             'city'
         ],
-        // components:{
-        //   ProfileModal
-        // },
+        components:{
+          AboutProfileModal
+        },
         data:function(){
             return {
                 modalOpen:false
@@ -90,11 +91,13 @@
         },
         methods:{
             aboutModal(){
-                console.log('about model open: '+ this.modalOpen)
-                if(this.modalOpen === false){
+                console.log('clicked btn - from profile content')
+                console.log(this.modalOpen)
+                if(this.modalOpen === true){
+                    this.modalOpen = false //this is necessary, since the modal will remain true once we exit it.
                     this.modalOpen = true
                 } else {
-                    this.modalOpen = false
+                    this.modalOpen = true
                 }
             }
         }
@@ -112,4 +115,5 @@ ul li:first-child{
     right:-10px;
     top:-15px;
 }
+
 </style>

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); //this is all you need to authenticate.
+    }
+
     protected function index()
     {
         $user = User::find(Auth::user()->id);
@@ -22,11 +27,6 @@ class UserController extends Controller
 
     public function showUserFriends()
     {
-
-        if(Auth::user() === null){
-            return redirect('/login');
-        }
-
         $user = User::find(Auth::user()->id);
         $friends = $user->friends;
 

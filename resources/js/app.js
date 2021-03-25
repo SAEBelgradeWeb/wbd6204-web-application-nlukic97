@@ -23,7 +23,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('profile-picture', require('./components/ProfilePicture.vue').default);
 Vue.component('profile-bio', require('./components/ProfileBio').default);
 Vue.component('profile-content', require('./components/ProfileContent').default);
-Vue.component('profile-modal', require('./components/ProfileModal').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
