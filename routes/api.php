@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//used to display the locations available for users to edit in the 'update about me' modal (AboutProfileModal.vue)
+Route::middleware('api')->get('/getLocations',[\App\Http\Controllers\LocationController::class,'index']);

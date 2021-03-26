@@ -3,13 +3,43 @@
          <div id="modal" :class="this.viewModal.toString()"> <!--You had 'viewModal' here.-->
              <div class="row d-flex justify-content-center">
                  <div id="box" class="col-lg-6 col-md-8 col-10 bg-white pt-3">
-                     <ul class="list-group bg-white"> <!-- add a button here -->
+                     <!--<ul class="list-group bg-white"> &lt;!&ndash; add a button here &ndash;&gt;
                          <li class="list-group-item">Age: {{this.age}}</li>
                          <li class="list-group-item">Sex: {{this.sex}}</li>
                          <li class="list-group-item">From: {{this.city}}</li>
-                     </ul>
+                     </ul>-->
+
+                     <!-- Age updating field -->
+                     <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                             <span class="input-group-text">Age</span>
+                         </div>
+                         <input type="number" class="form-control" min="0" max="130" :value="currentAge" @input="processAge($event)">
+                     </div>
+
+                     <!-- Sex update field -->
+                     <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                             <span class="input-group-text">Sex</span>
+                         </div>
+                         <select name="sex" id="sex" class="form-control" @input="processSex($event)">
+                             <option value="male" :selected="this.currentSex === 'male'">male</option>
+                             <option value="female" :selected="this.currentSex === 'female'">female</option>
+                         </select>
+                     </div>
+
+                     <!--city updating field -->
+                     <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                             <span class="input-group-text">City</span>
+                         </div>
+                         <select name="city" id="city" class="form-control" @input="processCity($event)">
+                             <option  v-for="item in cities" :key="item.id" :value="item.id" :selected="item.city === currentCity">{{item.city}}</option>
+                         </select>
+                     </div>
+
                      <div class="text-center">
-                         <span @click='closeModal' class="btn btn-primary mb-3">Save</span>
+                         <span @click='submitChanges' class="btn btn-primary mb-3">Save</span>
                      </div>
                  </div>
              </div>
@@ -26,10 +56,72 @@
             'sex',
             'city'
         ],
-        methods:{
-            closeModal(){ /*Telling the parent component (ProfileContent) that to change the viewModal prop to false.*/
-                this.$emit('closeAboutModal',false)
+        data:function(){
+            return {
+                cities:[],
+                currentAge:null,
+                currentSex:null, //for the sex selected option
+                currentCity: null, //for the city selected option,
+                newData:{
+                    age:null,
+                    sex:null,
+                    city:null
+                }
             }
+        },
+        methods:{
+            async getLocations(){
+                  try {
+                      let result = await axios.get('http://wbd6204-final.test/api/getLocations')
+                      this.cities = result.data
+
+                      this.addPropData()
+                  } catch (e) {
+                      console.log(e)
+                  }
+            },
+            addPropData(){ //getting data from props into their own data elements to be referenced upon opening modal
+                this.currentAge = this.age
+                this.currentSex = this.sex
+                this.currentCity = this.city
+
+                //adding data that might be submitted (if the user clicks submit without changing anything)
+                    this.newData = {
+                        age: parseInt(this.age),
+                        sex: this.sex
+                    }
+
+                    //check which city in cities matches the city prop, and assigning its id to newData.city
+                    for(let i = 0; i < this.cities.length; i++){
+                        if(this.cities[i].city === this.city){
+                            this.newData.city = this.cities[i].id;
+                            break; //once city is found, end loop
+                        }
+                    }
+            },
+
+            // Upon changing any of the data elements, the three methods underneath will be fired, updating this field (unable to use v-model for sex and city)
+            processAge(event){
+                this.newData.age = parseInt(event.target.value)
+            },
+            processCity(event){
+                this.newData.city = parseInt(event.target.value)
+            },
+            processSex(event){
+                this.newData.sex = event.target.value
+            },
+            /*Telling the parent component (ProfileContent) that to change the viewModal prop to false.*/
+            closeModal(){
+                this.$emit('closeAboutModal',false)
+            },
+            //axios post request to the users table
+            submitChanges(){
+                console.log(this.newData)
+            }
+        },
+        mounted(){
+            this.getLocations()
+
         }
 
     }
