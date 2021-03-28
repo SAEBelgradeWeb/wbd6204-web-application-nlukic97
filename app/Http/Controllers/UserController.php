@@ -39,13 +39,12 @@ class UserController extends Controller
     {
         $request->validate([
             'age' => 'required|integer',
-            'sex' => 'required|string|in:male,female',
-            'location_id' => 'required|integer|exists:locations,id'
+            'sex' => 'required|string|in:male,female'
         ]);
 
-        $id = $request->all()['user_id'];
-        $user = User::find($id);
-        $user->update($request->except('userId'));
+
+        $user = User::find(Auth::user()->id);
+        $user->update($request->all());
         return 'Data successfully updated';
     }
 }

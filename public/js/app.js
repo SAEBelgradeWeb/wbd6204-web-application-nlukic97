@@ -1910,8 +1910,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
-  props: ['viewModal', 'age', 'sex', 'city', 'id' //this prop is passed down from user-index -> to profileContent.vue -> to here
-  ],
+  props: ['viewModal', 'age', 'sex', 'city'],
   data: function data() {
     return {
       cities: [],
@@ -1923,8 +1922,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       newData: {
         age: null,
         sex: null,
-        location_id: null,
-        user_id: null
+        location_id: null
       }
     };
   },
@@ -1972,9 +1970,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.newData = {
         age: parseInt(this.age),
-        sex: this.sex,
-        user_id: parseInt(this.id) //adding the userId which will be later sent to the backend for updating
-
+        sex: this.sex
       }; //check which city in cities matches the city prop, and assigning its id to newData.city
 
       for (var i = 0; i < this.cities.length; i++) {
@@ -2013,9 +2009,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }).then(function (response) {
           console.log(response.data);
 
-          _this2.closeModal();
+          _this2.closeModal(); //location.reload() //if the response is successful, reload the page to display the updated data.
 
-          location.reload(); //if the response is successful, reload the page to display the updated data.
         });
       } catch (e) {
         console.log(e);
@@ -2184,8 +2179,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
-  props: ['age', 'sex', 'city', 'id' //passed down from user-index view. Will be used to update the users data through axios post request
-  ],
+  props: ['age', 'sex', 'city'],
   components: {
     AboutProfileModal: _AboutProfileModal_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },

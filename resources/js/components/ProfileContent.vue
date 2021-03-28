@@ -86,8 +86,7 @@
         props:[
             'age',
             'sex',
-            'city',
-            'id' //passed down from user-index view. Will be used to update the users data through axios post request
+            'city'
         ],
         components:{
           AboutProfileModal

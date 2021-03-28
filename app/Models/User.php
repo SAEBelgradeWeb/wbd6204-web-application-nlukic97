@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens,HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -60,13 +61,13 @@ class User extends Authenticatable
     public function friendshipsReceived()
     {
         return $this->hasMany(Friendship::class,'receiver_id','id');
-    }  
+    }
 
     //getting friendlist - updated function
     public function getFriendsAttribute()
     {
         $friendlist = [];
-        
+
         $sentRequests =  $this->friendshipsSent->where('status','accepted');
         foreach ($sentRequests as $key => $friendship) {
             array_push($friendlist,$friendship->usersReceivers);

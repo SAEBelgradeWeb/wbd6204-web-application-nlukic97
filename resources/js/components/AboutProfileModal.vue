@@ -49,8 +49,7 @@
             'viewModal',
             'age',
             'sex',
-            'city',
-            'id' //this prop is passed down from user-index -> to profileContent.vue -> to here
+            'city'
         ],
         data:function(){
             return {
@@ -61,8 +60,7 @@
                 newData:{
                     age:null,
                     sex:null,
-                    location_id:null,
-                    user_id:null
+                    location_id:null
                 }
             }
         },
@@ -85,8 +83,7 @@
                 //adding data that might be submitted (if the user clicks submit without changing anything)
                     this.newData = {
                         age: parseInt(this.age),
-                        sex: this.sex,
-                        user_id: parseInt(this.id) //adding the userId which will be later sent to the backend for updating
+                        sex: this.sex
 
                     }
 
@@ -125,7 +122,7 @@
                     .then(response=>{
                         console.log(response.data)
                         this.closeModal()
-                        location.reload() //if the response is successful, reload the page to display the updated data.
+                        //location.reload() //if the response is successful, reload the page to display the updated data.
                     });
                 } catch(e){
                     console.log(e)
