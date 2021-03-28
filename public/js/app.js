@@ -2080,13 +2080,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileBio",
   props: ['bio'],
   data: function data() {
-    return {// newBio:null,
+    return {
+      // newBio:null,
       // contentEditable:false,
       // boxEditable:''
+      userBio: null
     };
   },
   methods: {
@@ -2101,6 +2109,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     saveBio: function saveBio() {// console.log(newBio)
       // this.contentEditable = false
+    }
+  },
+  mounted: function mounted() {
+    if (this.bio === '') {
+      this.userBio = 'Enter you bio...';
+    } else {
+      this.userBio = this.bio;
     }
   }
 });
@@ -6844,7 +6859,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#editBioBtn[data-v-53c9f3ca] {\n    right:5px;\n    top:-35px;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#editBioBtn[data-v-53c9f3ca] {\n    right:0;\n    top:-5px;\n    font-size: 10px;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39714,20 +39729,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row d-flex justify-content-center" }, [
-    _c("div", { staticClass: "col-lg-8 col-md-10 col-10 position-relative" }, [
-      _c(
-        "span",
-        {
-          staticClass: "btn btn-secondary rounded-circle position-absolute",
-          attrs: { id: "editBioBtn" },
-          on: { click: this.editBio }
-        },
-        [_c("i", { staticClass: "fas fa-pen" })]
-      ),
-      _vm._v(" "),
+  return _c("div", { staticClass: "row d-flex justify-content-center mb-4" }, [
+    _c("div", { staticClass: "col-lg-8 col-md-10 col-10" }, [
       _c("div", { staticClass: "text-center" }, [
-        _c("span", { attrs: { id: "bioContent" } }, [_vm._v(_vm._s(this.bio))])
+        _c(
+          "span",
+          { staticClass: "position-relative", attrs: { id: "bioContent" } },
+          [
+            _c("i", { staticClass: "pr-5" }, [_vm._v(_vm._s(this.userBio))]),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass:
+                  "btn btn-secondary rounded-circle position-absolute",
+                attrs: { id: "editBioBtn" },
+                on: { click: this.editBio }
+              },
+              [_c("i", { staticClass: "fas fa-pen" })]
+            )
+          ]
+        )
       ])
     ])
   ])
@@ -39949,7 +39971,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row text-center" }, [
       _c("div", { staticClass: "col pt-2" }, [
-        _c("p", [
+        _c("h3", [
           _c("span", { staticClass: "font-weight-bold" }, [
             _vm._v(_vm._s(this.name))
           ]),

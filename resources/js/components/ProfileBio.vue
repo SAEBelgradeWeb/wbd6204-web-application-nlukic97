@@ -1,8 +1,14 @@
 <template>
-    <div class="row d-flex justify-content-center">
-        <div class="col-lg-8 col-md-10 col-10 position-relative">
-            <span v-on:click="this.editBio" class="btn btn-secondary rounded-circle position-absolute" id="editBioBtn"><i class="fas fa-pen"></i></span>
-            <div class="text-center"><span id="bioContent">{{this.bio}}</span></div>
+    <div class="row d-flex justify-content-center mb-4">
+        <div class="col-lg-8 col-md-10 col-10">
+
+            <div class="text-center">
+                <span id="bioContent" class="position-relative">
+                    <i class="pr-5">{{this.userBio}}</i>
+                    <span v-on:click="this.editBio" class="btn btn-secondary rounded-circle position-absolute" id="editBioBtn"><i class="fas fa-pen"></i></span>
+                </span>
+
+            </div>
         </div>
     </div>
 </template>
@@ -18,6 +24,7 @@
                 // newBio:null,
                 // contentEditable:false,
                 // boxEditable:''
+                userBio:null
             }
         },
         methods:{
@@ -35,14 +42,22 @@
                 // console.log(newBio)
                 // this.contentEditable = false
             }
+        },
+        mounted() {
+            if(this.bio === ''){
+                this.userBio = 'Enter you bio...'
+            } else {
+                this.userBio = this.bio
+            }
         }
     }
 </script>
 
 <style scoped>
     #editBioBtn {
-        right:5px;
-        top:-35px;
+        right:0;
+        top:-5px;
+        font-size: 10px;
     }
 
 

@@ -6,7 +6,7 @@
         </div>
         <div class="row text-center">
             <div class="col pt-2">
-                <p><span class="font-weight-bold">{{this.name}}</span> ({{this.username}})</p>
+                <h3><span class="font-weight-bold">{{this.name}}</span> ({{this.username}})</h3>
             </div>
         </div>
     </div>
