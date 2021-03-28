@@ -1910,7 +1910,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
-  props: ['viewModal', 'age', 'sex', 'city'],
+  props: ['viewModal', 'age', 'sex', 'city', 'id' //this prop is passed down from user-index -> to profileContent.vue -> to here
+  ],
   data: function data() {
     return {
       cities: [],
@@ -1922,7 +1923,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       newData: {
         age: null,
         sex: null,
-        location_id: null
+        location_id: null,
+        user_id: null
       }
     };
   },
@@ -1970,7 +1972,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.newData = {
         age: parseInt(this.age),
-        sex: this.sex
+        sex: this.sex,
+        user_id: parseInt(this.id) //adding the userId which will be later sent to the backend for updating
+
       }; //check which city in cities matches the city prop, and assigning its id to newData.city
 
       for (var i = 0; i < this.cities.length; i++) {
@@ -1995,9 +1999,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     closeModal: function closeModal() {
       this.$emit('closeAboutModal', false);
     },
-    //axios post request to the users table
+    //axios post request to update the users table
     submitChanges: function submitChanges() {
       var _this2 = this;
+
+      console.log(this.newData);
 
       try {
         axios({
@@ -2174,10 +2180,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
-  props: ['age', 'sex', 'city'],
+  props: ['age', 'sex', 'city', 'id' //passed down from user-index view. Will be used to update the users data through axios post request
+  ],
   components: {
     AboutProfileModal: _AboutProfileModal_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -6820,7 +6828,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-465065bb] {\r\n    list-style-type:none;\n}\nul li[data-v-465065bb]:first-child{\r\n    z-index: 1;\r\n    right:-10px;\r\n    top:-15px;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-465065bb] {\n    list-style-type:none;\n}\nul li[data-v-465065bb]:first-child{\n    z-index: 1;\n    right:-10px;\n    top:-15px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39669,7 +39677,8 @@ var render = function() {
           viewModal: _vm.modalOpen,
           age: _vm.age,
           sex: _vm.sex,
-          city: _vm.city
+          city: _vm.city,
+          id: _vm.id
         },
         on: {
           closeAboutModal: function($event) {

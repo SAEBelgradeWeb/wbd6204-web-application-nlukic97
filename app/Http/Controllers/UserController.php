@@ -43,10 +43,9 @@ class UserController extends Controller
             'location_id' => 'required|integer|exists:locations,id'
         ]);
 
-//        $id = Auth::user()->id;
-        $id = 101; //for now it only works on the admin
+        $id = $request->all()['user_id'];
         $user = User::find($id);
-        $user->update($request->all());
+        $user->update($request->except('userId'));
         return 'Data successfully updated';
     }
 }

@@ -6,6 +6,7 @@
             :age="age"
             :sex="sex"
             :city="city"
+            :id="id"
         />
 
         <div class="row">
@@ -85,7 +86,8 @@
         props:[
             'age',
             'sex',
-            'city'
+            'city',
+            'id' //passed down from user-index view. Will be used to update the users data through axios post request
         ],
         components:{
           AboutProfileModal

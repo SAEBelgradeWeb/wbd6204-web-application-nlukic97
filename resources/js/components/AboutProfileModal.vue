@@ -49,7 +49,8 @@
             'viewModal',
             'age',
             'sex',
-            'city'
+            'city',
+            'id' //this prop is passed down from user-index -> to profileContent.vue -> to here
         ],
         data:function(){
             return {
@@ -60,7 +61,8 @@
                 newData:{
                     age:null,
                     sex:null,
-                    location_id:null
+                    location_id:null,
+                    user_id:null
                 }
             }
         },
@@ -83,7 +85,9 @@
                 //adding data that might be submitted (if the user clicks submit without changing anything)
                     this.newData = {
                         age: parseInt(this.age),
-                        sex: this.sex
+                        sex: this.sex,
+                        user_id: parseInt(this.id) //adding the userId which will be later sent to the backend for updating
+
                     }
 
                     //check which city in cities matches the city prop, and assigning its id to newData.city
@@ -109,8 +113,9 @@
             closeModal(){
                 this.$emit('closeAboutModal',false)
             },
-            //axios post request to the users table
+            //axios post request to update the users table
             submitChanges(){
+                console.log(this.newData)
                 try {
                     axios({
                         method: 'post',

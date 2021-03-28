@@ -20,6 +20,7 @@
             age="{{$user->age}}"
             sex="{{$user->sex}}"
             city="{{$user->location->city}}"
+            id="{{$user->id}}"
         ></profile-content>
     </div>
 @endsection
