@@ -1908,11 +1908,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
   props: ['viewModal', 'age', 'sex', 'city'],
@@ -2013,6 +2008,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           console.log(response.data);
 
           _this2.closeModal();
+
+          location.reload(); //if the response is successful, reload the page to display the updated data.
         });
       } catch (e) {
         console.log(e);
@@ -6823,7 +6820,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-465065bb] {\n    list-style-type:none;\n}\nul li[data-v-465065bb]:first-child{\n    z-index: 1;\n    right:-10px;\n    top:-15px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-465065bb] {\r\n    list-style-type:none;\n}\nul li[data-v-465065bb]:first-child{\r\n    z-index: 1;\r\n    right:-10px;\r\n    top:-15px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

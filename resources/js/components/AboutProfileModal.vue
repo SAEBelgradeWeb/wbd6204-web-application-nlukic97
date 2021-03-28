@@ -3,11 +3,6 @@
          <div id="modal" :class="this.viewModal.toString()"> <!--You had 'viewModal' here.-->
              <div class="row d-flex justify-content-center">
                  <div id="box" class="col-lg-6 col-md-8 col-10 bg-white pt-3">
-                     <!--<ul class="list-group bg-white"> &lt;!&ndash; add a button here &ndash;&gt;
-                         <li class="list-group-item">Age: {{this.age}}</li>
-                         <li class="list-group-item">Sex: {{this.sex}}</li>
-                         <li class="list-group-item">From: {{this.city}}</li>
-                     </ul>-->
 
                      <!-- Age updating field -->
                      <div class="input-group mb-3">
@@ -125,6 +120,7 @@
                     .then(response=>{
                         console.log(response.data)
                         this.closeModal()
+                        location.reload() //if the response is successful, reload the page to display the updated data.
                     });
                 } catch(e){
                     console.log(e)
