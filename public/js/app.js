@@ -2003,6 +2003,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //axios post request to the users table
     submitChanges: function submitChanges() {
       console.log(this.newData);
+
+      try {
+        axios.post('http://wbd6204-final.test/api/updateAboutInfo', this.newData);
+      } catch (e) {
+        console.log(e);
+      }
     }
   },
   mounted: function mounted() {
@@ -39750,7 +39756,7 @@ var staticRenderFns = [
       _c("ul", { staticClass: "list-group" }, [
         _c("li", [_c("span", [_vm._v("Activity")])]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39760,7 +39766,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39770,7 +39776,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39780,7 +39786,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39790,7 +39796,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39800,7 +39806,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [

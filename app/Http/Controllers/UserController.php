@@ -32,4 +32,10 @@ class UserController extends Controller
 
         return view('friends',compact('friends'));
     }
+
+    //if user edits their data (exclusing password, the method called shall be this one
+    public function update($data)
+    {
+        return $data;
+    }
 }

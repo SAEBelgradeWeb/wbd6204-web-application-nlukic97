@@ -117,6 +117,11 @@
             //axios post request to the users table
             submitChanges(){
                 console.log(this.newData)
+                try {
+                    axios.post('http://wbd6204-final.test/api/updateAboutInfo', this.newData);
+                } catch(e){
+                    console.log(e)
+                }
             }
         },
         mounted(){
