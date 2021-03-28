@@ -38,4 +38,9 @@ class UserController extends Controller
     {
         return $data;
     }
+
+    public function testBranchSaving()
+    {
+        dd('nice day today');
+    }
 }
