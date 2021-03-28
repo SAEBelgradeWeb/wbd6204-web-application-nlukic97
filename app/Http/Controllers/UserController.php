@@ -10,13 +10,14 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth'); //this is all you need to authenticate.
+        //$this->middleware('auth'); //this is all you need to authenticate.
     }
 
     protected function index()
     {
         $user = User::find(Auth::user()->id);
         return view('user-index',compact('user'));
+//        return view('user-index');
     }
 
     public function getAccountData()
@@ -34,13 +35,18 @@ class UserController extends Controller
     }
 
     //if user edits their data (exclusing password, the method called shall be this one
-    public function update($data)
+    public function updateAboutInfo(Request $request)
     {
-        return $data;
-    }
+        $request->validate([
+            'age' => 'required|integer',
+            'sex' => 'required|string|in:male,female',
+            'location_id' => 'required|integer|exists:locations,id'
+        ]);
 
-    public function testBranchSaving()
-    {
-        dd('nice day today');
+//        $id = Auth::user()->id;
+        $id = 101; //for now it only works on the admin
+        $user = User::find($id);
+        $user->update($request->all());
+        return 'Data successfully updated';
     }
 }

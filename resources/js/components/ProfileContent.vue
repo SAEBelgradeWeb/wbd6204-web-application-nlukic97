@@ -99,7 +99,7 @@
             aboutModal(){
                 if(this.modalOpen === true){
                     this.modalOpen = false //this is necessary, since the modal will remain true once we exit it.
-                    this.modalOpen = true
+                    // this.modalOpen = true
                 } else {
                     this.modalOpen = true
                 }

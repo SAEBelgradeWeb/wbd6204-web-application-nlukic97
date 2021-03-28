@@ -1927,7 +1927,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       newData: {
         age: null,
         sex: null,
-        city: null
+        location_id: null
       }
     };
   },
@@ -1980,7 +1980,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       for (var i = 0; i < this.cities.length; i++) {
         if (this.cities[i].city === this.city) {
-          this.newData.city = this.cities[i].id;
+          this.newData.location_id = this.cities[i].id;
           break; //once city is found, end loop
         }
       }
@@ -1990,7 +1990,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.newData.age = parseInt(event.target.value);
     },
     processCity: function processCity(event) {
-      this.newData.city = parseInt(event.target.value);
+      this.newData.location_id = parseInt(event.target.value);
     },
     processSex: function processSex(event) {
       this.newData.sex = event.target.value;
@@ -2002,10 +2002,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     //axios post request to the users table
     submitChanges: function submitChanges() {
-      console.log(this.newData);
+      var _this2 = this;
 
       try {
-        axios.post('http://wbd6204-final.test/api/updateAboutInfo', this.newData);
+        axios({
+          method: 'post',
+          url: 'http://wbd6204-final.test/api/updateAboutInfo',
+          data: this.newData
+        }).then(function (response) {
+          console.log(response.data);
+
+          _this2.closeModal();
+        });
       } catch (e) {
         console.log(e);
       }
@@ -2185,8 +2193,7 @@ __webpack_require__.r(__webpack_exports__);
     aboutModal: function aboutModal() {
       if (this.modalOpen === true) {
         this.modalOpen = false; //this is necessary, since the modal will remain true once we exit it.
-
-        this.modalOpen = true;
+        // this.modalOpen = true
       } else {
         this.modalOpen = true;
       }
@@ -39481,7 +39488,7 @@ var render = function() {
                 "select",
                 {
                   staticClass: "form-control",
-                  attrs: { name: "city", id: "city" },
+                  attrs: { name: "location_id", id: "location_id" },
                   on: {
                     input: function($event) {
                       return _vm.processCity($event)
