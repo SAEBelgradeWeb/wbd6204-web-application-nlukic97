@@ -2,7 +2,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-lg-8 col-md-10 col-10 position-relative">
             <span v-on:click="this.editBio" class="btn btn-secondary rounded-circle position-absolute" id="editBioBtn"><i class="fas fa-pen"></i></span>
-            <p id="bioContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque, dolorem enim est exercitationem facilis illum incidunt iusto molestiae molestias mollitia nam neque pariatur praesentium reiciendis repellat sint, tempora vel?</p>
+            <div class="text-center"><span id="bioContent">{{this.bio}}</span></div>
         </div>
     </div>
 </template>
@@ -10,6 +10,9 @@
 <script>
     export default {
         name: "ProfileBio",
+        props:[
+            'bio'
+        ],
         data:function(){
             return {
                 // newBio:null,

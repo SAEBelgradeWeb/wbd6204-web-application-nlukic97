@@ -2082,6 +2082,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileBio",
+  props: ['bio'],
   data: function data() {
     return {// newBio:null,
       // contentEditable:false,
@@ -39725,10 +39726,8 @@ var render = function() {
         [_c("i", { staticClass: "fas fa-pen" })]
       ),
       _vm._v(" "),
-      _c("p", { attrs: { id: "bioContent" } }, [
-        _vm._v(
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque, dolorem enim est exercitationem facilis illum incidunt iusto molestiae molestias mollitia nam neque pariatur praesentium reiciendis repellat sint, tempora vel?"
-        )
+      _c("div", { staticClass: "text-center" }, [
+        _c("span", { attrs: { id: "bioContent" } }, [_vm._v(_vm._s(this.bio))])
       ])
     ])
   ])

@@ -21,7 +21,7 @@ Auth::routes();
 
 //user routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/myAccount', [App\Http\Controllers\UserController::class, 'index'])->name('myAccount');
+Route::get('/myAccount', [App\Http\Controllers\UserController::class, 'index'])->name('myAccount')->middleware('auth');
 Route::get('/account-settings', [App\Http\Controllers\UserController::class, 'getAccountData'])->name('account-settings');
 Route::get('/editAccountData', [App\Http\Controllers\UserController::class, 'editAccountData'])->name('editAccountData'); //fix the naming for the method
 

@@ -12,7 +12,9 @@
         ></profile-picture>
 
         {{--  Profile bio component      --}}
-        <profile-bio></profile-bio>
+        <profile-bio
+            bio="{{$user->bio}}"
+        ></profile-bio>
 
 
         {{-- Personal user information box + content on their page      --}}
