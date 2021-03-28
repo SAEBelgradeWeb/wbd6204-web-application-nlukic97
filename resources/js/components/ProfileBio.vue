@@ -1,17 +1,46 @@
 <template>
     <div class="row d-flex justify-content-center">
-        <div class="col-lg-8 col-md-10 col-10">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque, dolorem enim est exercitationem facilis illum incidunt iusto molestiae molestias mollitia nam neque pariatur praesentium reiciendis repellat sint, tempora vel?</p>
+        <div class="col-lg-8 col-md-10 col-10 position-relative">
+            <span v-on:click="this.editBio" class="btn btn-secondary rounded-circle position-absolute" id="editBioBtn"><i class="fas fa-pen"></i></span>
+            <p id="bioContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque, dolorem enim est exercitationem facilis illum incidunt iusto molestiae molestias mollitia nam neque pariatur praesentium reiciendis repellat sint, tempora vel?</p>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "ProfileBio"
+        name: "ProfileBio",
+        data:function(){
+            return {
+                // newBio:null,
+                // contentEditable:false,
+                // boxEditable:''
+            }
+        },
+        methods:{
+            editBio(){
+                console.log('edit bio')
+                // this.contentEditable = !this.contentEditable //true to false, false to true
+                // if(this.contentEditable === true){
+                //     this.editClass = 'boxEditable'
+                // } else {
+                //     this.editClass = ''
+                // }
+                // console.log(this.contentEditable)
+            },
+            saveBio(){
+                // console.log(newBio)
+                // this.contentEditable = false
+            }
+        }
     }
 </script>
 
 <style scoped>
+    #editBioBtn {
+        right:5px;
+        top:-35px;
+    }
+
 
 </style>

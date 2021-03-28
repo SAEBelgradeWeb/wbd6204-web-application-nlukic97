@@ -6,7 +6,6 @@
             :age="age"
             :sex="sex"
             :city="city"
-            :id="id"
         />
 
         <div class="row">
