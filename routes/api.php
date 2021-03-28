@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //used to display the locations available for users to edit in the 'update about me' modal (AboutProfileModal.vue)
 Route::middleware('api')->get('/getLocations',[\App\Http\Controllers\LocationController::class,'index']);
+
+Route::middleware('api')->post('/updateAboutInfo',[\App\Http\Controllers\UserController::class,'updateAboutInfo']);
+Route::middleware('api')->get('/AboutInfo',[\App\Http\Controllers\UserController::class,'getAboutInfo']);

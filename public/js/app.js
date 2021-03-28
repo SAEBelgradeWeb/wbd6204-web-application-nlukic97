@@ -1908,11 +1908,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
   props: ['viewModal', 'age', 'sex', 'city'],
@@ -1927,7 +1922,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       newData: {
         age: null,
         sex: null,
-        city: null
+        location_id: null
       }
     };
   },
@@ -1980,7 +1975,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       for (var i = 0; i < this.cities.length; i++) {
         if (this.cities[i].city === this.city) {
-          this.newData.city = this.cities[i].id;
+          this.newData.location_id = this.cities[i].id;
           break; //once city is found, end loop
         }
       }
@@ -1990,7 +1985,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.newData.age = parseInt(event.target.value);
     },
     processCity: function processCity(event) {
-      this.newData.city = parseInt(event.target.value);
+      this.newData.location_id = parseInt(event.target.value);
     },
     processSex: function processSex(event) {
       this.newData.sex = event.target.value;
@@ -2002,7 +1997,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     //axios post request to the users table
     submitChanges: function submitChanges() {
-      console.log(this.newData);
+      var _this2 = this;
+
+      try {
+        axios({
+          method: 'post',
+          url: 'http://wbd6204-final.test/api/updateAboutInfo',
+          data: this.newData
+        }).then(function (response) {
+          console.log(response.data);
+
+          _this2.closeModal();
+
+          location.reload(); //if the response is successful, reload the page to display the updated data.
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
   },
   mounted: function mounted() {
@@ -2179,8 +2190,7 @@ __webpack_require__.r(__webpack_exports__);
     aboutModal: function aboutModal() {
       if (this.modalOpen === true) {
         this.modalOpen = false; //this is necessary, since the modal will remain true once we exit it.
-
-        this.modalOpen = true;
+        // this.modalOpen = true
       } else {
         this.modalOpen = true;
       }
@@ -6810,7 +6820,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-465065bb] {\n    list-style-type:none;\n}\nul li[data-v-465065bb]:first-child{\n    z-index: 1;\n    right:-10px;\n    top:-15px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-465065bb] {\r\n    list-style-type:none;\n}\nul li[data-v-465065bb]:first-child{\r\n    z-index: 1;\r\n    right:-10px;\r\n    top:-15px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39475,7 +39485,7 @@ var render = function() {
                 "select",
                 {
                   staticClass: "form-control",
-                  attrs: { name: "city", id: "city" },
+                  attrs: { name: "location_id", id: "location_id" },
                   on: {
                     input: function($event) {
                       return _vm.processCity($event)
@@ -39750,7 +39760,7 @@ var staticRenderFns = [
       _c("ul", { staticClass: "list-group" }, [
         _c("li", [_c("span", [_vm._v("Activity")])]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39760,7 +39770,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39770,7 +39780,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39780,7 +39790,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39790,7 +39800,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [
@@ -39800,7 +39810,7 @@ var staticRenderFns = [
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
+        _c("li", { staticClass: "list-group-item mb-4" }, [
           _c("h3", [_vm._v("Dummy title")]),
           _vm._v(" "),
           _c("p", [

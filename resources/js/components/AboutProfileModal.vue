@@ -3,11 +3,6 @@
          <div id="modal" :class="this.viewModal.toString()"> <!--You had 'viewModal' here.-->
              <div class="row d-flex justify-content-center">
                  <div id="box" class="col-lg-6 col-md-8 col-10 bg-white pt-3">
-                     <!--<ul class="list-group bg-white"> &lt;!&ndash; add a button here &ndash;&gt;
-                         <li class="list-group-item">Age: {{this.age}}</li>
-                         <li class="list-group-item">Sex: {{this.sex}}</li>
-                         <li class="list-group-item">From: {{this.city}}</li>
-                     </ul>-->
 
                      <!-- Age updating field -->
                      <div class="input-group mb-3">
@@ -33,7 +28,7 @@
                          <div class="input-group-prepend">
                              <span class="input-group-text">City</span>
                          </div>
-                         <select name="city" id="city" class="form-control" @input="processCity($event)">
+                         <select name="location_id" id="location_id" class="form-control" @input="processCity($event)">
                              <option  v-for="item in cities" :key="item.id" :value="item.id" :selected="item.city === currentCity">{{item.city}}</option>
                          </select>
                      </div>
@@ -65,7 +60,7 @@
                 newData:{
                     age:null,
                     sex:null,
-                    city:null
+                    location_id:null
                 }
             }
         },
@@ -94,7 +89,7 @@
                     //check which city in cities matches the city prop, and assigning its id to newData.city
                     for(let i = 0; i < this.cities.length; i++){
                         if(this.cities[i].city === this.city){
-                            this.newData.city = this.cities[i].id;
+                            this.newData.location_id = this.cities[i].id;
                             break; //once city is found, end loop
                         }
                     }
@@ -105,7 +100,7 @@
                 this.newData.age = parseInt(event.target.value)
             },
             processCity(event){
-                this.newData.city = parseInt(event.target.value)
+                this.newData.location_id = parseInt(event.target.value)
             },
             processSex(event){
                 this.newData.sex = event.target.value
@@ -116,7 +111,20 @@
             },
             //axios post request to the users table
             submitChanges(){
-                console.log(this.newData)
+                try {
+                    axios({
+                        method: 'post',
+                        url: 'http://wbd6204-final.test/api/updateAboutInfo',
+                        data: this.newData
+                    })
+                    .then(response=>{
+                        console.log(response.data)
+                        this.closeModal()
+                        location.reload() //if the response is successful, reload the page to display the updated data.
+                    });
+                } catch(e){
+                    console.log(e)
+                }
             }
         },
         mounted(){

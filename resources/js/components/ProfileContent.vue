@@ -42,32 +42,32 @@
                 <ul class="list-group">
                     <li><span>Activity</span></li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item mb-4">
                         <h3>Dummy title</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item mb-4">
                         <h3>Dummy title</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item mb-4">
                         <h3>Dummy title</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item mb-4">
                         <h3>Dummy title</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item mb-4">
                         <h3>Dummy title</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item mb-4">
                         <h3>Dummy title</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
                     </li>
@@ -99,7 +99,7 @@
             aboutModal(){
                 if(this.modalOpen === true){
                     this.modalOpen = false //this is necessary, since the modal will remain true once we exit it.
-                    this.modalOpen = true
+                    // this.modalOpen = true
                 } else {
                     this.modalOpen = true
                 }
