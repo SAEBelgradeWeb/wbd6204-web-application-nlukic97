@@ -5,9 +5,12 @@
             <!--Displayed if the bio passed as a prop is not null or '' -->
             <div
                 class="text-center"
-                :class="{'d-none': !this.bioPresent}"
+                :class="{'d-none': !this.hideBio}"
             >
                 <i>{{this.userBio}}</i>
+                <div>
+                    <span class="btn text-primary">Edit bio</span>
+                </div>
             </div>
 
             <!--Displayed 'add bio' btn if no bio is present in passed prop -->
@@ -40,9 +43,9 @@
         data:function(){
             return {
                 userBio:'',
-                bioPresent:null, //will or will not show the bio
-                hideAddButton:false, //class binding: show or hide the 'add bio' btn
-                hideTextArea:true, //hide or show the bio editing text area,
+                hideBio:null, //checkBioPresent() - will or will not show the bio text
+                hideAddButton:false, //checkBioPresent() - class binding: show or hide the 'add bio' btn
+                hideTextArea:true, //checkBioPresent() - hide or show the bio editing text area,
                 submitData:{
                     bio:null
                 }
@@ -51,21 +54,20 @@
         methods:{
             checkBioPresence(){
                 if(this.userBio === '' || this.userBio === null || !this.userBio){
-                    this.bioPresent = false;
+                    this.hideBio = false;
                     this.hideAddButton = false;
-                    this.hideTextArea = true;
-                    console.log('not there')
                 } else {
-                    this.bioPresent = true;
+                    this.hideBio = true;
                     this.hideAddButton = true;
-                    this.hideTextArea = true;
                 }
+                    this.hideTextArea = true;
             },
-            toggleElementsDisplay(){
+            toggleElementsDisplay(){ //you will have to alter this depending on whether you are editing a bio, deleting a bio, or inserting one
+                // this.hideBio = !this.hideBio //this causes a problem. You must handle this with a different function
                 this.hideAddButton = !this.hideAddButton;
                 this.hideTextArea = !this.hideTextArea;
             },
-            alterBio(){
+            alterBio(){ //I might be able to remove this, not sure why I added it
               this.toggleElementsDisplay()
             },
             postRequest(){
@@ -90,9 +92,6 @@
         mounted() {
             this.userBio = this.bio;
             this.checkBioPresence()
-
-
-            // this.alterBio()
         }
     }
 </script>

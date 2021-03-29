@@ -2103,18 +2103,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileBio",
   props: ['bio'],
   data: function data() {
     return {
       userBio: '',
-      bioPresent: null,
-      //will or will not show the bio
+      hideBio: null,
+      //checkBioPresent() - will or will not show the bio text
       hideAddButton: false,
-      //class binding: show or hide the 'add bio' btn
+      //checkBioPresent() - class binding: show or hide the 'add bio' btn
       hideTextArea: true,
-      //hide or show the bio editing text area,
+      //checkBioPresent() - hide or show the bio editing text area,
       submitData: {
         bio: null
       }
@@ -2123,21 +2126,23 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     checkBioPresence: function checkBioPresence() {
       if (this.userBio === '' || this.userBio === null || !this.userBio) {
-        this.bioPresent = false;
+        this.hideBio = false;
         this.hideAddButton = false;
-        this.hideTextArea = true;
-        console.log('not there');
       } else {
-        this.bioPresent = true;
+        this.hideBio = true;
         this.hideAddButton = true;
-        this.hideTextArea = true;
       }
+
+      this.hideTextArea = true;
     },
     toggleElementsDisplay: function toggleElementsDisplay() {
+      //you will have to alter this depending on whether you are editing a bio, deleting a bio, or inserting one
+      // this.hideBio = !this.hideBio //this causes a problem. You must handle this with a different function
       this.hideAddButton = !this.hideAddButton;
       this.hideTextArea = !this.hideTextArea;
     },
     alterBio: function alterBio() {
+      //I might be able to remove this, not sure why I added it
       this.toggleElementsDisplay();
     },
     postRequest: function postRequest() {
@@ -2163,7 +2168,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.userBio = this.bio;
-    this.checkBioPresence(); // this.alterBio()
+    this.checkBioPresence();
   }
 });
 
@@ -39780,8 +39785,8 @@ var render = function() {
     _c("div", { staticClass: "col-lg-8 col-md-8 col-10 text-center" }, [
       _c(
         "div",
-        { staticClass: "text-center", class: { "d-none": !this.bioPresent } },
-        [_c("i", [_vm._v(_vm._s(this.userBio))])]
+        { staticClass: "text-center", class: { "d-none": !this.hideBio } },
+        [_c("i", [_vm._v(_vm._s(this.userBio))]), _vm._v(" "), _vm._m(0)]
       ),
       _vm._v(" "),
       _c(
@@ -39824,7 +39829,16 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("span", { staticClass: "btn text-primary" }, [_vm._v("Edit bio")])
+    ])
+  }
+]
 render._withStripped = true
 
 
