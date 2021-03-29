@@ -13,7 +13,7 @@
 
         {{--  Profile bio component      --}}
         <profile-bio
-            bio="{{$user->bio}}"
+            bio=""
         ></profile-bio>
 
 

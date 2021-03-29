@@ -2086,6 +2086,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileBio",
   props: ['bio'],
@@ -2094,29 +2112,42 @@ __webpack_require__.r(__webpack_exports__);
       // newBio:null,
       // contentEditable:false,
       // boxEditable:''
-      userBio: null
+      userBio: '',
+      bioPresent: null,
+      //will or will not show the bio
+      hideAddButton: false,
+      //class binding: show or hide the 'add bio' btn
+      hideTextArea: true //hide or show the bio editing text area
+
     };
   },
   methods: {
-    editBio: function editBio() {
-      console.log('edit bio'); // this.contentEditable = !this.contentEditable //true to false, false to true
-      // if(this.contentEditable === true){
-      //     this.editClass = 'boxEditable'
-      // } else {
-      //     this.editClass = ''
-      // }
-      // console.log(this.contentEditable)
+    toggleElementsDisplay: function toggleElementsDisplay() {
+      console.log('edit bio');
+      this.hideAddButton = !this.hideAddButton;
+      this.hideTextArea = !this.hideTextArea;
     },
-    saveBio: function saveBio() {// console.log(newBio)
-      // this.contentEditable = false
+    alterBio: function alterBio() {
+      this.toggleElementsDisplay();
+    },
+    saveBio: function saveBio() {
+      console.log('save');
+      this.toggleElementsDisplay(); // this.contentEditable = false
     }
   },
   mounted: function mounted() {
-    if (this.bio === '') {
-      this.userBio = 'Enter you bio...';
+    if (this.bio === '' || this.bio === null || !this.bio) {
+      this.bioPresent = false;
+      this.hideAddButton = false;
+      this.hideTextArea = true;
+      console.log('not there');
     } else {
       this.userBio = this.bio;
-    }
+      this.bioPresent = true;
+      this.hideAddButton = true;
+      this.hideTextArea = true;
+    } // this.alterBio()
+
   }
 });
 
@@ -6859,7 +6890,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#editBioBtn[data-v-53c9f3ca] {\n    right:0;\n    top:-5px;\n    font-size: 10px;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntextarea[data-v-53c9f3ca] {\n     resize: none;\n     width: 100%;\n     height:120px;\n     overflow: hidden;\n}\n@media only screen and (max-width: 519px) {\ntextarea[data-v-53c9f3ca] {\n         height:160px;\n}\n}\n@media only screen and (max-width: 430px) {\ntextarea[data-v-53c9f3ca] {\n         height:200px;\n}\n}\n@media only screen and (max-width: 359px) {\ntextarea[data-v-53c9f3ca] {\n         height:230px;\n}\n}\n@media only screen and (max-width: 301px) {\ntextarea[data-v-53c9f3ca] {\n         height:250px;\n}\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39730,26 +39761,53 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row d-flex justify-content-center mb-4" }, [
-    _c("div", { staticClass: "col-lg-8 col-md-10 col-10" }, [
-      _c("div", { staticClass: "text-center" }, [
+    _c("div", { staticClass: "col-lg-8 col-md-8 col-10 text-center" }, [
+      _c(
+        "div",
+        { staticClass: "text-center", class: { "d-none": !this.bioPresent } },
+        [_c("i", [_vm._v(_vm._s(this.userBio))])]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "text-primary btn",
+          class: { "d-none": this.hideAddButton },
+          on: { click: _vm.alterBio }
+        },
+        [_vm._v("\n            Add bio\n        ")]
+      ),
+      _vm._v(" "),
+      _c("div", { class: { "d-none": this.hideTextArea } }, [
         _c(
-          "span",
-          { staticClass: "position-relative", attrs: { id: "bioContent" } },
-          [
-            _c("i", { staticClass: "pr-5" }, [_vm._v(_vm._s(this.userBio))]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "btn btn-secondary rounded-circle position-absolute",
-                attrs: { id: "editBioBtn" },
-                on: { click: this.editBio }
-              },
-              [_c("i", { staticClass: "fas fa-pen" })]
-            )
-          ]
-        )
+          "textarea",
+          {
+            attrs: {
+              name: "bio",
+              id: "bio",
+              maxlength: "255",
+              placeholder: "Enter you bio..."
+            }
+          },
+          [_vm._v(_vm._s(this.userBio))]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right" }, [
+          _c(
+            "span",
+            {
+              staticClass: "btn btn-secondary",
+              on: { click: _vm.toggleElementsDisplay }
+            },
+            [_vm._v("Cancel")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            { staticClass: "btn btn-primary", on: { click: _vm.saveBio } },
+            [_vm._v("Save")]
+          )
+        ])
       ])
     ])
   ])
