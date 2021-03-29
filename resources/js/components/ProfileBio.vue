@@ -49,6 +49,18 @@
             }
         },
         methods:{
+            checkBioPresence(){
+                if(this.userBio === '' || this.userBio === null || !this.userBio){
+                    this.bioPresent = false;
+                    this.hideAddButton = false;
+                    this.hideTextArea = true;
+                    console.log('not there')
+                } else {
+                    this.bioPresent = true;
+                    this.hideAddButton = true;
+                    this.hideTextArea = true;
+                }
+            },
             toggleElementsDisplay(){
                 this.hideAddButton = !this.hideAddButton;
                 this.hideTextArea = !this.hideTextArea;
@@ -63,7 +75,8 @@
                     data: this.submitData
                 })
                     .then(res=>{
-                        console.log(res)
+                        this.userBio = res.data //add the updated data (sent from backend after update)
+                        this.checkBioPresence() //if the user added
                     })
             },
             saveBio(){
@@ -71,25 +84,13 @@
                 console.log(this.submitData)
                 this.postRequest()
 
-
-
                 this.toggleElementsDisplay()
-                // this.contentEditable = false
             }
         },
         mounted() {
-            if(this.bio === '' || this.bio === null || !this.bio){
-                this.bioPresent = false;
-                this.hideAddButton = false;
-                this.hideTextArea = true;
-                console.log('not there')
-            } else {
-                this.userBio = this.bio
+            this.userBio = this.bio;
+            this.checkBioPresence()
 
-                this.bioPresent = true;
-                this.hideAddButton = true;
-                this.hideTextArea = true;
-            }
 
             // this.alterBio()
         }

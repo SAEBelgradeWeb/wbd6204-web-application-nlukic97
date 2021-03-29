@@ -50,15 +50,15 @@ class UserController extends Controller
     public function updateBio(Request $request)
     {
         $request->validate([
-            'bio' => 'string|max:255',
+            'bio' => 'nullable|string|max:255',
         ]);
 
         $user = User::find(Auth::user()->id);
 
 //        $user->update($request->only('bio')); //this did not work for some reason.
-        $user->bio = $request->all()['bio'];
+        $user->bio = $request->all()['bio']; //not sure why it only works like this
         $user->save();
 
-        return 'Bio updated successfully';
+        return $user->bio;
     }
 }

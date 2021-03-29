@@ -2007,10 +2007,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           url: 'http://wbd6204-final.test/api/updateAboutInfo',
           data: this.newData
         }).then(function (response) {
-          console.log(response);
+          // console.log(response)
+          _this2.closeModal();
 
-          _this2.closeModal(); //location.reload() //if the response is successful, reload the page to display the updated data.
-
+          location.reload(); //if the response is successful, reload the page to display the updated data.
         });
       } catch (e) {
         console.log(e);
@@ -2121,6 +2121,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    checkBioPresence: function checkBioPresence() {
+      if (this.userBio === '' || this.userBio === null || !this.userBio) {
+        this.bioPresent = false;
+        this.hideAddButton = false;
+        this.hideTextArea = true;
+        console.log('not there');
+      } else {
+        this.bioPresent = true;
+        this.hideAddButton = true;
+        this.hideTextArea = true;
+      }
+    },
     toggleElementsDisplay: function toggleElementsDisplay() {
       this.hideAddButton = !this.hideAddButton;
       this.hideTextArea = !this.hideTextArea;
@@ -2129,34 +2141,29 @@ __webpack_require__.r(__webpack_exports__);
       this.toggleElementsDisplay();
     },
     postRequest: function postRequest() {
+      var _this = this;
+
       axios({
         method: 'post',
         url: 'http://wbd6204-final.test/api/updateBio',
         data: this.submitData
       }).then(function (res) {
-        console.log(res);
+        _this.userBio = res.data; //add the updated data (sent from backend after update)
+
+        _this.checkBioPresence(); //if the user added
+
       });
     },
     saveBio: function saveBio() {
       this.submitData.bio = this.$refs.textareaObj.value;
       console.log(this.submitData);
       this.postRequest();
-      this.toggleElementsDisplay(); // this.contentEditable = false
+      this.toggleElementsDisplay();
     }
   },
   mounted: function mounted() {
-    if (this.bio === '' || this.bio === null || !this.bio) {
-      this.bioPresent = false;
-      this.hideAddButton = false;
-      this.hideTextArea = true;
-      console.log('not there');
-    } else {
-      this.userBio = this.bio;
-      this.bioPresent = true;
-      this.hideAddButton = true;
-      this.hideTextArea = true;
-    } // this.alterBio()
-
+    this.userBio = this.bio;
+    this.checkBioPresence(); // this.alterBio()
   }
 });
 

@@ -120,9 +120,9 @@
                         data: this.newData
                     })
                     .then(response=>{
-                        console.log(response)
+                        // console.log(response)
                         this.closeModal()
-                        //location.reload() //if the response is successful, reload the page to display the updated data.
+                        location.reload() //if the response is successful, reload the page to display the updated data.
                     });
                 } catch(e){
                     console.log(e)
