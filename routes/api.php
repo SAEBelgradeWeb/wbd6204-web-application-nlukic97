@@ -23,3 +23,6 @@ Route::middleware('auth:api')->get('/getLocations',[\App\Http\Controllers\Locati
 
 Route::middleware('auth:api')->post('/updateAboutInfo',[\App\Http\Controllers\UserController::class,'updateAboutInfo']);
 Route::middleware('auth:api')->get('/AboutInfo',[\App\Http\Controllers\UserController::class,'getAboutInfo']);
+
+//updating bio
+Route::middleware('auth:api')->post('/updateBio',[\App\Http\Controllers\UserController::class,'updateBio']);

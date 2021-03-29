@@ -39,12 +39,22 @@ class UserController extends Controller
     {
         $request->validate([
             'age' => 'required|integer',
-            'sex' => 'required|string|in:male,female'
+            'sex' => 'required|string|in:male,female',
+            'location_id' => 'required|integer|exists:locations,id'
         ]);
 
+        User::find(Auth::user()->id)->update($request->only(['age','sex','location_id']));
+        return 'Data successfully updated';
+    }
+
+    public function updateBio(Request $request)
+    {
+        $request->validate([
+            'bio' => 'string|max:255',
+        ]);
 
         $user = User::find(Auth::user()->id);
-        $user->update($request->all());
-        return 'Data successfully updated';
+        $user->update($request->only('bio'));
+        return 'Bio updated successfully';
     }
 }

@@ -2007,11 +2007,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           url: 'http://wbd6204-final.test/api/updateAboutInfo',
           data: this.newData
         }).then(function (response) {
-          console.log(response.data);
+          console.log(response);
 
-          _this2.closeModal();
+          _this2.closeModal(); //location.reload() //if the response is successful, reload the page to display the updated data.
 
-          location.reload(); //if the response is successful, reload the page to display the updated data.
         });
       } catch (e) {
         console.log(e);
@@ -2109,29 +2108,39 @@ __webpack_require__.r(__webpack_exports__);
   props: ['bio'],
   data: function data() {
     return {
-      // newBio:null,
-      // contentEditable:false,
-      // boxEditable:''
       userBio: '',
       bioPresent: null,
       //will or will not show the bio
       hideAddButton: false,
       //class binding: show or hide the 'add bio' btn
-      hideTextArea: true //hide or show the bio editing text area
-
+      hideTextArea: true,
+      //hide or show the bio editing text area,
+      submitData: {
+        bio: null
+      }
     };
   },
   methods: {
     toggleElementsDisplay: function toggleElementsDisplay() {
-      console.log('edit bio');
       this.hideAddButton = !this.hideAddButton;
       this.hideTextArea = !this.hideTextArea;
     },
     alterBio: function alterBio() {
       this.toggleElementsDisplay();
     },
+    postRequest: function postRequest() {
+      axios({
+        method: 'post',
+        url: 'http://wbd6204-final.test/api/updateBio',
+        data: this.submitData
+      }).then(function (res) {
+        console.log(res);
+      });
+    },
     saveBio: function saveBio() {
-      console.log('save');
+      this.submitData.bio = this.$refs.textareaObj.value;
+      console.log(this.submitData);
+      this.postRequest();
       this.toggleElementsDisplay(); // this.contentEditable = false
     }
   },
@@ -39782,12 +39791,8 @@ var render = function() {
         _c(
           "textarea",
           {
-            attrs: {
-              name: "bio",
-              id: "bio",
-              maxlength: "255",
-              placeholder: "Enter you bio..."
-            }
+            ref: "textareaObj",
+            attrs: { maxlength: "255", placeholder: "Enter you bio..." }
           },
           [_vm._v(_vm._s(this.userBio))]
         ),
