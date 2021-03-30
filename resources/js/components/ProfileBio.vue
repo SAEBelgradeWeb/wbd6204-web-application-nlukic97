@@ -9,7 +9,7 @@
             >
                 <i>{{this.userBio}}</i>
                 <div>
-                    <span class="btn text-primary" @click="showEditOptions">Edit bio</span>
+                    <span class="btn text-primary" @click="toggleEditOptions">Edit bio</span>
                 </div>
             </div>
 
@@ -17,14 +17,22 @@
             <button
                 class="text-primary btn"
                 :class="{'d-none': this.hideAddButton}"
-                @click="showAddOptions"
+                @click="toggleAddOptions"
             >
                 Add bio
             </button>
 
             <!-- The editing section for adding/ editing the bio-->
             <div :class="{'d-none': this.hideEditBox}">
-                <textarea  ref="textareaObj" maxlength="255" placeholder="Enter you bio...">{{this.userBio}}</textarea>
+                <textarea
+                    ref="textareaObj"
+                    maxlength="255"
+                    placeholder="Enter you bio..."
+                    class="p-2 pl-3"
+                >
+                    {{this.userBio}}
+                </textarea>
+
                 <div class="text-right">
                     <span class="btn btn-secondary" @click="cancelBtn">Cancel</span>
                     <span class="btn btn-primary" @click="saveBio">Save</span>
@@ -63,22 +71,34 @@
                 }
                     this.hideEditBox = true;
             },
-            showAddOptions(){ //I might be able to remove this, not sure why I added it
+            focusTextArea(){
+                setTimeout(()=>{
+                    this.$refs.textareaObj.focus() //it wont focus
+                },100)
+            },
+            toggleAddOptions(){
                 this.mode = 'add';
+
                 this.hideAddButton = !this.hideAddButton;
                 this.hideEditBox = !this.hideEditBox;
+
+                this.focusTextArea()
+
             },
-            showEditOptions(){
+            toggleEditOptions(){
                 this.mode = 'edit';
+
                 this.hideBio = !this.hideBio
                 this.hideEditBox = !this.hideEditBox;
+
+                this.focusTextArea()
             },
             cancelBtn(){
                 console.log()
                 if(this.mode === 'add'){
-                    this.showAddOptions()
+                    this.toggleAddOptions()
                 } else if(this.mode === 'edit'){
-                    this.showEditOptions()
+                    this.toggleEditOptions()
                 }
 
                 this.mode = null
@@ -123,18 +143,18 @@
 
     @media only screen and (max-width: 430px) {
         textarea {
-            height:200px;
+            height:220px;
         }
     }
 
     @media only screen and (max-width: 359px) {
         textarea {
-            height:230px;
+            height:240px;
         }
     }
     @media only screen and (max-width: 301px) {
         textarea {
-            height:250px;
+            height:265px;
         }
     }
 

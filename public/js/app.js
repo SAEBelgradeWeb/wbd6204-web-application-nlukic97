@@ -2106,6 +2106,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileBio",
   props: ['bio'],
@@ -2136,39 +2144,48 @@ __webpack_require__.r(__webpack_exports__);
 
       this.hideEditBox = true;
     },
-    showAddOptions: function showAddOptions() {
-      //I might be able to remove this, not sure why I added it
+    focusTextArea: function focusTextArea() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.$refs.textareaObj.focus(); //it wont focus
+
+      }, 100);
+    },
+    toggleAddOptions: function toggleAddOptions() {
       this.mode = 'add';
       this.hideAddButton = !this.hideAddButton;
       this.hideEditBox = !this.hideEditBox;
+      this.focusTextArea();
     },
-    showEditOptions: function showEditOptions() {
+    toggleEditOptions: function toggleEditOptions() {
       this.mode = 'edit';
       this.hideBio = !this.hideBio;
       this.hideEditBox = !this.hideEditBox;
+      this.focusTextArea();
     },
     cancelBtn: function cancelBtn() {
       console.log();
 
       if (this.mode === 'add') {
-        this.showAddOptions();
+        this.toggleAddOptions();
       } else if (this.mode === 'edit') {
-        this.showEditOptions();
+        this.toggleEditOptions();
       }
 
       this.mode = null;
     },
     postRequest: function postRequest() {
-      var _this = this;
+      var _this2 = this;
 
       axios({
         method: 'post',
         url: 'http://wbd6204-final.test/api/updateBio',
         data: this.submitData
       }).then(function (res) {
-        _this.userBio = res.data; //add the updated data (sent from backend after update)
+        _this2.userBio = res.data; //add the updated data (sent from backend after update)
 
-        _this.checkBioPresence();
+        _this2.checkBioPresence();
       });
     },
     saveBio: function saveBio() {
@@ -6922,7 +6939,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntextarea[data-v-53c9f3ca] {\n     resize: none;\n     width: 100%;\n     height:120px;\n     overflow: hidden;\n}\n@media only screen and (max-width: 519px) {\ntextarea[data-v-53c9f3ca] {\n         height:160px;\n}\n}\n@media only screen and (max-width: 430px) {\ntextarea[data-v-53c9f3ca] {\n         height:200px;\n}\n}\n@media only screen and (max-width: 359px) {\ntextarea[data-v-53c9f3ca] {\n         height:230px;\n}\n}\n@media only screen and (max-width: 301px) {\ntextarea[data-v-53c9f3ca] {\n         height:250px;\n}\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntextarea[data-v-53c9f3ca] {\n     resize: none;\n     width: 100%;\n     height:120px;\n     overflow: hidden;\n}\n@media only screen and (max-width: 519px) {\ntextarea[data-v-53c9f3ca] {\n         height:160px;\n}\n}\n@media only screen and (max-width: 430px) {\ntextarea[data-v-53c9f3ca] {\n         height:220px;\n}\n}\n@media only screen and (max-width: 359px) {\ntextarea[data-v-53c9f3ca] {\n         height:240px;\n}\n}\n@media only screen and (max-width: 301px) {\ntextarea[data-v-53c9f3ca] {\n         height:265px;\n}\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39805,7 +39822,7 @@ var render = function() {
               "span",
               {
                 staticClass: "btn text-primary",
-                on: { click: _vm.showEditOptions }
+                on: { click: _vm.toggleEditOptions }
               },
               [_vm._v("Edit bio")]
             )
@@ -39818,7 +39835,7 @@ var render = function() {
         {
           staticClass: "text-primary btn",
           class: { "d-none": this.hideAddButton },
-          on: { click: _vm.showAddOptions }
+          on: { click: _vm.toggleAddOptions }
         },
         [_vm._v("\n            Add bio\n        ")]
       ),
@@ -39828,9 +39845,10 @@ var render = function() {
           "textarea",
           {
             ref: "textareaObj",
+            staticClass: "p-2 pl-3",
             attrs: { maxlength: "255", placeholder: "Enter you bio..." }
           },
-          [_vm._v(_vm._s(this.userBio))]
+          [_vm._v("                " + _vm._s(this.userBio) + "\n            ")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "text-right" }, [
