@@ -2,26 +2,29 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center">Account Settings</h1>
-
-        <div class="row">
-            <div class=" col-lg-4 col-md-10 col-10">
-
-                <!--About area-->
-                <span>Personal information:</span>
-                <ul class="list-group position-relative mb-3">
-                    <li class="list-group-item">Name: {{$user->name}}<a href="#">Updateds</a></li>
-                    <li class="list-group-item">Username: {{$user->username}}</li>
-                </ul>
-
-                <p>Password</p>
-                <a href="#" class="btn btn-primary">Update password</a>
-{{--                <ul class="list-group position-relative">--}}
-{{--                    <li class="list-group-item">Name: {{$user->name}}</li>--}}
-{{--                    <li class="list-group-item">Username: {{$user->username}}</li>--}}
-{{--                </ul>--}}
-
+        <div class="row border-bottom">
+            <div class="col-12">
+                <h3>Account Settings</h3>
             </div>
         </div>
+
+        {{-- The component
+            perhaps I could pass prop titled type (name, username or etc), and data(Nikola, Adminsky and so on...)
+
+        --}}
+        <div class="row ml-4 mr-4 pt-2 pb-2 border-bottom d-flex align-items-center"> {{--  .bg-dark --}}
+            <div class="col-2 pt-2 pb-2">
+                <span class="font-weight-bold text-left">Name</span>
+            </div>
+
+            <div class="col-8 pt-2 pb-2">
+                <span class="text-left d-block text-muted text-break">{{$user->name}}</span>
+            </div>
+            <div class="pt-2 pb-2 col-1 text-right">
+                <span class="text-primary btn border-0 bg-light">Edit</span>
+            </div>
+        </div>
+
+
     </div>
 @endsection

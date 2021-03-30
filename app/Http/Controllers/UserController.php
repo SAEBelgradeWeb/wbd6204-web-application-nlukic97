@@ -34,7 +34,7 @@ class UserController extends Controller
         return view('friends',compact('friends'));
     }
 
-    //if user edits their data (exclusing password, the method called shall be this one
+    //if user edits their data (excluding password), the method called shall be this one
     public function updateAboutInfo(Request $request)
     {
         $request->validate([
@@ -56,7 +56,6 @@ class UserController extends Controller
         $user = User::find(Auth::user()->id);
 
         $user->update($request->only('bio'));
-
         return $user->bio;
     }
 }
