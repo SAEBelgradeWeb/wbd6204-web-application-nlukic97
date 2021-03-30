@@ -25,7 +25,8 @@ class User extends Authenticatable
         'sex',
         'location_id',
         'username',
-        'image_url'
+        'image_url',
+        'bio'
     ];
 
     /**

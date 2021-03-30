@@ -55,9 +55,7 @@ class UserController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-//        $user->update($request->only('bio')); //this did not work for some reason.
-        $user->bio = $request->all()['bio']; //not sure why it only works like this
-        $user->save();
+        $user->update($request->only('bio'));
 
         return $user->bio;
     }
