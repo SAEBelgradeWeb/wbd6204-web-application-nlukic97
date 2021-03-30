@@ -2383,6 +2383,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
 //
 //
 //
@@ -2400,15 +2411,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "settingElement",
-  props: ['data'],
+  props: ['data', 'column_name'],
   data: function data() {
     return {
-      display: null
+      editing: false,
+      columnLabel: null,
+      dataObj: {
+        data: null,
+        column: null
+      }
     };
   },
-  methods: {},
+  methods: {
+    edit: function edit() {
+      this.editing = true;
+    },
+    close: function close() {
+      this.editing = false;
+    },
+    save: function () {
+      var _save = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var items, resp;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                items = {};
+                items[this.dataObj.column] = this.dataObj.data;
+                console.log(items);
+                _context.prev = 3;
+                _context.next = 6;
+                return axios.post('http://wbd6204-final.test/api/accountSettings', items);
+
+              case 6:
+                resp = _context.sent;
+                this.close();
+                console.log(resp.data);
+                _context.next = 14;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0);
+
+              case 14:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[3, 11]]);
+      }));
+
+      function save() {
+        return _save.apply(this, arguments);
+      }
+
+      return save;
+    }()
+  },
   mounted: function mounted() {
-    this.display = this.data;
+    this.dataObj.data = this.data;
+    this.dataObj.column = this.column_name;
+    this.columnLabel = this.column_name[0].toUpperCase() + this.column_name.slice(1);
   }
 });
 
@@ -40241,40 +40306,80 @@ var render = function() {
         "row ml-4 mr-4 pt-2 pb-2 border-bottom d-flex align-items-center"
     },
     [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-8 pt-2 pb-2" }, [
-        _c("span", { staticClass: "text-left d-block text-muted text-break" }, [
-          _vm._v(_vm._s(this.display))
+      _c("div", { staticClass: "col-3 pt-2 pb-2" }, [
+        _c("span", { staticClass: "font-weight-bold text-left" }, [
+          _vm._v(_vm._s(this.columnLabel))
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "col-4 pt-2 pb-2" }, [
+        _c(
+          "span",
+          {
+            staticClass: "text-left text-muted text-break",
+            class: { "d-none": _vm.editing }
+          },
+          [_vm._v(_vm._s(this.dataObj.data))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.dataObj.data,
+              expression: "dataObj.data"
+            }
+          ],
+          class: { "d-none": !_vm.editing },
+          attrs: { type: "text" },
+          domProps: { value: _vm.dataObj.data },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.dataObj, "data", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "text-primary btn border-0 bg-light",
+            class: { "d-none": !_vm.editing },
+            on: { click: _vm.save }
+          },
+          [_vm._v("Save")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4 pt-2 pb-2 text-right" }, [
+        _c(
+          "span",
+          {
+            staticClass: "text-primary btn border-0 bg-light",
+            class: { "d-none": _vm.editing },
+            on: { click: _vm.edit }
+          },
+          [_vm._v("Edit")]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "text-primary btn border-0 bg-light",
+            class: { "d-none": !_vm.editing },
+            on: { click: _vm.close }
+          },
+          [_vm._v("Cancel")]
+        )
+      ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 pt-2 pb-2" }, [
-      _c("span", { staticClass: "font-weight-bold text-left" }, [
-        _vm._v("Name")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pt-2 pb-2 col-1 text-right" }, [
-      _c("span", { staticClass: "text-primary btn border-0 bg-light" }, [
-        _vm._v("Edit")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

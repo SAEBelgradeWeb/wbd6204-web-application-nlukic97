@@ -58,4 +58,18 @@ class UserController extends Controller
         $user->update($request->only('bio'));
         return $user->bio;
     }
+
+    public function updateAccountData(Request $request)
+    {
+//        return $request;
+
+        $request->validate([
+            'name'=>'string|max:255',
+            'username'=>'string|max:255'
+        ]);
+
+        User::find(Auth::user()->id)->update($request->all());
+
+        return $request->all();
+    }
 }

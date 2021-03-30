@@ -26,3 +26,6 @@ Route::middleware('auth:api')->post('/updateAboutInfo',[\App\Http\Controllers\Us
 
 //updating bio
 Route::middleware('auth:api')->post('/updateBio',[\App\Http\Controllers\UserController::class,'updateBio']);
+
+//updating name, username
+Route::middleware('auth:api')->post('/accountSettings',[\App\Http\Controllers\UserController::class,'updateAccountData']);
