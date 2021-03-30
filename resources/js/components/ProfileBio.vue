@@ -9,7 +9,7 @@
             >
                 <i>{{this.userBio}}</i>
                 <div>
-                    <span class="btn text-primary">Edit bio</span>
+                    <span class="btn text-primary" @click="showEditOptions">Edit bio</span>
                 </div>
             </div>
 
@@ -17,16 +17,16 @@
             <button
                 class="text-primary btn"
                 :class="{'d-none': this.hideAddButton}"
-                @click="alterBio"
+                @click="showAddOptions"
             >
                 Add bio
             </button>
 
             <!-- The editing section for adding/ editing the bio-->
-            <div :class="{'d-none': this.hideTextArea}">
+            <div :class="{'d-none': this.hideEditBox}">
                 <textarea  ref="textareaObj" maxlength="255" placeholder="Enter you bio...">{{this.userBio}}</textarea>
                 <div class="text-right">
-                    <span class="btn btn-secondary" @click="toggleElementsDisplay">Cancel</span>
+                    <span class="btn btn-secondary" @click="cancelBtn">Cancel</span>
                     <span class="btn btn-primary" @click="saveBio">Save</span>
                 </div>
             </div>
@@ -43,9 +43,10 @@
         data:function(){
             return {
                 userBio:'',
+                mode:null,
                 hideBio:null, //checkBioPresent() - will or will not show the bio text
                 hideAddButton:false, //checkBioPresent() - class binding: show or hide the 'add bio' btn
-                hideTextArea:true, //checkBioPresent() - hide or show the bio editing text area,
+                hideEditBox:true, //checkBioPresent() - hide or show the bio editing text area,
                 submitData:{
                     bio:null
                 }
@@ -60,15 +61,27 @@
                     this.hideBio = true;
                     this.hideAddButton = true;
                 }
-                    this.hideTextArea = true;
+                    this.hideEditBox = true;
             },
-            toggleElementsDisplay(){ //you will have to alter this depending on whether you are editing a bio, deleting a bio, or inserting one
-                // this.hideBio = !this.hideBio //this causes a problem. You must handle this with a different function
+            showAddOptions(){ //I might be able to remove this, not sure why I added it
+                this.mode = 'add';
                 this.hideAddButton = !this.hideAddButton;
-                this.hideTextArea = !this.hideTextArea;
+                this.hideEditBox = !this.hideEditBox;
             },
-            alterBio(){ //I might be able to remove this, not sure why I added it
-              this.toggleElementsDisplay()
+            showEditOptions(){
+                this.mode = 'edit';
+                this.hideBio = !this.hideBio
+                this.hideEditBox = !this.hideEditBox;
+            },
+            cancelBtn(){
+                console.log()
+                if(this.mode === 'add'){
+                    this.showAddOptions()
+                } else if(this.mode === 'edit'){
+                    this.showEditOptions()
+                }
+
+                this.mode = null
             },
             postRequest(){
                 axios({
@@ -78,15 +91,13 @@
                 })
                     .then(res=>{
                         this.userBio = res.data //add the updated data (sent from backend after update)
-                        this.checkBioPresence() //if the user added
+                        this.checkBioPresence()
                     })
             },
             saveBio(){
                 this.submitData.bio = this.$refs.textareaObj.value
                 console.log(this.submitData)
                 this.postRequest()
-
-                this.toggleElementsDisplay()
             }
         },
         mounted() {

@@ -2112,11 +2112,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       userBio: '',
+      mode: null,
       hideBio: null,
       //checkBioPresent() - will or will not show the bio text
       hideAddButton: false,
       //checkBioPresent() - class binding: show or hide the 'add bio' btn
-      hideTextArea: true,
+      hideEditBox: true,
       //checkBioPresent() - hide or show the bio editing text area,
       submitData: {
         bio: null
@@ -2133,17 +2134,29 @@ __webpack_require__.r(__webpack_exports__);
         this.hideAddButton = true;
       }
 
-      this.hideTextArea = true;
+      this.hideEditBox = true;
     },
-    toggleElementsDisplay: function toggleElementsDisplay() {
-      //you will have to alter this depending on whether you are editing a bio, deleting a bio, or inserting one
-      // this.hideBio = !this.hideBio //this causes a problem. You must handle this with a different function
-      this.hideAddButton = !this.hideAddButton;
-      this.hideTextArea = !this.hideTextArea;
-    },
-    alterBio: function alterBio() {
+    showAddOptions: function showAddOptions() {
       //I might be able to remove this, not sure why I added it
-      this.toggleElementsDisplay();
+      this.mode = 'add';
+      this.hideAddButton = !this.hideAddButton;
+      this.hideEditBox = !this.hideEditBox;
+    },
+    showEditOptions: function showEditOptions() {
+      this.mode = 'edit';
+      this.hideBio = !this.hideBio;
+      this.hideEditBox = !this.hideEditBox;
+    },
+    cancelBtn: function cancelBtn() {
+      console.log();
+
+      if (this.mode === 'add') {
+        this.showAddOptions();
+      } else if (this.mode === 'edit') {
+        this.showEditOptions();
+      }
+
+      this.mode = null;
     },
     postRequest: function postRequest() {
       var _this = this;
@@ -2155,15 +2168,13 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         _this.userBio = res.data; //add the updated data (sent from backend after update)
 
-        _this.checkBioPresence(); //if the user added
-
+        _this.checkBioPresence();
       });
     },
     saveBio: function saveBio() {
       this.submitData.bio = this.$refs.textareaObj.value;
       console.log(this.submitData);
       this.postRequest();
-      this.toggleElementsDisplay();
     }
   },
   mounted: function mounted() {
@@ -39786,7 +39797,20 @@ var render = function() {
       _c(
         "div",
         { staticClass: "text-center", class: { "d-none": !this.hideBio } },
-        [_c("i", [_vm._v(_vm._s(this.userBio))]), _vm._v(" "), _vm._m(0)]
+        [
+          _c("i", [_vm._v(_vm._s(this.userBio))]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "span",
+              {
+                staticClass: "btn text-primary",
+                on: { click: _vm.showEditOptions }
+              },
+              [_vm._v("Edit bio")]
+            )
+          ])
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -39794,12 +39818,12 @@ var render = function() {
         {
           staticClass: "text-primary btn",
           class: { "d-none": this.hideAddButton },
-          on: { click: _vm.alterBio }
+          on: { click: _vm.showAddOptions }
         },
         [_vm._v("\n            Add bio\n        ")]
       ),
       _vm._v(" "),
-      _c("div", { class: { "d-none": this.hideTextArea } }, [
+      _c("div", { class: { "d-none": this.hideEditBox } }, [
         _c(
           "textarea",
           {
@@ -39812,10 +39836,7 @@ var render = function() {
         _c("div", { staticClass: "text-right" }, [
           _c(
             "span",
-            {
-              staticClass: "btn btn-secondary",
-              on: { click: _vm.toggleElementsDisplay }
-            },
+            { staticClass: "btn btn-secondary", on: { click: _vm.cancelBtn } },
             [_vm._v("Cancel")]
           ),
           _vm._v(" "),
@@ -39829,16 +39850,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("span", { staticClass: "btn text-primary" }, [_vm._v("Edit bio")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
