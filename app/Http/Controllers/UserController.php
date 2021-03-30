@@ -38,7 +38,7 @@ class UserController extends Controller
     public function updateAboutInfo(Request $request)
     {
         $request->validate([
-            'age' => 'required|integer',
+            'age' => 'required|integer|max:130',
             'sex' => 'required|string|in:male,female',
             'location_id' => 'required|integer|exists:locations,id'
         ]);
