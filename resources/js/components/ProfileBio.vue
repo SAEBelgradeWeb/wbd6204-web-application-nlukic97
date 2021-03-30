@@ -7,7 +7,7 @@
                 class="text-center"
                 :class="{'d-none': !this.hideBio}"
             >
-                <i>{{this.userBio}}</i>
+                <span class="text-break">{{this.userBio}}</span>
                 <div>
                     <span class="btn text-primary" @click="toggleEditOptions">Edit bio</span>
                 </div>
@@ -29,8 +29,7 @@
                     maxlength="255"
                     placeholder="Enter you bio..."
                     class="p-2 pl-3"
-                >
-                    {{this.userBio}}
+                >{{this.userBio}}
                 </textarea>
 
                 <div class="text-right">

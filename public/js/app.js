@@ -2113,7 +2113,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileBio",
   props: ['bio'],
@@ -39815,7 +39814,9 @@ var render = function() {
         "div",
         { staticClass: "text-center", class: { "d-none": !this.hideBio } },
         [
-          _c("i", [_vm._v(_vm._s(this.userBio))]),
+          _c("span", { staticClass: "text-break" }, [
+            _vm._v(_vm._s(this.userBio))
+          ]),
           _vm._v(" "),
           _c("div", [
             _c(
@@ -39848,7 +39849,7 @@ var render = function() {
             staticClass: "p-2 pl-3",
             attrs: { maxlength: "255", placeholder: "Enter you bio..." }
           },
-          [_vm._v("                " + _vm._s(this.userBio) + "\n            ")]
+          [_vm._v(_vm._s(this.userBio) + "\n            ")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "text-right" }, [
