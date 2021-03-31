@@ -2464,21 +2464,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 resp = _context.sent;
                 this.close();
-                console.log(resp.data);
-                _context.next = 11;
+                console.log(resp.data); //reseting the input fields
+
+                this.dataObj.oldPass = null;
+                this.dataObj.newPass = null;
+                this.dataObj.confirmNewPass = null;
+                _context.next = 14;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 11:
+                _context.prev = 11;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
 
-              case 11:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, this, [[0, 11]]);
       }));
 
       function makePostRequest() {
@@ -40547,7 +40551,7 @@ var render = function() {
                   expression: "dataObj.oldPass"
                 }
               ],
-              attrs: { type: "text" },
+              attrs: { type: "password" },
               domProps: { value: _vm.dataObj.oldPass },
               on: {
                 input: function($event) {
@@ -40570,7 +40574,7 @@ var render = function() {
                   expression: "dataObj.newPass"
                 }
               ],
-              attrs: { type: "text" },
+              attrs: { type: "password" },
               domProps: { value: _vm.dataObj.newPass },
               on: {
                 input: function($event) {
@@ -40593,7 +40597,7 @@ var render = function() {
                   expression: "dataObj.confirmNewPass"
                 }
               ],
-              attrs: { type: "text" },
+              attrs: { type: "password" },
               domProps: { value: _vm.dataObj.confirmNewPass },
               on: {
                 input: function($event) {

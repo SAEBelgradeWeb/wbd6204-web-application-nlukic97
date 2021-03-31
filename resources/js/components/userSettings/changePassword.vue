@@ -9,13 +9,13 @@
         <div class="col-5 pt-2 pb-2">
             <div>
                 <div :class="{'d-none': !editing}">
-                    <input type="text" v-model="dataObj.oldPass">
+                    <input type="password" v-model="dataObj.oldPass">
                 </div>
                 <div :class="{'d-none': !editing}">
-                    <input type="text" v-model="dataObj.newPass">
+                    <input type="password" v-model="dataObj.newPass">
                 </div>
                 <div :class="{'d-none': !editing}">
-                    <input type="text" v-model="dataObj.confirmNewPass">
+                    <input type="password" v-model="dataObj.confirmNewPass">
                 </div>
                 <div>
                     <span class="text-primary btn border-0 bg-light" @click="save" :class="{'d-none': !editing}">Save</span>
@@ -64,6 +64,11 @@
                     const resp = await axios.post('http://wbd6204-final.test/api/changePassword',this.dataObj)
                     this.close()
                     console.log(resp.data)
+
+                    //reseting the input fields
+                    this.dataObj.oldPass = null
+                    this.dataObj.newPass = null
+                    this.dataObj.confirmNewPass = null
                 } catch(e){
                     console.log(e)
                 }
