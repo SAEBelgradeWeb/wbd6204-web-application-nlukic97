@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -71,5 +72,28 @@ class UserController extends Controller
         User::find(Auth::user()->id)->update($request->only(['name','username']));
 
         return $request->all();
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'oldPass'=>'required|string',
+            'newPass'=>'required|string',
+            'confirmNewPass'=>'required|string'
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        if(!Hash::check($request->only('oldPass')['oldPass'],$user->password)){
+            return 'Server says: Current password entered incorrectly.';
+        }
+
+        if(!($request->all()['newPass'] === $request->all()['confirmNewPass'])){
+            return 'Server says: The new passwords do not match';
+        }
+
+        $user->password = Hash::make($request->only('confirmNewPass')['confirmNewPass']);
+        $user->save();
+
+
     }
 }

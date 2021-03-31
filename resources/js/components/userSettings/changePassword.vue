@@ -59,8 +59,9 @@
               }
             },
             makePostRequest: async function(){
+                // await console.log(this.dataObj)
                 try {
-                    const resp = await axios.post('http://wbd6204-final.test/api/nonExistantUrl',this.dataObj)
+                    const resp = await axios.post('http://wbd6204-final.test/api/changePassword',this.dataObj)
                     this.close()
                     console.log(resp.data)
                 } catch(e){

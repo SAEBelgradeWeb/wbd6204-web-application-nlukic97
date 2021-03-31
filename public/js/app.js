@@ -2459,7 +2459,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.post('http://wbd6204-final.test/api/nonExistantUrl', this.dataObj);
+                return axios.post('http://wbd6204-final.test/api/changePassword', this.dataObj);
 
               case 3:
                 resp = _context.sent;
