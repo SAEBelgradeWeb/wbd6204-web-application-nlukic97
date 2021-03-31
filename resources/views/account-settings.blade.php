@@ -8,11 +8,7 @@
             </div>
         </div>
 
-        {{-- The component
-            perhaps I could pass prop titled type (name, username or etc), and data(Nikola, Adminsky and so on...)
-
-        --}}
-        <setting-element column_name='name' data="{{$user->name}}"></setting-element>
+        <setting-element column_name='name' data="{{$user->name}}"></setting-element> {{--column_name ---> determines the column name and the column which will be updated in the table --}}
         <setting-element column_name='username' data="{{$user->username}}"></setting-element>
 {{--        <setting-element column_name='password' data=""></setting-element>--}}
 

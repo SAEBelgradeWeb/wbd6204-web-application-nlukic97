@@ -65,10 +65,10 @@ class UserController extends Controller
 
         $request->validate([
             'name'=>'string|max:255',
-            'username'=>'string|max:255'
+            'username'=>'string|unique:users|max:255'
         ]);
 
-        User::find(Auth::user()->id)->update($request->all());
+        User::find(Auth::user()->id)->update($request->only(['name','username']));
 
         return $request->all();
     }

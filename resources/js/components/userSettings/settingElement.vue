@@ -7,7 +7,7 @@
         <div class="col-4 pt-2 pb-2">
             <span class="text-left text-muted text-break" :class="{'d-none': editing}">{{this.dataObj.data}}</span>
             <input :class="{'d-none': !editing}" type="text" v-model="dataObj.data">
-            <span class="text-primary btn border-0 bg-light" @click="save" :class="{'d-none': !editing}">Save</span>
+            <span class="text-primary btn border-0 bg-light" @click="save" :class="{'d-none': dataObj.data == currentData}">Save</span> <!-- removed class binding: -> {'d-none': !editing}   -->
         </div>
         <div class="col-4 pt-2 pb-2 text-right">
             <span class="text-primary btn border-0 bg-light" @click="edit" :class="{'d-none': editing}">Edit</span>
@@ -27,6 +27,7 @@
             return{
                 editing:false,
                 columnLabel:null,
+                currentData:null,
                 dataObj:{
                     data:null,
                     column:null
@@ -42,20 +43,23 @@
             },
             save: async function () {
 
-                let items = {}
+                let items = {} //creating object to be submitted, and assigning relevant key (same as table column) for data being sent
                 items[this.dataObj.column] = this.dataObj.data
-                console.log(items)
+                // console.log(items)
 
                 try {
                     const resp = await axios.post('http://wbd6204-final.test/api/accountSettings',items)
                     this.close()
                     console.log(resp.data)
+                    this.currentData = resp.data[this.dataObj.column]
+                    console.log(this.currentData)
                 } catch(e){
                     console.log(e)
                 }
             },
         },
         mounted(){
+            this.currentData = this.data
             this.dataObj.data = this.data
             this.dataObj.column = this.column_name
 

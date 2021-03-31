@@ -2416,6 +2416,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       editing: false,
       columnLabel: null,
+      currentData: null,
       dataObj: {
         data: null,
         column: null
@@ -2436,31 +2437,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                items = {};
-                items[this.dataObj.column] = this.dataObj.data;
-                console.log(items);
-                _context.prev = 3;
-                _context.next = 6;
+                items = {}; //creating object to be submitted, and assigning relevant key (same as table column) for data being sent
+
+                items[this.dataObj.column] = this.dataObj.data; // console.log(items)
+
+                _context.prev = 2;
+                _context.next = 5;
                 return axios.post('http://wbd6204-final.test/api/accountSettings', items);
 
-              case 6:
+              case 5:
                 resp = _context.sent;
                 this.close();
                 console.log(resp.data);
-                _context.next = 14;
+                this.currentData = resp.data[this.dataObj.column];
+                console.log(this.currentData);
+                _context.next = 15;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](3);
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context["catch"](2);
                 console.log(_context.t0);
 
-              case 14:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 11]]);
+        }, _callee, this, [[2, 12]]);
       }));
 
       function save() {
@@ -2471,6 +2475,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }()
   },
   mounted: function mounted() {
+    this.currentData = this.data;
     this.dataObj.data = this.data;
     this.dataObj.column = this.column_name;
     this.columnLabel = this.column_name[0].toUpperCase() + this.column_name.slice(1);
@@ -40348,7 +40353,7 @@ var render = function() {
           "span",
           {
             staticClass: "text-primary btn border-0 bg-light",
-            class: { "d-none": !_vm.editing },
+            class: { "d-none": _vm.dataObj.data == _vm.currentData },
             on: { click: _vm.save }
           },
           [_vm._v("Save")]
