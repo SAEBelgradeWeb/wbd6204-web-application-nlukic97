@@ -4,13 +4,13 @@
             <span class="font-weight-bold text-left">{{this.columnLabel}}</span>
         </div>
 
-        <div class="col-4 pt-2 pb-2">
+        <div class="col-5 pt-2 pb-2">
             <span class="text-left text-muted text-break" :class="{'d-none': editing}">{{this.dataObj.data}}</span>
             <input :class="{'d-none': !editing}" type="text" v-model="dataObj.data">
             <span class="text-primary btn border-0 bg-light" @click="save" :class="{'d-none': dataObj.data == currentData}">Save</span> <!-- removed class binding: -> {'d-none': !editing}   -->
         </div>
         <div class="col-4 pt-2 pb-2 text-right">
-            <span class="text-primary btn border-0 bg-light" @click="edit" :class="{'d-none': editing}">Edit</span>
+            <span class="text-primary btn border-0 bg-light" @click="edit" :class="{'d-none': editing}">Change</span>
             <span class="text-primary btn border-0 bg-light" @click="close" :class="{'d-none': !editing}">Cancel</span>
         </div>
     </div>

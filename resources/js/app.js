@@ -24,8 +24,9 @@ Vue.component('profile-picture', require('./components/ProfilePicture.vue').defa
 Vue.component('profile-bio', require('./components/ProfileBio').default);
 Vue.component('profile-content', require('./components/ProfileContent').default);
 
-
+// account-settings components
 Vue.component('setting-element', require('./components/userSettings/settingElement').default);
+Vue.component('change-password', require('./components/userSettings/changePassword').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
