@@ -6,7 +6,10 @@
 
                     <!-- image updating field -->
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control d-inline-block">
+                        <input type="file" class="form-control d-inline-block" @change="previewFile()" :value="inputValue">
+                    </div>
+                    <div class="text-center">
+                        <img :src="this.loadedImage" alt="">
                     </div>
 
                     <div class="text-center">
@@ -24,14 +27,40 @@
         name: "AvatarFormModal",
         data:function(){
             return {
+                loadedImage:null,
+                inputValue:null
             }
         },
         props:[
           'viewable'
         ],
         methods:{
+            //displaying the image - for further cropping
+            previewFile(){
+                this.loadedImage = null;
+                let file = event.target.files[0]
+                console.log(file)
+
+                if ( /\.(jpe?g|png)$/i.test(file.name) ){
+                    const reader = new FileReader();
+
+                    reader.addEventListener('load',()=>{
+                        this.loadedImage = reader.result
+                    },false)
+
+                    reader.readAsDataURL(file)
+                } else {
+                    this.clearAll()
+                }
+
+            },
+            clearAll(){
+                this.loadedImage = null //  if user clicks 'cancel', the image is removed...
+                this.inputValue = null  //   ... and the input is cleared.
+            },
             closeModal(){
-                console.log('closeModal')
+                this.clearAll()
+
                 this.$emit('closeAvatarModal',false)
             },
             saveChanges(){
@@ -52,7 +81,7 @@
         top:0;
         bottom:10px;
         z-index:4;
-        padding-top: 20vh;
+        padding-top: 10vh;
     }
 
     #modal.false {
@@ -61,5 +90,9 @@
 
     ul {
         padding:20px;
+    }
+
+    img {
+        max-width: 100%;
     }
 </style>
