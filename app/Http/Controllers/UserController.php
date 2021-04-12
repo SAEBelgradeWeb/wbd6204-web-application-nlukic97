@@ -94,10 +94,11 @@ class UserController extends Controller
 
     public function showUser($id){
         if($id == Auth::user()->id){
-            return redirect('/myAccount'); //redirect to my account if a user enters the url of their own id
+            return redirect('/myAccount');
         } else {
             $user = User::find($id);
             return view('show-user',compact('user'));
         }
+
     }
 }

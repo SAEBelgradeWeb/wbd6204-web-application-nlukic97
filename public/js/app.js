@@ -2349,8 +2349,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       defaultPicture: {
-        male: 'images/male.jpg',
-        female: 'images/female.jpg'
+        male: '/images/male.jpg',
+        female: '/images/female.jpg'
       }
     };
   },

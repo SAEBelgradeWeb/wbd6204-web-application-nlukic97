@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') {{--EDIT THIS PAGE COMPONENTS SO THAT YOU CAN JUST VIEW THE DATA, NOT EDIT IT--}}
 
 @section('content')
     <div class="container">
