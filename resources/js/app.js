@@ -20,9 +20,9 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('profile-picture', require('./components/ProfilePicture.vue').default);
-Vue.component('profile-bio', require('./components/ProfileBio').default);
-Vue.component('profile-content', require('./components/ProfileContent').default);
+Vue.component('profile-picture', require('./components/personalProfile/ProfilePicture.vue').default);
+Vue.component('profile-bio', require('./components/personalProfile/ProfileBio').default);
+Vue.component('profile-content', require('./components/personalProfile/ProfileContent').default);
 
 // account-settings components
 Vue.component('setting-element', require('./components/userSettings/settingElement').default);
