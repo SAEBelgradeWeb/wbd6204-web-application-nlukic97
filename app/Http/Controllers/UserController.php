@@ -99,6 +99,9 @@ class UserController extends Controller
             $user = User::find($id);
             return view('show-user',compact('user'));
         }
+    }
 
+    public function uploadImage(Request $request){
+        dd('Hello');
     }
 }

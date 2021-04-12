@@ -1943,6 +1943,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutProfileModal",
   props: ['viewModal', 'age', 'sex', 'city'],
@@ -2343,6 +2344,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "profile-picture",
   props: ['imageurl', 'name', 'username', 'sex'],
@@ -2365,6 +2368,11 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return "background-image:url(" + this.imageurl + ");";
       }
+    }
+  },
+  methods: {
+    uploadImage: function uploadImage() {
+      console.log('Clicked to upload image');
     }
   },
   mounted: function mounted() {}
@@ -7256,7 +7264,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* This underneath was a mistake but I kinda like it */\n/*div.row, div.rounded-circle {\n    border:3px solid #fff;\n    background-image:url('/images/profilepic.png');\n    background-size: 80%; background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}*/\ndiv.rounded-circle[data-v-4cef8374] {\n    height:160px;\n    width:160px;\n    border:3px solid #fff;\n    background-size: 80%;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* This underneath was a mistake but I kinda like it */\n/*div.row, div.rounded-circle {\n    border:3px solid #fff;\n    background-image:url('/images/profilepic.png');\n    background-size: 80%; background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}*/\ndiv.rounded-circle[data-v-4cef8374] {\n    height:160px;\n    width:160px;\n    border:3px solid #fff;\n    background-size: 80%;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}\nspan.position-absolute[data-v-4cef8374] {\n        bottom:0px;\n        right:0px;\n        z-index: 3;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40166,6 +40174,15 @@ var render = function() {
                   on: { click: _vm.submitChanges }
                 },
                 [_vm._v("Save")]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "btn btn-secondary mb-3",
+                  on: { click: _vm.closeModal }
+                },
+                [_vm._v("Cancel")]
               )
             ])
           ]
@@ -40491,11 +40508,22 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row d-flex justify-content-center" }, [
-      _c("div", {
-        staticClass: "rounded-circle d-inline overflow-hidden",
-        style: _vm.getProfilePic
-      })
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "ml-auto mr-auto position-relative" }, [
+        _c("div", {
+          staticClass: " rounded-circle overflow-hidden",
+          style: _vm.getProfilePic
+        }),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "btn btn-secondary rounded-circle position-absolute",
+            on: { click: this.uploadImage }
+          },
+          [_c("i", { staticClass: "fas fa-camera" })]
+        )
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row text-center" }, [

@@ -35,6 +35,7 @@
 
                      <div class="text-center">
                          <span @click='submitChanges' class="btn btn-primary mb-3">Save</span>
+                         <span @click='closeModal' class="btn btn-secondary mb-3">Cancel</span>
                      </div>
                  </div>
              </div>

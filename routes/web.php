@@ -24,10 +24,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/myAccount', [App\Http\Controllers\UserController::class, 'index'])->name('myAccount')->middleware('auth');
 Route::get('/account-settings', [App\Http\Controllers\UserController::class, 'getAccountData'])->name('account-settings')->middleware('auth');
 
+Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'showUser'])->middleware('auth');
 
 Route::get('/friends', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth'); //return to this later
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
 
-Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'showUser'])->middleware('auth');
+Route::post('/uploadImage',[App\Models\User::class,'uploadImage']);
+
 
 

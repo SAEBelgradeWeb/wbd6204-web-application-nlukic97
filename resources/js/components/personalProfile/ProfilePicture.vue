@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="row d-flex justify-content-center">
-            <div class="rounded-circle d-inline overflow-hidden" :style="getProfilePic">
+        <div class="row">
+            <div class="ml-auto mr-auto position-relative">
+                <div class=" rounded-circle overflow-hidden" :style="getProfilePic"></div>
+                <span @click="this.uploadImage" class="btn btn-secondary rounded-circle position-absolute"><i class="fas fa-camera"></i></span>
             </div>
         </div>
         <div class="row text-center">
@@ -42,6 +44,11 @@
                 }
             }
         },
+        methods:{
+            uploadImage(){
+                console.log('Clicked to upload image')
+            }
+        },
         mounted() {
         }
     }
@@ -66,6 +73,12 @@ div.rounded-circle {
     background-position: center center;
     background-color: #fff;
 }
+
+    span.position-absolute {
+        bottom:0px;
+        right:0px;
+        z-index: 3;
+    }
 
 
 </style>
