@@ -31,6 +31,3 @@ Route::middleware('auth:api')->post('/updateBio',[\App\Http\Controllers\UserCont
 Route::middleware('auth:api')->post('/accountSettings',[\App\Http\Controllers\UserController::class,'updateAccountData']);
 // updating user password
 Route::middleware('auth:api')->post('/changePassword',[\App\Http\Controllers\UserController::class,'changePassword']);
-
-//uploading avatar image
-Route::middleware('auth:api')->post('/uploadImage',[\App\Http\Controllers\UserController::class,'uploadImage']);

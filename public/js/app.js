@@ -2060,107 +2060,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "AvatarFormModal",
-  data: function data() {
-    return {
-      loadedImage: null,
-      inputFile: null
-    };
-  },
-  props: ['viewable'],
-  methods: {
-    //displaying the image - for further cropping
-    onFileSelected: function onFileSelected() {
-      var _this = this;
-
-      this.inputFile = event.target.files[0];
-
-      if (/\.(jpe?g|png)$/i.test(this.inputFile.name)) {
-        var reader = new FileReader();
-        reader.addEventListener('load', function () {
-          _this.loadedImage = reader.result;
-        }, false);
-        reader.readAsDataURL(this.inputFile);
-      } else {
-        this.clearAll();
-      }
-    },
-    clearAll: function clearAll() {
-      this.loadedImage = ''; //  if user clicks 'cancel', the image is removed...
-      //   ... and the input is cleared.
-
-      this.file = '';
-    },
-    closeModal: function closeModal() {
-      this.clearAll();
-      this.$emit('closeAvatarModal', false);
-    },
-    //not working for some reason, the server receives the request but no file is sent
-    uploadFile: function uploadFile() {
-      var fd = new FormData();
-      fd.append('image', this.inputFile, this.inputFile.name);
-      axios.post('http://wbd6204-final.test/api/uploadImage', fd, {
-        onUploadProgress: function onUploadProgress(uploadEvent) {
-          console.log('Progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100));
-        }
-      }).then(function (res) {
-        console.log(res);
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    },
-    saveChanges: function saveChanges() {
-      this.uploadFile();
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=script&lang=js& ***!
@@ -2431,7 +2330,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AvatarFormModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AvatarFormModal.vue */ "./resources/js/components/personalProfile/AvatarFormModal.vue");
 //
 //
 //
@@ -2451,22 +2349,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-
+// import AvatarFormModal from './AvatarFormModal.vue';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "profile-picture",
   props: ['imageurl', 'name', 'username', 'sex'],
-  components: {
-    AvatarFormModal: _AvatarFormModal_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  components: {// AvatarFormModal
   },
   data: function data() {
     return {
       defaultPicture: {
         male: '/images/male.jpg',
         female: '/images/female.jpg'
-      },
-      avatarModalOpen: false
+      } // avatarModalOpen:false
+
     };
   },
   computed: {
@@ -2483,9 +2378,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    uploadImage: function uploadImage() {
-      this.avatarModalOpen = !this.avatarModalOpen;
-    }
+    /*uploadImage(){
+        this.avatarModalOpen = !this.avatarModalOpen
+    }*/
   },
   mounted: function mounted() {}
 });
@@ -7311,30 +7206,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n#modal.true[data-v-d6f029e0] {\n    
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#modal.true[data-v-a8e9d4e2] {\n    background-color: rgba(0, 0, 0, 0.65);\n    width:100%;\n    height:100%;\n    position: fixed;\n    left:0;\n    top:0;\n    bottom:10px;\n    z-index:4;\n    padding-top: 10vh;\n}\n#modal.false[data-v-a8e9d4e2] {\n    display:none;\n}\nul[data-v-a8e9d4e2] {\n    padding:20px;\n}\nimg[data-v-a8e9d4e2] {\n    max-width: 80%;\n}\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=style&index=0&id=e52ebd60&scoped=true&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=style&index=0&id=e52ebd60&scoped=true&lang=css& ***!
@@ -7400,7 +7271,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* This underneath was a mistake but I kinda like it */\n/*div.row, div.rounded-circle {\n    border:3px solid #fff;\n    background-image:url('/images/profilepic.png');\n    background-size: 80%; background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}*/\ndiv.rounded-circle[data-v-4cef8374] {\n    height:160px;\n    width:160px;\n    border:3px solid #fff;\n    background-size: 80%;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}\nspan.position-absolute[data-v-4cef8374] {\n        bottom:0px;\n        right:0px;\n        z-index: 3;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* This underneath was a mistake but I kinda like it */\n/*div.row, div.rounded-circle {\n    border:3px solid #fff;\n    background-image:url('/images/profilepic.png');\n    background-size: 80%; background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}*/\ndiv.rounded-circle[data-v-4cef8374] {\n    height:160px;\n    width:160px;\n    border:3px solid #fff;\n    background-size: 80%;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}\nspan.position-absolute[data-v-4cef8374] {\n        bottom:0px;\n        right:0px;\n        z-index: 3;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39213,36 +39084,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_style_index_0_id_a8e9d4e2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_style_index_0_id_a8e9d4e2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_style_index_0_id_a8e9d4e2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=style&index=0&id=e52ebd60&scoped=true&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=style&index=0&id=e52ebd60&scoped=true&lang=css& ***!
@@ -39692,47 +39533,6 @@ component.options.__file = "resources/js/components/personalProfile/AboutProfile
 
 /***/ }),
 
-/***/ "./resources/js/components/personalProfile/AvatarFormModal.vue":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/personalProfile/AvatarFormModal.vue ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _AvatarFormModal_vue_vue_type_template_id_a8e9d4e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true& */ "./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true&");
-/* harmony import */ var _AvatarFormModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AvatarFormModal.vue?vue&type=script&lang=js& */ "./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=script&lang=js&");
-/* harmony import */ var _AvatarFormModal_vue_vue_type_style_index_0_id_a8e9d4e2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css& */ "./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-;
-
-
-/* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _AvatarFormModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _AvatarFormModal_vue_vue_type_template_id_a8e9d4e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _AvatarFormModal_vue_vue_type_template_id_a8e9d4e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  "a8e9d4e2",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/personalProfile/AvatarFormModal.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/personalProfile/ProfileBio.vue":
 /*!****************************************************************!*\
   !*** ./resources/js/components/personalProfile/ProfileBio.vue ***!
@@ -39966,22 +39766,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AvatarFormModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
 /***/ "./resources/js/components/personalProfile/ProfileBio.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/personalProfile/ProfileBio.vue?vue&type=script&lang=js& ***!
@@ -40075,19 +39859,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css&":
-/*!******************************************************************************************************************************!*\
-  !*** ./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css& ***!
-  \******************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_style_index_0_id_a8e9d4e2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=style&index=0&id=a8e9d4e2&scoped=true&lang=css&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/personalProfile/ProfileBio.vue?vue&type=style&index=0&id=e52ebd60&scoped=true&lang=css&":
 /*!*************************************************************************************************************************!*\
   !*** ./resources/js/components/personalProfile/ProfileBio.vue?vue&type=style&index=0&id=e52ebd60&scoped=true&lang=css& ***!
@@ -40157,23 +39928,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutProfileModal_vue_vue_type_template_id_d6f029e0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutProfileModal_vue_vue_type_template_id_d6f029e0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AboutProfileModal.vue?vue&type=template&id=d6f029e0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=template&id=d6f029e0&scoped=true&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true&":
-/*!****************************************************************************************************************!*\
-  !*** ./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true& ***!
-  \****************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_template_id_a8e9d4e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_template_id_a8e9d4e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarFormModal_vue_vue_type_template_id_a8e9d4e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true&");
 
 
 /***/ }),
@@ -40476,80 +40230,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AvatarFormModal.vue?vue&type=template&id=a8e9d4e2&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { class: this.viewable.toString(), attrs: { id: "modal" } }, [
-      _c("div", { staticClass: "row d-flex justify-content-center" }, [
-        _c(
-          "div",
-          {
-            staticClass: "col-lg-6 col-md-8 col-10 bg-white pt-3",
-            attrs: { id: "box" }
-          },
-          [
-            _c("div", { staticClass: "input-group mb-3" }, [
-              _c("input", {
-                staticClass: "form-control d-inline-block",
-                attrs: { type: "file", name: "avatar", id: "avatar" },
-                on: {
-                  change: function($event) {
-                    return _vm.onFileSelected()
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-center" }, [
-              _c("img", { attrs: { src: this.loadedImage, alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary mb-3",
-                  on: { click: _vm.uploadFile }
-                },
-                [_vm._v("Save")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "btn btn-secondary mb-3",
-                  on: { click: _vm.closeModal }
-                },
-                [_vm._v("Cancel")]
-              )
-            ])
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=template&id=e52ebd60&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/ProfileBio.vue?vue&type=template&id=e52ebd60&scoped=true& ***!
@@ -40834,51 +40514,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("avatar-form-modal", {
-        attrs: { viewable: _vm.avatarModalOpen },
-        on: {
-          closeAvatarModal: function($event) {
-            _vm.avatarModalOpen = $event
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "ml-auto mr-auto position-relative" }, [
-          _c("div", {
-            staticClass: " rounded-circle overflow-hidden",
-            style: _vm.getProfilePic
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "btn btn-secondary rounded-circle position-absolute",
-              on: { click: this.uploadImage }
-            },
-            [_c("i", { staticClass: "fas fa-camera" })]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row text-center" }, [
-        _c("div", { staticClass: "col pt-2" }, [
-          _c("h3", [
-            _c("span", { staticClass: "font-weight-bold" }, [
-              _vm._v(_vm._s(this.name))
-            ]),
-            _vm._v(" (" + _vm._s(this.username) + ")")
-          ])
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "ml-auto mr-auto position-relative" }, [
+        _c("div", {
+          staticClass: " rounded-circle overflow-hidden",
+          style: _vm.getProfilePic
+        }),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row text-center" }, [
+      _c("div", { staticClass: "col pt-2" }, [
+        _c("h3", [
+          _c("span", { staticClass: "font-weight-bold" }, [
+            _vm._v(_vm._s(this.name))
+          ]),
+          _vm._v(" (" + _vm._s(this.username) + ")")
         ])
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/upload-image" } }, [
+      _c(
+        "span",
+        { staticClass: "btn btn-secondary rounded-circle position-absolute" },
+        [_c("i", { staticClass: "fas fa-camera" })]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

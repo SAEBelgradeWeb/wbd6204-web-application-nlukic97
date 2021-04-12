@@ -101,7 +101,13 @@ class UserController extends Controller
         }
     }
 
-    public function uploadImage(Request $request){
-        return $request->all();
+
+    //uploading the avatar
+    public function uploadImagePage(){
+        return view('upload-image');
+    }
+
+    public function storeImage(Request $request){
+        dd($request->all());
     }
 }
