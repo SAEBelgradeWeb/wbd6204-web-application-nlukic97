@@ -2424,6 +2424,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "settingElement",
   data: function data() {
@@ -40542,6 +40545,10 @@ var render = function() {
       _c("div", { staticClass: "col-5 pt-2 pb-2" }, [
         _c("div", [
           _c("div", { class: { "d-none": !_vm.editing } }, [
+            _c("label", { staticClass: "d-block" }, [
+              _vm._v("Current password")
+            ]),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
@@ -40565,6 +40572,8 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { class: { "d-none": !_vm.editing } }, [
+            _c("label", { staticClass: "d-block" }, [_vm._v("New password")]),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
@@ -40588,6 +40597,10 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { class: { "d-none": !_vm.editing } }, [
+            _c("label", { staticClass: "d-block" }, [
+              _vm._v("Confirm new password")
+            ]),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {

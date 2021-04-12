@@ -11,14 +11,13 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth'); //this is all you need to authenticate.
+        $this->middleware('auth'); //this is all you need to authenticate.
     }
 
     protected function index()
     {
         $user = User::find(Auth::user()->id);
         return view('user-index',compact('user'));
-//        return view('user-index');
     }
 
     public function getAccountData()
@@ -62,8 +61,6 @@ class UserController extends Controller
 
     public function updateAccountData(Request $request)
     {
-//        return $request;
-
         $request->validate([
             'name'=>'string|max:255',
             'username'=>'string|unique:users|max:255'
@@ -93,7 +90,14 @@ class UserController extends Controller
 
         $user->password = Hash::make($request->only('confirmNewPass')['confirmNewPass']);
         $user->save();
+    }
 
-
+    public function showUser($id){
+        if($id == Auth::user()->id){
+            return redirect('/myAccount'); //redirect to my account if a user enters the url of their own id
+        } else {
+            $user = User::find($id);
+            return view('show-user',compact('user'));
+        }
     }
 }

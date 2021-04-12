@@ -9,12 +9,15 @@
         <div class="col-5 pt-2 pb-2">
             <div>
                 <div :class="{'d-none': !editing}">
+                    <label class="d-block">Current password</label>
                     <input type="password" v-model="dataObj.oldPass">
                 </div>
                 <div :class="{'d-none': !editing}">
+                    <label class="d-block">New password</label>
                     <input type="password" v-model="dataObj.newPass">
                 </div>
                 <div :class="{'d-none': !editing}">
+                    <label class="d-block">Confirm new password</label>
                     <input type="password" v-model="dataObj.confirmNewPass">
                 </div>
                 <div>

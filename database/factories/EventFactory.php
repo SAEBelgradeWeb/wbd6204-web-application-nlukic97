@@ -24,15 +24,6 @@ class EventFactory extends Factory
 
         $gameStatuses = ['pending', 'cancelled', 'confirmed'];
 
-        //if this if statement returns 1, a premium game will be created (which
-        //uses court_id, and not location_id and address). If it returns 0,
-        // a free game will be created (which does not have a partner
-        // court id, but does have a location_id, and address).
-
-        //If a game does not have a court_id, we know it is not a premium court game,
-        //but a free open court game (no user payment required).
-
-
         return [
             'title' => $this->faker->word,
             'status' => $gameStatuses[$this->faker->numberBetween(0, 2)],
