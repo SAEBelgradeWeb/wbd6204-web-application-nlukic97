@@ -1,5 +1,10 @@
 <template>
     <div>
+        <avatar-form-modal
+            :viewable="avatarModalOpen"
+            @closeAvatarModal="avatarModalOpen = $event"
+        />
+
         <div class="row">
             <div class="ml-auto mr-auto position-relative">
                 <div class=" rounded-circle overflow-hidden" :style="getProfilePic"></div>
@@ -15,6 +20,8 @@
 </template>
 
 <script>
+    import AvatarFormModal from './AvatarFormModal.vue';
+
     export default {
         name: "profile-picture",
         props:[
@@ -23,12 +30,16 @@
             'username',
             'sex'
         ],
+        components:{
+            AvatarFormModal
+        },
         data:function(){
             return{
                 defaultPicture:{
                     male:'/images/male.jpg',
                     female:'/images/female.jpg'
-                }
+                },
+                avatarModalOpen:false
             }
         },
         computed:{
@@ -46,7 +57,7 @@
         },
         methods:{
             uploadImage(){
-                console.log('Clicked to upload image')
+                this.avatarModalOpen = !this.avatarModalOpen
             }
         },
         mounted() {

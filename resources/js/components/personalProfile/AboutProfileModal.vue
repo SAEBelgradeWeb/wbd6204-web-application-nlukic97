@@ -147,7 +147,7 @@
         left:0;
         top:0;
         bottom:10px;
-        z-index:3;
+        z-index:4;
         padding-top: 20vh;
     }
 
