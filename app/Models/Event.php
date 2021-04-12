@@ -16,8 +16,6 @@ class Event extends Model
         'time',
         'host_id',
         'court_id',
-        'location_id',
-        'address',
         'player_num',
     ];
 }

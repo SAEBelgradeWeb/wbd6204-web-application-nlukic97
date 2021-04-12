@@ -21,8 +21,6 @@ class CreateEventsTable extends Migration
             $table->time('time');
             $table->foreignId('host_id');
             $table->foreignId('court_id')->nullable();
-            $table->unsignedBigInteger('location_id')->nullable();
-            $table->string('address')->nullable();
             $table->smallInteger('player_num');
             $table->timestamps();
 
@@ -34,11 +32,6 @@ class CreateEventsTable extends Migration
             $table->foreign('court_id')
                 ->references('id')
                 ->on('courts')
-                ->onDelete('cascade');
-
-            $table->foreign('location_id')
-                ->references('id')
-                ->on('locations')
                 ->onDelete('cascade');
         });
     }
