@@ -123,10 +123,9 @@ class UserController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-//        if($user->image_url != '' OR $user->image_url != null){ //not sure about executing this one
-//            $oldPath = str_replace('storage','public',$user->image_url);
-//            unlink($oldPath);
-//        }
+        if($user->image_url != '' OR $user->image_url != null){ //deletes the old profile image
+            unlink(getcwd()."\\".$user->image_url); //check if this executes properly on the server
+        }
 
         $user->image_url = $storagePath;
         $user->save();
