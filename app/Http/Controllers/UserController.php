@@ -108,6 +108,29 @@ class UserController extends Controller
     }
 
     public function storeImage(Request $request){
-        dd($request->all());
+        $request->validate([
+            'avatar'=>'required|image'
+        ]);
+
+
+//        $path = str_replace('public','storage',$request->file('avatar')->store('public/avatars'));;
+//        $user = User::find(Auth::user()->id);
+//        $user->image_url = $path;
+//        $user->save();
+
+        $path = $request->file('avatar')->store('public/avatars');
+        $storagePath = str_replace('public','storage',$path);
+
+        $user = User::find(Auth::user()->id);
+
+//        if($user->image_url != '' OR $user->image_url != null){ //not sure about executing this one
+//            $oldPath = str_replace('storage','public',$user->image_url);
+//            unlink($oldPath);
+//        }
+
+        $user->image_url = $storagePath;
+        $user->save();
+
+        return redirect('/myAccount');
     }
 }
