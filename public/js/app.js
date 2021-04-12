@@ -2095,46 +2095,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AvatarFormModal",
   data: function data() {
     return {
       loadedImage: null,
-      inputValue: null
+      inputFile: null
     };
   },
   props: ['viewable'],
   methods: {
     //displaying the image - for further cropping
-    previewFile: function previewFile() {
+    onFileSelected: function onFileSelected() {
       var _this = this;
 
-      this.loadedImage = null;
-      var file = event.target.files[0];
-      console.log(file);
+      this.inputFile = event.target.files[0];
 
-      if (/\.(jpe?g|png)$/i.test(file.name)) {
+      if (/\.(jpe?g|png)$/i.test(this.inputFile.name)) {
         var reader = new FileReader();
         reader.addEventListener('load', function () {
           _this.loadedImage = reader.result;
         }, false);
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(this.inputFile);
       } else {
         this.clearAll();
       }
     },
     clearAll: function clearAll() {
-      this.loadedImage = null; //  if user clicks 'cancel', the image is removed...
+      this.loadedImage = ''; //  if user clicks 'cancel', the image is removed...
+      //   ... and the input is cleared.
 
-      this.inputValue = null; //   ... and the input is cleared.
+      this.file = '';
     },
     closeModal: function closeModal() {
       this.clearAll();
       this.$emit('closeAvatarModal', false);
     },
+    //not working for some reason, the server receives the request but no file is sent
+    uploadFile: function uploadFile() {
+      var fd = new FormData();
+      fd.append('image', this.inputFile, this.inputFile.name);
+      axios.post('http://wbd6204-final.test/api/uploadImage', fd, {
+        onUploadProgress: function onUploadProgress(uploadEvent) {
+          console.log('Progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100));
+        }
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
     saveChanges: function saveChanges() {
-      console.log('saveChanges');
-      this.closeModal(); //for now
+      this.uploadFile();
     }
   }
 });
@@ -7308,7 +7328,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#modal.true[data-v-a8e9d4e2] {\n    background-color: rgba(0, 0, 0, 0.65);\n    width:100%;\n    height:100%;\n    position: fixed;\n    left:0;\n    top:0;\n    bottom:10px;\n    z-index:4;\n    padding-top: 10vh;\n}\n#modal.false[data-v-a8e9d4e2] {\n    display:none;\n}\nul[data-v-a8e9d4e2] {\n    padding:20px;\n}\nimg[data-v-a8e9d4e2] {\n    max-width: 100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#modal.true[data-v-a8e9d4e2] {\n    background-color: rgba(0, 0, 0, 0.65);\n    width:100%;\n    height:100%;\n    position: fixed;\n    left:0;\n    top:0;\n    bottom:10px;\n    z-index:4;\n    padding-top: 10vh;\n}\n#modal.false[data-v-a8e9d4e2] {\n    display:none;\n}\nul[data-v-a8e9d4e2] {\n    padding:20px;\n}\nimg[data-v-a8e9d4e2] {\n    max-width: 80%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40485,11 +40505,10 @@ var render = function() {
             _c("div", { staticClass: "input-group mb-3" }, [
               _c("input", {
                 staticClass: "form-control d-inline-block",
-                attrs: { type: "file" },
-                domProps: { value: _vm.inputValue },
+                attrs: { type: "file", name: "avatar", id: "avatar" },
                 on: {
                   change: function($event) {
-                    return _vm.previewFile()
+                    return _vm.onFileSelected()
                   }
                 }
               })
@@ -40501,10 +40520,10 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "text-center" }, [
               _c(
-                "span",
+                "button",
                 {
                   staticClass: "btn btn-primary mb-3",
-                  on: { click: _vm.saveChanges }
+                  on: { click: _vm.uploadFile }
                 },
                 [_vm._v("Save")]
               ),

@@ -102,6 +102,6 @@ class UserController extends Controller
     }
 
     public function uploadImage(Request $request){
-        dd('Hello');
+        return $request->all();
     }
 }

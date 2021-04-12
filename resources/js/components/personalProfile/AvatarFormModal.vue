@@ -2,21 +2,29 @@
     <div>
         <div id="modal" :class="this.viewable.toString()"> <!--You had 'viewModal' here.-->
             <div class="row d-flex justify-content-center">
-                <div id="box" class="col-lg-6 col-md-8 col-10 bg-white pt-3">
 
+            <div id="box" class="col-lg-6 col-md-8 col-10 bg-white pt-3">
+               <!-- <form
+                    @submit="uploadFile" enctype="multipart/form-data"
+                    id="box" class="col-lg-6 col-md-8 col-10 bg-white pt-3"
+                >-->
                     <!-- image updating field -->
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control d-inline-block" @change="previewFile()" :value="inputValue">
+                        <input type="file" name='avatar' id="avatar" class="form-control d-inline-block" @change="onFileSelected()">
                     </div>
+
                     <div class="text-center">
                         <img :src="this.loadedImage" alt="">
                     </div>
 
                     <div class="text-center">
-                        <span @click="saveChanges" class="btn btn-primary mb-3">Save</span>
+<!--                        <button type="submit" class="btn btn-primary mb-3">Save</button>-->
+                        <button @click="uploadFile" class="btn btn-primary mb-3">Save</button>
                         <span @click="closeModal" class="btn btn-secondary mb-3">Cancel</span>
                     </div>
+<!--                </form>-->
                 </div>
+
             </div>
         </div>
     </div>
@@ -28,7 +36,7 @@
         data:function(){
             return {
                 loadedImage:null,
-                inputValue:null
+                inputFile:null
             }
         },
         props:[
@@ -36,36 +44,52 @@
         ],
         methods:{
             //displaying the image - for further cropping
-            previewFile(){
-                this.loadedImage = null;
-                let file = event.target.files[0]
-                console.log(file)
+            onFileSelected(){
+                this.inputFile = event.target.files[0]
 
-                if ( /\.(jpe?g|png)$/i.test(file.name) ){
+                if ( /\.(jpe?g|png)$/i.test(this.inputFile.name) ){
                     const reader = new FileReader();
 
                     reader.addEventListener('load',()=>{
                         this.loadedImage = reader.result
                     },false)
 
-                    reader.readAsDataURL(file)
+                    reader.readAsDataURL(this.inputFile)
                 } else {
                     this.clearAll()
                 }
 
             },
             clearAll(){
-                this.loadedImage = null //  if user clicks 'cancel', the image is removed...
-                this.inputValue = null  //   ... and the input is cleared.
+                this.loadedImage = '' //  if user clicks 'cancel', the image is removed...
+                                    //   ... and the input is cleared.
+                this.file = ''
             },
             closeModal(){
                 this.clearAll()
-
                 this.$emit('closeAvatarModal',false)
             },
+
+            //not working for some reason, the server receives the request but no file is sent
+            uploadFile(){
+                const fd = new FormData();
+                fd.append('image',this.inputFile, this.inputFile.name)
+
+                axios.post('http://wbd6204-final.test/api/uploadImage', fd,{
+                    onUploadProgress: (uploadEvent) => {
+                        console.log('Progress:' + Math.round(uploadEvent.loaded / uploadEvent.total * 100))
+                    }
+                })
+                    .then(function (res) {
+                        console.log(res)
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+                    });
+
+            },
             saveChanges(){
-                console.log('saveChanges')
-                this.closeModal() //for now
+                this.uploadFile()
             }
         }
     }
@@ -93,6 +117,6 @@
     }
 
     img {
-        max-width: 100%;
+        max-width: 80%;
     }
 </style>

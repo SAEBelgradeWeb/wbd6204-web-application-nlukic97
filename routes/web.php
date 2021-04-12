@@ -29,7 +29,5 @@ Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'showUser'])
 Route::get('/friends', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth'); //return to this later
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
 
-Route::post('/uploadImage',[App\Models\User::class,'uploadImage']);
-
 
 
