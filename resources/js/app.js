@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('profile-picture', require('./components/personalProfile/ProfilePicture.vue').default);
 Vue.component('profile-bio', require('./components/personalProfile/ProfileBio').default);
 Vue.component('profile-content', require('./components/personalProfile/ProfileContent').default);
+Vue.component('upload-image', require('./components/personalProfile/UploadImage').default);
 
 // account-settings components
 Vue.component('setting-element', require('./components/userSettings/settingElement').default);
