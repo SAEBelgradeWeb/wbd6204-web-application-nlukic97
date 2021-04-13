@@ -8,7 +8,7 @@
                 <h3>Event info</h3>
                 <p>Price: {{$event->court->price / $event->player_num}}</p>
                 <p>Player num: {{$event->player_num}}</p>
-                <a href="/pay"><span class="btn btn-primary">Pay</span></a>
+                <a href="/pay/{{$event->id}}"><span class="btn btn-primary">Pay</span></a>
             </div>
         </div>
     </div>

@@ -23,4 +23,9 @@ class Event extends Model
     {
         return $this->belongsTo(Court::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

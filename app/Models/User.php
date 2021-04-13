@@ -81,4 +81,10 @@ class User extends Authenticatable
 
         return $friendlist;
     }
+
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\EventUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,12 +58,6 @@ class HomeController extends Controller
     {
         $event = Event::find($id);
         return view('payment',compact(['event']));
-    }
-
-
-    public function makePayment()
-    {
-        return redirect('/');
     }
 
 }
