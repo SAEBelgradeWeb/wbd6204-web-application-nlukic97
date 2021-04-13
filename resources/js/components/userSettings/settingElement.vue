@@ -48,7 +48,7 @@
                 // console.log(items)
 
                 try {
-                    const resp = await axios.post('http://wbd6204-final.test/api/accountSettings',items)
+                    const resp = await axios.post('/api/accountSettings',items)
                     this.close()
                     console.log(resp.data)
                     this.currentData = resp.data[this.dataObj.column]

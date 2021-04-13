@@ -64,7 +64,7 @@
             makePostRequest: async function(){
                 // await console.log(this.dataObj)
                 try {
-                    const resp = await axios.post('http://wbd6204-final.test/api/changePassword',this.dataObj)
+                    const resp = await axios.post('/api/changePassword',this.dataObj)
                     this.close()
                     console.log(resp.data)
 

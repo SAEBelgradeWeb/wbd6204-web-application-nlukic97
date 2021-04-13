@@ -68,7 +68,7 @@
         methods:{
             async getLocations(){
                   try {
-                      let result = await axios.get('http://wbd6204-final.test/api/getLocations')
+                      let result = await axios.get('/api/getLocations')
                       this.cities = result.data
 
                       this.addPropData()
@@ -117,7 +117,7 @@
                 try {
                     axios({
                         method: 'post',
-                        url: 'http://wbd6204-final.test/api/updateAboutInfo',
+                        url: '/api/updateAboutInfo',
                         data: this.newData
                     })
                     .then(response=>{

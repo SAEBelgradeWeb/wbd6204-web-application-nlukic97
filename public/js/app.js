@@ -1974,7 +1974,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.get('http://wbd6204-final.test/api/getLocations');
+                return axios.get('/api/getLocations');
 
               case 3:
                 result = _context.sent;
@@ -2040,7 +2040,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       try {
         axios({
           method: 'post',
-          url: 'http://wbd6204-final.test/api/updateAboutInfo',
+          url: '/api/updateAboutInfo',
           data: this.newData
         }).then(function (response) {
           // console.log(response)
@@ -2180,7 +2180,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios({
         method: 'post',
-        url: 'http://wbd6204-final.test/api/updateBio',
+        url: '/api/updateBio',
         data: this.submitData
       }).then(function (res) {
         _this2.userBio = res.data; //add the updated data (sent from backend after update)
@@ -2539,7 +2539,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.post('http://wbd6204-final.test/api/changePassword', this.dataObj);
+                return axios.post('/api/changePassword', this.dataObj);
 
               case 3:
                 resp = _context.sent;
@@ -2675,7 +2675,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context.prev = 2;
                 _context.next = 5;
-                return axios.post('http://wbd6204-final.test/api/accountSettings', items);
+                return axios.post('/api/accountSettings', items);
 
               case 5:
                 resp = _context.sent;

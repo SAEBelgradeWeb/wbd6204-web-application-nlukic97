@@ -105,7 +105,7 @@
             postRequest(){
                 axios({
                     method: 'post',
-                    url: 'http://wbd6204-final.test/api/updateBio',
+                    url: '/api/updateBio',
                     data: this.submitData
                 })
                     .then(res=>{
