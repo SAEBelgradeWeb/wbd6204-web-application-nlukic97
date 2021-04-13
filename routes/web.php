@@ -22,12 +22,12 @@ Route::get('/home', function(){ //remove this later on, check if it is reference
 
 //user routes
 Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->middleware('auth');
-//Route::get('/myAccount', [App\Http\Controllers\UserController::class, 'index'])->name('myAccount')->middleware('auth');
 Route::get('/account-settings', [App\Http\Controllers\UserController::class, 'getAccountData'])->name('account-settings')->middleware('auth');
 
 Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'index'])->middleware('auth');
 
-Route::get('/friends', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth'); //return to this later
+Route::get('/friends', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
+        //this underneath needs to be fixed
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
 
 Route::get('/upload-image', [App\Http\Controllers\UserController::class, 'uploadImagePage'])->middleware('auth');
