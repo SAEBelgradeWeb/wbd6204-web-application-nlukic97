@@ -24,6 +24,9 @@ class UserController extends Controller
             $pageOwner = true;
         } else {
             $user = User::find($id);
+            if($user === null){
+                return abort(404);
+            }
             $pageOwner = false;
         }
             return view('user-index',compact(['user','pageOwner']));
