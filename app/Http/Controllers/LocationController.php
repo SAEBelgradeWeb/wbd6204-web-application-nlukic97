@@ -13,4 +13,12 @@ class LocationController extends Controller
         $locations = Location::orderBy('city','asc')->get();
         return $locations->all();
     }
+
+    //Api route --> sent to LocationsAndCourts.vue
+    public function getCourts($id)
+    {
+        $location = Location::find($id);
+        $courts = $location->courts;
+        return $courts->all();
+    }
 }

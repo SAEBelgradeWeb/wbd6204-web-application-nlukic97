@@ -23,7 +23,7 @@ class MessageFactory extends Factory
     public function definition()
     {
 //        $eventUser = EventUser::find($this->faker->numberBetween(1,30));
-        $eventUser = EventUser::where('status','accepted')->get();
+        $eventUser = EventUser::get();
         $num = count($eventUser);
         return [
             'message'=>$this->faker->sentence,

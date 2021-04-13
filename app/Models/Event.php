@@ -18,4 +18,9 @@ class Event extends Model
         'court_id',
         'player_num',
     ];
+
+    public function court()
+    {
+        return $this->belongsTo(Court::class);
+    }
 }

@@ -11,8 +11,15 @@ class Location extends Model
 
     protected $fillable = ['city'];
 
+
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+
+    public function courts()
+    {
+        return $this->hasMany(Court::class);
     }
 }

@@ -17,6 +17,7 @@ class CreateCourtsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('address');
+            $table->integer('location_id');
             $table->integer('price');
             $table->timestamps();
         });

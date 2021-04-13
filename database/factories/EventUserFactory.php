@@ -26,7 +26,6 @@ class EventUserFactory extends Factory
         return [
             'user_id'=>$this->faker->unique()->numberBetween(1,100),
             'event_id'=>$this->faker->numberBetween(1, 10),
-            'status'=>$statuses[$this->faker->numberBetween(0,2)],
         ];
     }
 }

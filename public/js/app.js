@@ -1880,6 +1880,153 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "LocationsAndCourts",
+  data: function data() {
+    return {
+      cities: null,
+      courts: {},
+      displayCourtSelect: false
+    };
+  },
+  methods: {
+    courtDisplay: function courtDisplay() {
+      if (this.courts === null || this.courts.length <= 0) {
+        this.displayCourtSelect = false;
+      } else {
+        this.displayCourtSelect = true;
+      }
+    },
+    getLocations: function getLocations() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.get('/api/getLocations');
+
+              case 3:
+                result = _context.sent;
+                _this.cities = result.data;
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    addCourts: function addCourts() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var location_id, result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                location_id = event.target.value;
+
+                if (!(location_id != '' && location_id != null)) {
+                  _context2.next = 15;
+                  break;
+                }
+
+                _context2.prev = 2;
+                _context2.next = 5;
+                return axios.get("/api/getCourts/".concat(location_id));
+
+              case 5:
+                result = _context2.sent;
+                _this2.courts = result.data;
+                console.log(_this2.courts.length);
+                _context2.next = 13;
+                break;
+
+              case 10:
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](2);
+                console.log(_context2.t0);
+
+              case 13:
+                _context2.next = 16;
+                break;
+
+              case 15:
+                _this2.courts = null;
+
+              case 16:
+                _this2.courtDisplay();
+
+              case 17:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[2, 10]]);
+      }))();
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.getLocations();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=script&lang=js& ***!
@@ -2747,7 +2894,9 @@ Vue.component('profile-content', __webpack_require__(/*! ./components/personalPr
 Vue.component('upload-image', __webpack_require__(/*! ./components/personalProfile/UploadImage */ "./resources/js/components/personalProfile/UploadImage.vue").default); // account-settings components
 
 Vue.component('setting-element', __webpack_require__(/*! ./components/userSettings/settingElement */ "./resources/js/components/userSettings/settingElement.vue").default);
-Vue.component('change-password', __webpack_require__(/*! ./components/userSettings/changePassword */ "./resources/js/components/userSettings/changePassword.vue").default);
+Vue.component('change-password', __webpack_require__(/*! ./components/userSettings/changePassword */ "./resources/js/components/userSettings/changePassword.vue").default); // events components
+
+Vue.component('locations-and-courts', __webpack_require__(/*! ./components/events/LocationsAndCourts */ "./resources/js/components/events/LocationsAndCourts.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -39609,6 +39758,45 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/events/LocationsAndCourts.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/events/LocationsAndCourts.vue ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& */ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&");
+/* harmony import */ var _LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsAndCourts.vue?vue&type=script&lang=js& */ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "283234dc",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/events/LocationsAndCourts.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/personalProfile/AboutProfileModal.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/personalProfile/AboutProfileModal.vue ***!
@@ -39908,6 +40096,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationsAndCourts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
   !*** ./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=script&lang=js& ***!
@@ -40102,6 +40306,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& ***!
+  \**********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=template&id=d6f029e0&scoped=true&":
 /*!******************************************************************************************************************!*\
   !*** ./resources/js/components/personalProfile/AboutProfileModal.vue?vue&type=template&id=d6f029e0&scoped=true& ***!
@@ -40263,6 +40484,86 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", [
+      _c("label", { attrs: { for: "cities" } }, [_vm._v("Location_id")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          attrs: { name: "cities", id: "cities" },
+          on: { change: _vm.addCourts }
+        },
+        [
+          _c("option", { attrs: { value: "" } }),
+          _vm._v(" "),
+          _vm._l(_vm.cities, function(city) {
+            return _c("option", { domProps: { value: city.id } }, [
+              _vm._v(_vm._s(city.city))
+            ])
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("label", { attrs: { for: "court_id" } }, [_vm._v("court_id")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          class: { "d-none": this.displayCourtSelect === false },
+          attrs: { name: "court_id", id: "court_id" }
+        },
+        [
+          _c("option", { attrs: { value: "" } }),
+          _vm._v(" "),
+          _vm._l(_vm.courts, function(court) {
+            return _c("option", { domProps: { value: court.id } }, [
+              _vm._v(_vm._s(court.title) + " - " + _vm._s(court.price) + " $")
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          class: {
+            "d-none": this.displayCourtSelect === true,
+            "text-danger": 1 == 1
+          }
+        },
+        [_vm._v("Please select a location")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

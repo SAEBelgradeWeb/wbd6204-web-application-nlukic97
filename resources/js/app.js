@@ -29,6 +29,10 @@ Vue.component('upload-image', require('./components/personalProfile/UploadImage'
 Vue.component('setting-element', require('./components/userSettings/settingElement').default);
 Vue.component('change-password', require('./components/userSettings/changePassword').default);
 
+// events components
+Vue.component('locations-and-courts', require('./components/events/LocationsAndCourts').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

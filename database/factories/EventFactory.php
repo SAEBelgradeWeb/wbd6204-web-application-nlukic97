@@ -22,11 +22,11 @@ class EventFactory extends Factory
     public function definition()
     {
 
-        $gameStatuses = ['pending', 'cancelled', 'confirmed'];
+        $gameStatuses = ['pending','created','cancelled','confirmed'];
 
         return [
             'title' => $this->faker->word,
-            'status' => $gameStatuses[$this->faker->numberBetween(0, 2)],
+            'status' => $gameStatuses[$this->faker->numberBetween(1, 3)],
             'date' => $this->faker->date(),
             'time' => $this->faker->time(),
             'host_id' => $this->faker->numberBetween(1, 100),

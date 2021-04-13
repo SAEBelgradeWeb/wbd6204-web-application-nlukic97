@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->enum('status',['cancelled','pending','confirmed']);
+            $table->enum('status',['cancelled','pending','confirmed','created']);
             $table->date('date');
             $table->time('time');
             $table->foreignId('host_id');

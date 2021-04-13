@@ -17,7 +17,6 @@ class CreateEventUserTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('event_id');
-            $table->enum('status',['denied','pending','accepted']); //should this be a string?
             $table->timestamps();
 
             $table->foreign('user_id')
