@@ -14,10 +14,16 @@ class UserController extends Controller
         $this->middleware('auth'); //this is all you need to authenticate.
     }
 
-    protected function index()
+    protected function index($id)
     {
-        $user = User::find(Auth::user()->id);
-        return view('user-index',compact('user'));
+        if(Auth::user()->id == $id){
+            $user = User::find(Auth::user()->id);
+            $pageOwner = true;
+        } else {
+            $user = User::find($id);
+            $pageOwner = false;
+        }
+            return view('user-index',compact(['user','pageOwner']));
     }
 
     public function getAccountData()
@@ -92,16 +98,17 @@ class UserController extends Controller
         $user->save();
     }
 
-    public function showUser($id){
-        if($id == Auth::user()->id){
-            return redirect('/myAccount');
-        } else {
-            $user = User::find($id);
-//            dd($user->image_url);
-//            return view('show-user',compact('user'));
-            return view('user-index',compact('user'));
-        }
-    }
+//    public function showUser($id){
+//        if($id == Auth::user()->id){
+//            return redirect('/myAccount');
+//        } else {
+//            $user = User::find($id);
+//            return view('user-index',compact('user'));
+//        }
+//
+//        $user = User::find($id);
+//        return view('user-index',compact('user'));
+//    }
 
 
     //uploading the avatar
@@ -114,24 +121,18 @@ class UserController extends Controller
             'avatar'=>'required|image'
         ]);
 
-
-//        $path = str_replace('public','storage',$request->file('avatar')->store('public/avatars'));;
-//        $user = User::find(Auth::user()->id);
-//        $user->image_url = $path;
-//        $user->save();
-
         $path = $request->file('avatar')->store('public/avatars');
-        $storagePath = str_replace('public','storage',$path);
+        $imageName = str_replace('public/avatars/','',$path);
 
         $user = User::find(Auth::user()->id);
 
         if($user->image_url != '' OR $user->image_url != null){ //deletes the old profile image
-            unlink(getcwd()."\\".$user->image_url); //check if this executes properly on the server
+            unlink(getcwd()."\\storage\\avatars\\".$user->image_url); //check if this executes properly on the server
         }
 
-        $user->image_url = $storagePath;
+        $user->image_url = $imageName;
         $user->save();
 
-        return redirect('/myAccount');
+        return redirect("/user/".Auth::user()->id);
     }
 }

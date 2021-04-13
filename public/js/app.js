@@ -2498,7 +2498,7 @@ __webpack_require__.r(__webpack_exports__);
           return "background-image:url(" + this.defaultPicture.female + ");";
         }
       } else {
-        return "background-image:url(" + this.imageurl + ");"; //this should be changed. The user in the links messes up the entire thing
+        return "background-image:url(/storage/avatars/" + this.imageurl + ");"; //this should be changed. The user in the links messes up the entire thing
       }
     }
   },
@@ -2547,7 +2547,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UploadImage",
-  props: ['csrf'],
+  props: ['csrf', 'userId'],
   data: function data() {
     return {
       inputFile: null,
@@ -2555,6 +2555,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getUserLink: function getUserLink() {
+      return "/user/".concat(this.userId);
+    },
     onFileSelected: function onFileSelected() {
       var _this = this;
 
@@ -41053,32 +41056,28 @@ var render = function() {
             _c("img", { attrs: { src: this.loadedImage, alt: "" } })
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "text-center" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary mb-3",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("Save")]
+            ),
+            _vm._v(" "),
+            _c("a", { attrs: { href: _vm.getUserLink() } }, [
+              _c("span", { staticClass: "btn btn-secondary mb-3" }, [
+                _vm._v("Cancel")
+              ])
+            ])
+          ])
         ]
       )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary mb-3", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      ),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "/myAccount" } }, [
-        _c("span", { staticClass: "btn btn-secondary mb-3" }, [
-          _vm._v("Cancel")
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

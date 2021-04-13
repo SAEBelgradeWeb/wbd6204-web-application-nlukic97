@@ -15,7 +15,7 @@
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary mb-3">Save</button>
-                        <a href="/myAccount"><span class="btn btn-secondary mb-3">Cancel</span></a>
+                        <a :href="getUserLink()"><span class="btn btn-secondary mb-3">Cancel</span></a>
                     </div>
 
                 </form>
@@ -28,7 +28,8 @@
     export default {
         name: "UploadImage",
         props:[
-            'csrf'
+            'csrf',
+            'userId'
         ],
         data:function(){
             return{
@@ -37,6 +38,9 @@
             }
         },
         methods:{
+            getUserLink(){
+              return `/user/${this.userId}`
+            },
             onFileSelected(){
                 this.inputFile = event.target.files[0]
 
