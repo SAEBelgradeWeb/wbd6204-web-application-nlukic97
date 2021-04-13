@@ -97,7 +97,9 @@ class UserController extends Controller
             return redirect('/myAccount');
         } else {
             $user = User::find($id);
-            return view('show-user',compact('user'));
+//            dd($user->image_url);
+//            return view('show-user',compact('user'));
+            return view('user-index',compact('user'));
         }
     }
 

@@ -43,7 +43,7 @@
                         return "background-image:url("+this.defaultPicture.female+");"
                     }
                 } else {
-                    return "background-image:url("+this.imageurl+");"
+                    return "background-image:url("+this.imageurl+");" //this should be changed. The user in the links messes up the entire thing
                 }
             }
         },

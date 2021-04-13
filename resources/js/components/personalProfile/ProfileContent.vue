@@ -42,35 +42,12 @@
                 <ul class="list-group">
                     <li><span>Activity</span></li>
 
-                    <li class="list-group-item mb-4">
-                        <h3>Dummy title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
+                    <li class="list-group-item mb-4" v-for="event in parsedEvents">
+                        <h3>{{event.title}}</h3>
+                        <p>Time: {{event.time}}</p>
+                        <p>Date: {{event.date}}</p>
                     </li>
 
-                    <li class="list-group-item mb-4">
-                        <h3>Dummy title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
-                    </li>
-
-                    <li class="list-group-item mb-4">
-                        <h3>Dummy title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
-                    </li>
-
-                    <li class="list-group-item mb-4">
-                        <h3>Dummy title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
-                    </li>
-
-                    <li class="list-group-item mb-4">
-                        <h3>Dummy title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
-                    </li>
-
-                    <li class="list-group-item mb-4">
-                        <h3>Dummy title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia.</p>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -85,14 +62,16 @@
         props:[
             'age',
             'sex',
-            'city'
+            'city',
+            'events'
         ],
         components:{
           AboutProfileModal
         },
         data:function(){
             return {
-                modalOpen:false
+                modalOpen:false,
+                parsedEvents:null
             }
         },
         methods:{
@@ -103,6 +82,11 @@
                 } else {
                     this.modalOpen = true
                 }
+            }
+        },
+        mounted() {
+            if(this.events != null && this.events != '' && this.events != []){
+                this.parsedEvents = JSON.parse(this.events)
             }
         }
     }

@@ -2417,39 +2417,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
-  props: ['age', 'sex', 'city'],
+  props: ['age', 'sex', 'city', 'events'],
   components: {
     AboutProfileModal: _AboutProfileModal_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
   data: function data() {
     return {
-      modalOpen: false
+      modalOpen: false,
+      parsedEvents: null
     };
   },
   methods: {
@@ -2460,6 +2438,11 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.modalOpen = true;
       }
+    }
+  },
+  mounted: function mounted() {
+    if (this.events != null && this.events != '' && this.events != []) {
+      this.parsedEvents = JSON.parse(this.events);
     }
   }
 });
@@ -2515,7 +2498,7 @@ __webpack_require__.r(__webpack_exports__);
           return "background-image:url(" + this.defaultPicture.female + ");";
         }
       } else {
-        return "background-image:url(" + this.imageurl + ");";
+        return "background-image:url(" + this.imageurl + ");"; //this should be changed. The user in the links messes up the entire thing
       }
     }
   },
@@ -40904,7 +40887,26 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-1" }),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "col-lg-7 col-md-12 col-12" }, [
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._l(_vm.parsedEvents, function(event) {
+                return _c("li", { staticClass: "list-group-item mb-4" }, [
+                  _c("h3", [_vm._v(_vm._s(event.title))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Time: " + _vm._s(event.time))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Date: " + _vm._s(event.date))])
+                ])
+              })
+            ],
+            2
+          )
+        ])
       ])
     ],
     1
@@ -40930,71 +40932,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-7 col-md-12 col-12" }, [
-      _c("ul", { staticClass: "list-group" }, [
-        _c("li", [_c("span", [_vm._v("Activity")])]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item mb-4" }, [
-          _c("h3", [_vm._v("Dummy title")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item mb-4" }, [
-          _c("h3", [_vm._v("Dummy title")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item mb-4" }, [
-          _c("h3", [_vm._v("Dummy title")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item mb-4" }, [
-          _c("h3", [_vm._v("Dummy title")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item mb-4" }, [
-          _c("h3", [_vm._v("Dummy title")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item mb-4" }, [
-          _c("h3", [_vm._v("Dummy title")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ipsum non quos reprehenderit sit. Eius placeat qui quod recusandae! Assumenda dolore dolorem eaque eligendi eum exercitationem, facilis harum id maiores, non quibusdam repellat saepe sint veniam voluptatem! Debitis, fugiat mollitia."
-            )
-          ])
-        ])
-      ])
-    ])
+    return _c("li", [_c("span", [_vm._v("Activity")])])
   }
 ]
 render._withStripped = true
