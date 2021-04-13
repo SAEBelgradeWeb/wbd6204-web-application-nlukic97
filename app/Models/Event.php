@@ -17,6 +17,7 @@ class Event extends Model
         'host_id',
         'court_id',
         'player_num',
+        'timestamp'
     ];
 
     public function court()

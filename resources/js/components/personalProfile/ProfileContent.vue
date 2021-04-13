@@ -87,6 +87,9 @@
         mounted() {
             if(this.events != null && this.events != '' && this.events != []){
                 this.parsedEvents = JSON.parse(this.events)
+                this.parsedEvents.sort(function(a,b){
+                    return b.timestamp - a.timestamp;
+                })
             }
         }
     }

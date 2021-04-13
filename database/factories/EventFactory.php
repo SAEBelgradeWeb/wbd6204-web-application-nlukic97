@@ -32,6 +32,7 @@ class EventFactory extends Factory
             'host_id' => $this->faker->numberBetween(1, 100),
             'court_id' => $this->faker->numberBetween(1, 20),
             'player_num' => $this->faker->numberBetween(4, 22),
+            'timestamp'=>time()
         ];
     }
 }

@@ -22,6 +22,7 @@ class CreateEventsTable extends Migration
             $table->foreignId('host_id');
             $table->foreignId('court_id')->nullable();
             $table->smallInteger('player_num');
+            $table->bigInteger('timestamp');
             $table->timestamps();
 
             $table->foreign('host_id')

@@ -49,6 +49,7 @@ class HomeController extends Controller
 
         $request['status'] = 'pending';
         $request['host_id'] = Auth::user()->id;
+        $request['timestamp'] = time();
 
         $event = Event::create($request->except(['_token','location_id']));
         return redirect("/payment/$event->id");
