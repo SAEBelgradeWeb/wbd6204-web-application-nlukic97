@@ -2105,11 +2105,16 @@ __webpack_require__.r(__webpack_exports__);
       parsedEvents: null
     };
   },
-  methods: {},
+  methods: {
+    makeEventUrl: function makeEventUrl(event) {
+      return '/event/' + event.id;
+    }
+  },
   mounted: function mounted() {
     if (this.events != null && this.events != '' && this.events != []) {
       this.parsedEvents = JSON.parse(this.events);
       this.parsedEvents.sort(function (a, b) {
+        // return b.timestamp - a.timestamp;
         return b.timestamp - a.timestamp;
       });
     }
@@ -2587,6 +2592,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.modalOpen = true;
       }
+    },
+    makeEventUrl: function makeEventUrl(event) {
+      return '/event/' + event.id;
     }
   },
   mounted: function mounted() {
@@ -41117,7 +41125,9 @@ var render = function() {
             _vm._v(" "),
             _vm._l(_vm.parsedEvents, function(event) {
               return _c("li", { staticClass: "list-group-item mb-4" }, [
-                _c("h3", [_vm._v(_vm._s(event.title))]),
+                _c("a", { attrs: { href: _vm.makeEventUrl(event) } }, [
+                  _c("h3", [_vm._v(_vm._s(event.title))])
+                ]),
                 _vm._v(" "),
                 _c("p", [_vm._v("Time: " + _vm._s(event.time))]),
                 _vm._v(" "),
@@ -41533,7 +41543,9 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.parsedEvents, function(event) {
                 return _c("li", { staticClass: "list-group-item mb-4" }, [
-                  _c("h3", [_vm._v(_vm._s(event.title))]),
+                  _c("a", { attrs: { href: _vm.makeEventUrl(event) } }, [
+                    _c("h3", [_vm._v(_vm._s(event.title))])
+                  ]),
                   _vm._v(" "),
                   _c("p", [_vm._v("Time: " + _vm._s(event.time))]),
                   _vm._v(" "),

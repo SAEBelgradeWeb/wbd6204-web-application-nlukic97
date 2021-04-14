@@ -22,4 +22,5 @@ class Location extends Model
     {
         return $this->hasMany(Court::class);
     }
+
 }

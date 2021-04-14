@@ -29,7 +29,7 @@
                     <li><span>Activity</span></li>
 
                     <li class="list-group-item mb-4" v-for="event in parsedEvents">
-                        <h3>{{event.title}}</h3>
+                        <a :href="makeEventUrl(event)"><h3>{{event.title}}</h3></a>
                         <p>Time: {{event.time}}</p>
                         <p>Date: {{event.date}}</p>
                     </li>
@@ -55,11 +55,15 @@
             }
         },
         methods:{
+            makeEventUrl(event){
+                return '/event/' + event.id
+            }
         },
         mounted() {
             if(this.events != null && this.events != '' && this.events != []){
                 this.parsedEvents = JSON.parse(this.events)
                 this.parsedEvents.sort(function(a,b){
+                    // return b.timestamp - a.timestamp;
                     return b.timestamp - a.timestamp;
                 })
             }

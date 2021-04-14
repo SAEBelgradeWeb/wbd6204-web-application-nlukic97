@@ -41,4 +41,5 @@ Route::post('/create-event',[\App\Http\Controllers\HomeController::class,'create
 Route::get('/payment/{id}',[\App\Http\Controllers\HomeController::class,'showPayment'])->middleware('auth');
 Route::get('/pay/{id}',[\App\Http\Controllers\EventController::class,'firstGamePayment'])->middleware('auth');
 
-
+// event routes
+Route::get('/event/{id}',[\App\Http\Controllers\EventController::class,'indexEvent'])->middleware('auth');

@@ -12,7 +12,6 @@ class EventController extends Controller
 
     public function firstGamePayment($id)
     {
-
         //check if the event host id matches the authenticated id. Also, if the game
         // has already be confirmed, do divert them away from here to the regular payment section.
         $event = Event::find($id);
@@ -25,5 +24,15 @@ class EventController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+
+    public function indexEvent($id)
+    {
+        $event = Event::find($id);
+        if($event == null){
+            return abort('404');
+        }
+        return view('event',compact('event'));
     }
 }

@@ -29,4 +29,5 @@ class Event extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
 }
