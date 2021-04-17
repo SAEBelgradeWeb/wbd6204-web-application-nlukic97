@@ -18,7 +18,6 @@ class UserController extends Controller
 
     protected function index($id)
     {
-//        dd(time());
         if(Auth::user()->id == $id){
             $user = User::find(Auth::user()->id);
             $pageOwner = true;

@@ -26,20 +26,21 @@ Route::get('/account-settings', [App\Http\Controllers\UserController::class, 'ge
 
 Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'index'])->middleware('auth');
 
+
+// ----- fix this down
 Route::get('/friends', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
-        //this underneath needs to be fixed
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
+// ----- fix this up
+
 
 Route::get('/upload-image', [App\Http\Controllers\UserController::class, 'uploadImagePage'])->middleware('auth');
 Route::post('/upload-image', [App\Http\Controllers\UserController::class, 'storeImage'])->middleware('auth');
 
-//home routes
-Route::get('/create-event',[\App\Http\Controllers\HomeController::class,'indexNewEvent'])->middleware('auth');
-Route::post('/create-event',[\App\Http\Controllers\HomeController::class,'createNewEvent'])->middleware('auth');
-
-// --- payment
-Route::get('/payment/{id}',[\App\Http\Controllers\HomeController::class,'showPayment'])->middleware('auth');
-Route::get('/pay/{id}',[\App\Http\Controllers\EventController::class,'firstGamePayment'])->middleware('auth');
-
 // event routes
 Route::get('/event/{id}',[\App\Http\Controllers\EventController::class,'indexEvent'])->middleware('auth');
+Route::get('/create-event',[\App\Http\Controllers\EventController::class,'indexNewEvent'])->middleware('auth');
+Route::post('/create-event',[\App\Http\Controllers\EventController::class,'createNewEvent'])->middleware('auth');
+
+// --- payment
+Route::get('/payment/{id}',[\App\Http\Controllers\EventController::class,'showPayment'])->middleware('auth');
+Route::get('/pay/{id}',[\App\Http\Controllers\EventController::class,'firstGamePayment'])->middleware('auth');

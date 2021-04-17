@@ -10,6 +10,45 @@ use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
 
+    public function indexNewEvent()
+    {
+        return view('create-event');
+    }
+
+    public function indexEvent($id)
+    {
+        $event = Event::find($id);
+        if($event == null){
+            return abort('404');
+        }
+        return view('event',compact('event'));
+    }
+
+    public function createNewEvent(Request $request)
+    {
+        $request->validate([
+            'title'=>'required|string',
+            'date'=>'required',
+            'time'=>'required',
+            'court_id'=>'required'
+        ]);
+
+        $request['status'] = 'pending';
+        $request['host_id'] = Auth::user()->id;
+        $request['timestamp'] = time();
+
+        $event = Event::create($request->except(['_token','location_id']));
+        return redirect("/payment/$event->id");
+    }
+
+
+    public function showPayment($id)
+    {
+        $event = Event::find($id);
+        return view('payment',compact(['event']));
+    }
+
+
     public function firstGamePayment($id)
     {
         //check if the event host id matches the authenticated id. Also, if the game
@@ -24,15 +63,5 @@ class EventController extends Controller
         ]);
 
         return redirect('/');
-    }
-
-
-    public function indexEvent($id)
-    {
-        $event = Event::find($id);
-        if($event == null){
-            return abort('404');
-        }
-        return view('event',compact('event'));
     }
 }

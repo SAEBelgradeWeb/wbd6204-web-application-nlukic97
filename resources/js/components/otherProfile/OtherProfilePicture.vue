@@ -67,7 +67,7 @@
         height:160px;
         width:160px;
         border:3px solid #fff;
-        background-size: 80%;
+        background-size: 100%;
         background-repeat: no-repeat;
         background-position: center center;
         background-color: #fff;
