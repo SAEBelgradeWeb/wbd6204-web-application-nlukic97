@@ -2843,8 +2843,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editing: false,
       dataObj: {
         oldPass: null,
-        newPass: null,
-        confirmNewPass: null
+        password: null,
+        password_confirmation: null
       }
     };
   },
@@ -2856,7 +2856,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.editing = false;
     },
     checkPasswordsMatch: function checkPasswordsMatch() {
-      if (this.dataObj.newPass === this.dataObj.confirmNewPass) {
+      if (this.dataObj.password === this.dataObj.password_confirmation) {
         return true;
       } else {
         return false;
@@ -2879,15 +2879,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.log(resp.data); //reseting the input fields
 
                 this.dataObj.oldPass = null;
-                this.dataObj.newPass = null;
-                this.dataObj.confirmNewPass = null;
+                this.dataObj.password = null;
+                this.dataObj.password_confirmation = null;
                 _context.next = 14;
                 break;
 
               case 11:
                 _context.prev = 11;
                 _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
+                console.log(_context.t0.response.data.errors); //this is what you will use to display all the errors
 
               case 14:
               case "end":
@@ -2909,12 +2909,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (this.checkPasswordsMatch() === false) {
-                  console.log('passwords don\'t match');
-                  console.log(this.checkPasswordsMatch());
+                this.makePostRequest();
+                /*if(this.checkPasswordsMatch() === false){
+                    console.log('passwords don\'t match');
+                    console.log(this.checkPasswordsMatch())
                 } else {
-                  this.makePostRequest(); //the post request
-                }
+                    this.makePostRequest() //the post request
+                }*/
 
               case 1:
               case "end":
@@ -7720,7 +7721,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-0e30e041] {\n    list-style-type:none;\n}\nul.position-relative li[data-v-0e30e041]:first-child{\n    z-index: 1;\n    right:-10px;\n    top:-15px;\n}\n.col-4 div[data-v-0e30e041] {\n    border: 1px solid purple;\n    overflow: hidden;\n    height:80px;\n}\n.col-4 img[data-v-0e30e041] {\n    width: 100%;\n    border-radius: 10px;\n}\n\n\n/*display of the friends avatar as a square */\n@media only screen and (max-width: 1199px) {\n.col-4 div[data-v-0e30e041] {\n        height:60px;\n}\n}\n@media only screen and (max-width: 991px) {\n.col-4 div[data-v-0e30e041] {\n        height:150px;\n}\n}\n@media only screen and (max-width: 767px) {\n.col-4 div[data-v-0e30e041] {\n        height:105px;\n}\n}\n@media only screen and (max-width: 526px) {\n.col-4 div[data-v-0e30e041] {\n        height:70px;\n}\n}\n@media only screen and (max-width: 420px) {\n.col-4 div[data-v-0e30e041] {\n        height:60px;\n}\n}\n@media only screen and (max-width: 383px) {\n.col-4 div[data-v-0e30e041] {\n        height:50px;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-0e30e041] {\n    list-style-type:none;\n}\nul.position-relative li[data-v-0e30e041]:first-child{\n    z-index: 1;\n    right:-10px;\n    top:-15px;\n}\n.col-4 div[data-v-0e30e041] {\n    /*border: 1px solid purple;*/\n    border-radius: 10px;\n    overflow: hidden;\n    height:80px;\n}\n.col-4 img[data-v-0e30e041] {\n    width: 100%;\n}\n\n\n/*display of the friends avatar as a square */\n@media only screen and (max-width: 1199px) {\n.col-4 div[data-v-0e30e041] {\n        height:60px;\n}\n}\n@media only screen and (max-width: 991px) {\n.col-4 div[data-v-0e30e041] {\n        height:150px;\n}\n}\n@media only screen and (max-width: 767px) {\n.col-4 div[data-v-0e30e041] {\n        height:105px;\n}\n}\n@media only screen and (max-width: 526px) {\n.col-4 div[data-v-0e30e041] {\n        height:70px;\n}\n}\n@media only screen and (max-width: 420px) {\n.col-4 div[data-v-0e30e041] {\n        height:60px;\n}\n}\n@media only screen and (max-width: 383px) {\n.col-4 div[data-v-0e30e041] {\n        height:50px;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41823,18 +41824,18 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.dataObj.newPass,
-                  expression: "dataObj.newPass"
+                  value: _vm.dataObj.password,
+                  expression: "dataObj.password"
                 }
               ],
               attrs: { type: "password" },
-              domProps: { value: _vm.dataObj.newPass },
+              domProps: { value: _vm.dataObj.password },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.dataObj, "newPass", $event.target.value)
+                  _vm.$set(_vm.dataObj, "password", $event.target.value)
                 }
               }
             })
@@ -41850,18 +41851,22 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.dataObj.confirmNewPass,
-                  expression: "dataObj.confirmNewPass"
+                  value: _vm.dataObj.password_confirmation,
+                  expression: "dataObj.password_confirmation"
                 }
               ],
               attrs: { type: "password" },
-              domProps: { value: _vm.dataObj.confirmNewPass },
+              domProps: { value: _vm.dataObj.password_confirmation },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.dataObj, "confirmNewPass", $event.target.value)
+                  _vm.$set(
+                    _vm.dataObj,
+                    "password_confirmation",
+                    $event.target.value
+                  )
                 }
               }
             })

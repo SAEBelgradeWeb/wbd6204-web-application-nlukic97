@@ -14,11 +14,11 @@
                 </div>
                 <div :class="{'d-none': !editing}">
                     <label class="d-block">New password</label>
-                    <input type="password" v-model="dataObj.newPass">
+                    <input type="password" v-model="dataObj.password">
                 </div>
                 <div :class="{'d-none': !editing}">
                     <label class="d-block">Confirm new password</label>
-                    <input type="password" v-model="dataObj.confirmNewPass">
+                    <input type="password" v-model="dataObj.password_confirmation">
                 </div>
                 <div>
                     <span class="text-primary btn border-0 bg-light" @click="save" :class="{'d-none': !editing}">Save</span>
@@ -42,8 +42,8 @@
                 editing:false,
                 dataObj:{
                     oldPass:null,
-                    newPass:null,
-                    confirmNewPass:null
+                    password:null,
+                    password_confirmation:null
                 }
             }
         },
@@ -55,7 +55,7 @@
                 this.editing = false
             },
             checkPasswordsMatch(){
-              if(this.dataObj.newPass === this.dataObj.confirmNewPass){
+              if(this.dataObj.password === this.dataObj.password_confirmation){
                   return true;
               } else {
                   return false;
@@ -70,20 +70,21 @@
 
                     //reseting the input fields
                     this.dataObj.oldPass = null
-                    this.dataObj.newPass = null
-                    this.dataObj.confirmNewPass = null
+                    this.dataObj.password = null
+                    this.dataObj.password_confirmation = null
                 } catch(e){
-                    console.log(e)
+                    console.log(e.response.data.errors) //this is what you will use to display all the errors
                 }
             },
             save: async function () {
 
-                if(this.checkPasswordsMatch() === false){
+                this.makePostRequest()
+                /*if(this.checkPasswordsMatch() === false){
                     console.log('passwords don\'t match');
                     console.log(this.checkPasswordsMatch())
                 } else {
                     this.makePostRequest() //the post request
-                }
+                }*/
             },
         },
         mounted(){

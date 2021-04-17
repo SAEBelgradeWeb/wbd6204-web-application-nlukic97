@@ -161,14 +161,14 @@
     }
 
     .col-4 div {
-        border: 1px solid purple;
+        /*border: 1px solid purple;*/
+        border-radius: 10px;
         overflow: hidden;
         height:80px;
     }
 
     .col-4 img {
         width: 100%;
-        border-radius: 10px;
     }
 
 

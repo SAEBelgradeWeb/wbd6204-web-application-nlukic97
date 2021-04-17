@@ -91,21 +91,13 @@ class UserController extends Controller
     public function changePassword(Request $request)
     {
         $request->validate([
-            'oldPass'=>'required|string',
-            'newPass'=>'required|string',
-            'confirmNewPass'=>'required|string'
+            'oldPass'=>'required|string|min:8|password:api',
+            'password'=>'required|string|min:8|confirmed',
         ]);
 
         $user = User::find(Auth::user()->id);
-        if(!Hash::check($request->only('oldPass')['oldPass'],$user->password)){
-            return 'Server says: Current password entered incorrectly.';
-        }
 
-        if(!($request->all()['newPass'] === $request->all()['confirmNewPass'])){
-            return 'Server says: The new passwords do not match';
-        }
-
-        $user->password = Hash::make($request->only('confirmNewPass')['confirmNewPass']);
+        $user->password = Hash::make($request->all()['password']);
         $user->save();
     }
 
