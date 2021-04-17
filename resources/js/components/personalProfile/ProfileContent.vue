@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-4 text-center pb-2 pt-3" v-for="friend in userFriends">
                             <div>
-                                <img :src="friend.url" alt="">
+                                <img :src="friend.url" alt=""> <!--For some reason, I am not able to make this into a constant square-->
                             </div>
                                 <a href="#"><span>{{friend.name}}</span></a>
                         </div>
