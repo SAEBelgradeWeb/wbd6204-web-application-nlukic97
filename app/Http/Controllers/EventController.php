@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,21 +22,49 @@ class EventController extends Controller
         if($event == null){
             return abort('404');
         }
-        $host = $event->host;
 
-        //check game status
-            // if game is cancelled
-                //if you are a member - display messages but lock them, no button
-                //if you are not a member - display 'cancelled' but no messages, no buttons
+        //safety precaution
+        if($event->host === null || $event->status === 'pending'){
+            dd('Error, no host. just in case a game is seeded that does not have a host, or the host in not joined the game. Change seeder'); //just in case a game is seeded that does not have a host.
+            return abort('404');
+        }
 
-            //if game is set - do this other stuff:
 
-                //if you have not joined - display page with no messages and 'join' button.
+        // 1. If user has already joined the event...
+        if($event->users->firstwhere('id',Auth::user()->id)){
+            if($event->status === 'cancelled'){ // 1a. if joined event is cancelled
+                return view('/event/participant/event-cancelled',compact('event'));
 
-                //if you are admin - display page with 'cancel' option
-                //if you are joined in - display page with 'leave' button
+            } else { // 1b. if joined event is not cancelled...
+                if($event->host->id === Auth::user()->id){ // 1ba - if you are the admin
+                    return view('/event/participant/event-admin',compact('event'));
 
-        return view('event',compact(['event','host'])); //just returns it as a normal event
+                } else { // 1bb  - or you are not the admin:
+                    return view('/event/participant/event',compact('event'));
+                }
+            }
+
+        //2. or if they haven't joined the game yet
+        } else {
+//            dd('you have not joined this game');
+            if($event->status === 'cancelled'){ // 1a. ... and if event is cancelled
+//                dd('game you haven\'t joined is cancelled');
+                return view('/event/non-participant/event-cancelled',compact('event'));
+
+            } else if($event->status === 'confirmed') {
+//                dd('this game is confirmed, no joining');
+                return view('event/non-participant/event-confirmed',compact('event'));
+            } else if(count($event->users) === $event->player_num){ //game is full, no joining
+                return view('event/non-participant/event-full',compact('event'));
+//                dd('this game is full.');
+            } else {
+                return view('event/non-participant/event',compact('event'));
+//                dd('game not full, you can join');
+            }
+
+        }
+
+//        return view('event/event',compact('event')); //just returns it as a normal event
     }
 
     public function createNewEvent(Request $request)

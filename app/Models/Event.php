@@ -34,7 +34,7 @@ class Event extends Model
     // For getting the ID of the host in the EventController method 'indexEvent()'
     public function getHostAttribute()
     {
-        return $this->users->where('id',$this->host_id)[0];
+        return  $this->users->firstwhere('id',$this->host_id); //returns the host (creator) of the event
     }
 
 }
