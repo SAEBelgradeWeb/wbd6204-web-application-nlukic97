@@ -25,9 +25,16 @@ class Event extends Model
         return $this->belongsTo(Court::class);
     }
 
+
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    // For getting the ID of the host in the EventController method 'indexEvent()'
+    public function getHostAttribute()
+    {
+        return $this->users->where('id',$this->host_id)[0];
     }
 
 }

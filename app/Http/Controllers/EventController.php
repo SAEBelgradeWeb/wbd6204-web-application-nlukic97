@@ -21,7 +21,21 @@ class EventController extends Controller
         if($event == null){
             return abort('404');
         }
-        return view('event',compact('event'));
+        $host = $event->host;
+
+        //check game status
+            // if game is cancelled
+                //if you are a member - display messages but lock them, no button
+                //if you are not a member - display 'cancelled' but no messages, no buttons
+
+            //if game is set - do this other stuff:
+
+                //if you have not joined - display page with no messages and 'join' button.
+
+                //if you are admin - display page with 'cancel' option
+                //if you are joined in - display page with 'leave' button
+
+        return view('event',compact(['event','host'])); //just returns it as a normal event
     }
 
     public function createNewEvent(Request $request)
