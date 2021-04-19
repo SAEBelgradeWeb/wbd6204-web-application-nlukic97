@@ -3,6 +3,7 @@
 @section('content') {{-- Make something that checks if you are the admin of the game, if not are you in the game. If not, can you join the game--}}
 <div class="container">
     <h1 class="text-center text-success">Hey participant - Event admin view, not confirmed yet but still on</h1>
+    <a href="/cancel-event/{{$event->id}}" class="btn btn-danger">Cancel event</a>
     <ul>
         <li>Title: {{$event->title}}</li>
         <li>Players: {{count($event->users)}} / {{$event->player_num}}</li>

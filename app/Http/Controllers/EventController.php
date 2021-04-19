@@ -132,13 +132,31 @@ class EventController extends Controller
         if($event != null
             AND $event->status === 'created'
             AND $event->users->firstwhere('id',Auth::user()->id)
-            AND $event->host_id != Auth::user()->id){
-
+            AND $event->host_id != Auth::user()->id)
+        {
             $eventUser = EventUser::where('event_id',$id)
-                            ->where('user_id',Auth::user()->id)
-                            ->first();
+                ->where('user_id',Auth::user()->id)
+                ->first();
 
             $eventUser->delete();
+        }
+        return redirect("/event/{$id}");
+    }
+
+    public function cancelEvent($id)
+    {
+        $event = Event::find($id);
+
+        // conditions: event exists, user is the host,
+        // and the game has status of 'created' --> which can still be cancelled
+        if( $event != null
+            AND $event->host_id == Auth::user()->id
+            AND $event->status == 'created')
+        {
+            $event->update([
+                'status'=>'cancelled'
+            ]);
+
         }
 
         return redirect("/event/{$id}");
