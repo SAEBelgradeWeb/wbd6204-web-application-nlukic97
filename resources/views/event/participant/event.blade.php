@@ -4,6 +4,7 @@
     <div class="container">
         <h1 class="text-center text-secondary">Hey participant - Event basic user view</h1>
         <h2 class="text-center text-primary">You can see the 'leave game' btn</h2>
+        <a href="/leave-event/{{$event->id}}" class="btn btn-danger">Leave event</a>
         <ul>
             <li>Title: {{$event->title}}</li>
             <li>Players: {{count($event->users)}} / {{$event->player_num}}</li>

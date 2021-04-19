@@ -4,6 +4,7 @@
 <div class="container">
     <h1 class="text-center text-primary">Hey non-participant -Event not full yet</h1>
     <h2 class="text-center text-warning">You can't see the chat, but you CAN join</h2>
+    <a href="/join-event/{{$event->id}}" class="btn btn-primary">Join event</a>
     <ul>
         <li>Title: {{$event->title}}</li>
         <li>Players: {{count($event->users)}} / {{$event->player_num}}</li>

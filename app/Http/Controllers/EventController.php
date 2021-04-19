@@ -104,4 +104,43 @@ class EventController extends Controller
 
         return redirect('/');
     }
+
+    public function joinEvent($id)
+    {
+        $event = Event::find($id);
+
+        //if event exists, is not full, and you have not already joined
+        if($event != null
+            AND count($event->users) < $event->player_num
+            AND !$event->users->firstwhere('id',Auth::user()->id) ){
+
+            EventUser::create([
+                'event_id'=>$id,
+                'user_id'=>Auth::user()->id
+            ]);
+        }
+        return redirect("/event/{$id}");
+    }
+
+
+    public function leaveEvent($id)
+    {
+        $event = Event::find($id);
+
+        //if the event exist, and it's status is 'created', and the user is already in the game,
+        // and if admin has entered the leave-event/{id} - a host can't leave, but only cancel their game.
+        if($event != null
+            AND $event->status === 'created'
+            AND $event->users->firstwhere('id',Auth::user()->id)
+            AND $event->host_id != Auth::user()->id){
+
+            $eventUser = EventUser::where('event_id',$id)
+                            ->where('user_id',Auth::user()->id)
+                            ->first();
+
+            $eventUser->delete();
+        }
+
+        return redirect("/event/{$id}");
+    }
 }
