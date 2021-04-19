@@ -2,7 +2,8 @@
 
 @section('content') {{-- Make something that checks if you are the admin of the game, if not are you in the game. If not, can you join the game--}}
 <div class="container">
-    <h1 class="text-center text-danger">Event cancelled</h1>
+    <h1 class="text-center text-danger">Hey participant - Event cancelled</h1>
+    <h2 class="text-center text-warning">can't message, but can read them. that's it</h2>
     <ul>
         <li>Title: {{$event->title}}</li>
         <li>Players: {{count($event->users)}} / {{$event->player_num}}</li>

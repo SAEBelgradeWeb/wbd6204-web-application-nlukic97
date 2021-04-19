@@ -2,7 +2,7 @@
 
 @section('content') {{-- Make something that checks if you are the admin of the game, if not are you in the game. If not, can you join the game--}}
     <div class="container">
-        <h1 class="text-center text-secondary">Event basic user view</h1>
+        <h1 class="text-center text-secondary">Hey participant - Event basic user view</h1>
         <h2 class="text-center text-primary">You can see the 'leave game' btn</h2>
         <ul>
             <li>Title: {{$event->title}}</li>

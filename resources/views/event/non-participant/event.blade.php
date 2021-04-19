@@ -2,7 +2,7 @@
 
 @section('content') {{-- Make something that checks if you are the admin of the game, if not are you in the game. If not, can you join the game--}}
 <div class="container">
-    <h1 class="text-center text-primary">Event not full yet</h1>
+    <h1 class="text-center text-primary">Hey non-participant -Event not full yet</h1>
     <h2 class="text-center text-warning">You can't see the chat, but you CAN join</h2>
     <ul>
         <li>Title: {{$event->title}}</li>
