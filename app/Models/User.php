@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -67,19 +68,21 @@ class User extends Authenticatable
     //getting friendlist - updated function
     public function getFriendsAttribute()
     {
-        $friendlist = [];
-
+//        $friendlist = [];
         $sentRequests =  $this->friendshipsSent->where('status','accepted');
-        foreach ($sentRequests as $key => $friendship) {
-            array_push($friendlist,$friendship->usersReceivers);
-        }
+//        foreach ($sentRequests as $key => $friendship) {
+//            array_push($friendlist,$friendship->usersReceivers);
+//        }
 
         $receivedRequests =  $this->friendshipsReceived->where('status','accepted');
-        foreach ($receivedRequests as $key => $friendship) {
-            array_push($friendlist,$friendship->usersRequesters);
-        }
+//        foreach ($receivedRequests as $key => $friendship) {
+//            array_push($friendlist,$friendship->usersRequesters);
+//        }
 
-        return $friendlist;
+        $newArr = $sentRequests->merge($receivedRequests);
+        return $newArr;
+//        return $friendlist;
+
     }
 
 

@@ -42,7 +42,7 @@ Route::get('/create-event',[\App\Http\Controllers\EventController::class,'indexN
 Route::post('/create-event',[\App\Http\Controllers\EventController::class,'createNewEvent'])->middleware('auth');
 
 // ---------------revisit the join event function
-Route::get('/join-event/{id}',[\App\Http\Controllers\EventController::class,'joinEvent'])->middleware('auth');
+//Route::get('/join-event/{id}',[\App\Http\Controllers\EventController::class,'joinEvent'])->middleware('auth');
 
 Route::get('/leave-event/{id}',[\App\Http\Controllers\EventController::class,'leaveEvent'])->middleware('auth');
 Route::get('/cancel-event/{id}',[\App\Http\Controllers\EventController::class,'cancelEvent'])->middleware('auth');

@@ -20,15 +20,29 @@ class UserController extends Controller
     {
         if(Auth::user()->id == $id){
             $user = User::find(Auth::user()->id);
-            $pageOwner = true;
+            return view('user/auth-user',compact('user')); //return view of other non-friend profile
         } else {
             $user = User::find($id);
+            $pageOwner = false;
+
             if($user === null){
                 return abort(404);
             }
-            $pageOwner = false;
+
+
+            $friendLink = $user->friends->firstwhere('requester_id',Auth::user()->id);
+            if($friendLink === [] OR $friendLink === null){ //means that $user didn't accept any requests from auth
+                $friendLink = $user->friends->firstwhere('receiver_id',Auth::user()->id);
+
+                if($friendLink === [] OR $friendLink === null){ // auth user didn't accept requests from $user | they are not friends
+                    return view('user/non-friend-user',compact('user')); //return view of other non-friend profile
+                }
+            }
+            return view('user/friend-user',compact('user')); //return view of other non-friend profile
+
+
+
         }
-            return view('user-index',compact(['user','pageOwner']));
     }
 
 
