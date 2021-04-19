@@ -94,15 +94,32 @@ class EventController extends Controller
         //check if the event host id matches the authenticated id. Also, if the game
         // has already be confirmed, do divert them away from here to the regular payment section.
         $event = Event::find($id);
-        $event->status = 'created';
-        $event->save();
+        if($event === null){
+            return abort('404');
+        }
 
-        EventUser::create([
-            'user_id'=>Auth::user()->id,
-            'event_id'=>$event->id
-        ]);
+        // when admin is paying (game is still pending, not viewable by other users)
+        if($event->host_id == Auth::user()->id
+            AND $event->status === 'pending'){
+            $event->status = 'created';
+            $event->save();
 
-        return redirect('/');
+            EventUser::create([
+                'user_id'=>Auth::user()->id,
+                'event_id'=>$event->id
+            ]);
+
+            // another user can join a game with: status 'created', and that is not full
+        } else if($event->status === 'created'
+            AND count($event->users) < $event->player_num
+            AND !$event->users->firstwhere('id',Auth::user()->id)
+        ) {
+            EventUser::create([
+                'user_id'=>Auth::user()->id,
+                'event_id'=>$event->id
+            ]);
+        }
+        return redirect("/event/{$id}");
     }
 
     public function joinEvent($id)
@@ -123,7 +140,7 @@ class EventController extends Controller
     }
 
 
-    public function leaveEvent($id)
+    public function leaveEvent($id) //handle refunds ???
     {
         $event = Event::find($id);
 
@@ -143,7 +160,7 @@ class EventController extends Controller
         return redirect("/event/{$id}");
     }
 
-    public function cancelEvent($id)
+    public function cancelEvent($id) //handling multiple refunds
     {
         $event = Event::find($id);
 
@@ -160,5 +177,10 @@ class EventController extends Controller
         }
 
         return redirect("/event/{$id}");
+    }
+
+    public function dog()
+    {
+        return dd('aye');
     }
 }
