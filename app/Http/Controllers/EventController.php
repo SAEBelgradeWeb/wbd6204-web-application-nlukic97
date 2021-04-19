@@ -32,36 +32,33 @@ class EventController extends Controller
 
         // 1. If user has already joined the event...
         if($event->users->firstwhere('id',Auth::user()->id)){
-            if($event->status === 'cancelled'){ // 1a. if joined event is cancelled
+
+            if($event->status === 'cancelled'){
                 return view('/event/participant/event-cancelled',compact('event'));
 
-            } else { // 1b. if joined event is not cancelled...
-                if($event->host->id === Auth::user()->id){ // 1ba - if you are the admin
-                    return view('/event/participant/event-admin',compact('event'));
+            } else if($event->status == 'confirmed'){ //if joined game is confirmed (for admin and other users)
+                return view('/event/participant/event-confirmed',compact('event'));
 
-                } else { // 1bb  - or you are not the admin:
-                    return view('/event/participant/event',compact('event'));
-                }
+            } else if($event->host->id === Auth::user()->id){ //if you are the admin
+                return view('/event/participant/event-admin',compact('event'));
+
+            } else { //if user is not admin
+                return view('/event/participant/event',compact('event'));
             }
 
-        //2. or if they haven't joined the game yet
-        } else {
-//            dd('you have not joined this game');
-            if($event->status === 'cancelled'){ // 1a. ... and if event is cancelled
-//                dd('game you haven\'t joined is cancelled');
+        } else { //2. If user has not joined an event (meaning they are not the admin).
+            if($event->status === 'cancelled'){ // if the game is cancelled
                 return view('/event/non-participant/event-cancelled',compact('event'));
 
-            } else if($event->status === 'confirmed') {
-//                dd('this game is confirmed, no joining');
+            } else if($event->status == 'confirmed'){ //if the game is confirmed
                 return view('event/non-participant/event-confirmed',compact('event'));
-            } else if(count($event->users) === $event->player_num){ //game is full, no joining
-                return view('event/non-participant/event-full',compact('event'));
-//                dd('this game is full.');
-            } else {
-                return view('event/non-participant/event',compact('event'));
-//                dd('game not full, you can join');
-            }
 
+            } else if(count($event->users) >= $event->player_num){ //if the game is already full
+                return view('event/non-participant/event-full',compact('event'));
+
+            } else { // in this case, a user can join this event
+                return view('event/non-participant/event',compact('event'));
+            }
         }
 
 //        return view('event/event',compact('event')); //just returns it as a normal event
