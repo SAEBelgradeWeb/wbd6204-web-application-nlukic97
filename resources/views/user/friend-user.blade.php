@@ -3,26 +3,26 @@
 @section('content')
     <div class="container">
         {{--        Profile picture and name(username)--}}
-        <profile-picture
+        <other-profile-picture
             imageurl="{{$user->image_url}}"
             name="{{$user->name}}"
             username="{{$user->username}}"
             sex="{{$user->sex}}"
-        ></profile-picture>
+        ></other-profile-picture>
 
         {{--  Profile bio component      --}}
-        <profile-bio
+        <other-profile-bio
             bio="{{$user->bio}}"
-        ></profile-bio>
+        ></other-profile-bio>
 
 
         {{-- Personal user information box + content on their page      --}}
-        <profile-content
+        <other-profile-content
             age="{{$user->age}}"
             sex="{{$user->sex}}"
             city="{{$user->location->city}}"
             events="{{$user->events}}"
-        ></profile-content>
+        ></other-profile-content>
 
 
     </div>
