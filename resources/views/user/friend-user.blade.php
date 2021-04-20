@@ -8,6 +8,7 @@
             name="{{$user->name}}"
             username="{{$user->username}}"
             sex="{{$user->sex}}"
+            id="{{$user->id}}"
         ></other-profile-picture>
 
         {{--  Profile bio component      --}}

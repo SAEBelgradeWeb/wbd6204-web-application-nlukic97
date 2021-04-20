@@ -19,7 +19,7 @@ class UserController extends Controller
     protected function index($id)
     {
         if(Auth::user()->id == $id){
-            $user = User::find(Auth::user()->id);
+            $user = Auth::user();
             return view('user/auth-user',compact('user')); //return view of other non-friend profile
         } else {
             $user = User::find($id);

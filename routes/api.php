@@ -34,3 +34,10 @@ Route::middleware('auth:api')->post('/changePassword',[\App\Http\Controllers\Use
 
 //courts
 Route::middleware('auth:api')->get('/getCourts/{id}',[\App\Http\Controllers\LocationController::class,'getCourts']);
+
+
+//Friendship Api routes
+Route::middleware('auth:api')->get('/checkNonFriendStatus/{id}',[\App\Http\Controllers\FriendshipController::class,'checkNonFriendStatus']);
+Route::middleware('auth:api')->post('/acceptFriendRequest',[\App\Http\Controllers\FriendshipController::class,'acceptFriendRequest']);
+Route::middleware('auth:api')->post('/addFriend',[\App\Http\Controllers\FriendshipController::class,'addFriend']);
+Route::middleware('auth:api')->post('/cancelFriendRequest',[\App\Http\Controllers\FriendshipController::class,'cancelFriendRequest']);

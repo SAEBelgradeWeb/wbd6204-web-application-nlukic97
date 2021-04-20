@@ -2,12 +2,13 @@
 
 @section('content')
     <div class="container">
-            <other-profile-picture
+            <non-friend-profile-picture
                 imageurl="{{$user->image_url}}"
                 name="{{$user->name}}"
                 username="{{$user->username}}"
                 sex="{{$user->sex}}"
-            ></other-profile-picture>
+                id="{{$user->id}}"
+            ></non-friend-profile-picture>
 
             <other-profile-bio
                 bio="{{$user->bio}}"
@@ -15,12 +16,12 @@
 
 
         {{-- Hide this from any visitor that is not our friend --}}
-            <other-profile-content
+{{--            <other-profile-content
                 age="{{$user->age}}"
                 sex="{{$user->sex}}"
                 city="{{$user->location->city}}"
                 events="{{$user->events}}"
-            ></other-profile-content>
+            ></other-profile-content>--}}
 
     </div>
 @endsection

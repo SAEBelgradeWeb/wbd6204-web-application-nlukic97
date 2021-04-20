@@ -7,7 +7,13 @@
         </div>
         <div class="row text-center">
             <div class="col pt-2">
-                <h3><span class="font-weight-bold">{{this.name}}</span> ({{this.username}})</h3>
+                <h3 class="d-inline-block">
+                    <span class="font-weight-bold">{{this.name}}</span>
+                    <span>({{this.username}})</span>
+                </h3>
+
+                <!--Buttons - 1st span is hidden if request has been sent. The 2nd span is hidden if request has not been sent-->
+                    <a :href="getRemoveUrl()" class="btn btn-primary"><i class="fas fa-user-times"></i> Remove friend</a>
             </div>
         </div>
     </div>
@@ -20,10 +26,10 @@
             'imageurl',
             'name',
             'username',
-            'sex'
+            'sex',
+            'id'
         ],
         components:{
-            // AvatarFormModal
         },
         data:function(){
             return{
@@ -47,6 +53,10 @@
             }
         },
         methods:{
+            getRemoveUrl()
+            {
+                return `/removeFriend/${this.id}`;
+            }
         },
         mounted() {
         }

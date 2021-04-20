@@ -30,6 +30,7 @@ Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'index'])->m
 // ----- fix this down
 Route::get('/friends', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
 Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'showUserFriends'])->middleware('auth');
+Route::get('/removeFriend/{id}', [App\Http\Controllers\FriendshipController::class, 'removeFriend'])->middleware('auth');
 // ----- fix this up
 
 

@@ -26,9 +26,11 @@ Vue.component('profile-content', require('./components/personalProfile/ProfileCo
 Vue.component('upload-image', require('./components/personalProfile/UploadImage').default);
 
 //other profile components
-Vue.component('other-profile-picture', require('./components/otherProfile/OtherProfilePicture').default);
 Vue.component('other-profile-bio', require('./components/otherProfile/OtherProfileBio').default);
 Vue.component('other-profile-content', require('./components/otherProfile/OtherProfileContent').default);
+    //other user profile pictures
+Vue.component('other-profile-picture', require('./components/otherProfile/OtherProfilePicture').default);
+Vue.component('non-friend-profile-picture', require('./components/otherProfile/nonFriendProfilePicture').default);
 
 // account-settings components
 Vue.component('setting-element', require('./components/userSettings/settingElement').default);
