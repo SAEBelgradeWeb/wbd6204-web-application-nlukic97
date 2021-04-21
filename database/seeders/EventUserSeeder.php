@@ -28,8 +28,9 @@ class EventUserSeeder extends Seeder
 
         $adminEventId = Event::firstWhere('host_id',1)->id; //it will be 1
 
+        EventUser::factory()->create(['user_id'=>7,'event_id'=>$adminEventId]);
+        EventUser::factory()->create(['user_id'=>2,'event_id'=>$adminEventId]);
         EventUser::factory()->create(['user_id'=>5,'event_id'=>$adminEventId]);
-        EventUser::factory()->create(['user_id'=>20,'event_id'=>$adminEventId]);
-        EventUser::factory()->create(['user_id'=>16,'event_id'=>$adminEventId]);
+        EventUser::factory()->create(['user_id'=>4,'event_id'=>$adminEventId]);
     }
 }
