@@ -16,11 +16,13 @@ class FriendshipSeeder extends Seeder
     {
         Friendship::factory(50)->create();
 
-//        Friendship::create(['receiver_id' => 20,'requester_id' => 1,'status'=> 'pending']);
-//        Friendship::create(['receiver_id' => 2,'requester_id' => 20,'status'=> 'pending']);
-//        Friendship::create(['receiver_id' => 20,'requester_id' => 3,'status'=> 'accepted']);
-//        Friendship::create(['receiver_id' => 4,'requester_id' => 20,'status'=> 'accepted']);
-//        Friendship::create(['receiver_id' => 20,'requester_id' => 6,'status'=> 'denied']);
-//        Friendship::create(['receiver_id' => 6,'requester_id' => 20,'status'=> 'denied']);
+        Friendship::create(['receiver_id' => 1,'requester_id' => 2,'status'=> 'pending']);
+        Friendship::create(['receiver_id' => 3,'requester_id' =>1,'status'=> 'pending']);
+
+        Friendship::create(['receiver_id' =>1,'requester_id' => 4,'status'=> 'accepted']);
+        Friendship::create(['receiver_id' => 5,'requester_id' =>1,'status'=> 'accepted']);
+
+        Friendship::create(['receiver_id' =>1,'requester_id' => 6,'status'=> 'denied']);
+        Friendship::create(['receiver_id' => 7,'requester_id' =>1,'status'=> 'denied']);
     }
 }
