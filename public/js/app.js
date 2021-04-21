@@ -2026,6 +2026,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "eventInfo",
   props: ['event', 'court', 'city', 'host'],
@@ -41671,49 +41675,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("ul", [
-      _c("li", [_vm._v("Title: " + _vm._s(this.parsedEvent.title))]),
-      _vm._v(" "),
-      _c("li", [
-        _vm._v(
-          "Players: " +
-            _vm._s(this.parsedEvent.users.length) +
-            " / " +
-            _vm._s(this.parsedEvent.player_num)
-        )
+  return _c(
+    "div",
+    [
+      _c("ul", [
+        _c("li", [_vm._v("Title: " + _vm._s(this.parsedEvent.title))]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Players: " +
+              _vm._s(this.parsedEvent.users.length) +
+              " / " +
+              _vm._s(this.parsedEvent.player_num)
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Host: "),
+          _c("a", { attrs: { href: _vm.getUserUrl(this.parsedHost.id) } }, [
+            _vm._v(_vm._s(this.parsedHost.name))
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _c("li", [
-        _vm._v("Host: "),
-        _c("a", { attrs: { href: _vm.getUserUrl(this.parsedHost.id) } }, [
-          _vm._v(_vm._s(this.parsedHost.name))
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("h1", [_vm._v("Court")]),
-    _vm._v(" "),
-    _c("ul", [
-      _c("li", [_vm._v(_vm._s(this.parsedCourt.title))]),
+      _c("h1", [_vm._v("Court")]),
       _vm._v(" "),
-      _c("li", [_vm._v(_vm._s(this.city))]),
+      _c("ul", [
+        _c("li", [_vm._v(_vm._s(this.parsedCourt.title))]),
+        _vm._v(" "),
+        _c("li", [_vm._v(_vm._s(this.city))]),
+        _vm._v(" "),
+        _c("li", [_vm._v(_vm._s(this.parsedCourt.address))])
+      ]),
       _vm._v(" "),
-      _c("li", [_vm._v(_vm._s(this.parsedCourt.address))])
-    ]),
-    _vm._v(" "),
-    _c("h1", [_vm._v("Participants")]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.parsedEvent.users, function(participant) {
-        return _c("a", { attrs: { href: _vm.getUserUrl(participant.id) } }, [
-          _c("li", [_vm._v(_vm._s(participant.name))])
-        ])
-      }),
-      0
-    )
-  ])
+      _c("h1", [_vm._v("Participants")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.parsedEvent.users, function(participant) {
+          return _c("a", { attrs: { href: _vm.getUserUrl(participant.id) } }, [
+            _c("li", [_vm._v(_vm._s(participant.name))])
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

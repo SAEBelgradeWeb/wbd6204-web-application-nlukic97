@@ -30,12 +30,14 @@
         court="{{$event->court}}"
         city="{{$event->court->location->city}}"
         host="{{$event->host}}"
-    ></event-info>
+    >
+        <event-messages
+            prop_messages="{{$event->messages}}"
+            prop_users="{{$event->users}}"
+        ></event-messages>
+    </event-info>
 
 
-    <event-messages
-        prop_messages="{{$event->messages}}"
-        prop_users="{{$event->users}}"
-    ></event-messages>
+
 </div>
 @endsection
