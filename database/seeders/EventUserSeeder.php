@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Event;
 use Illuminate\Database\Seeder;
 use App\Models\EventUser;
 
@@ -14,6 +15,21 @@ class EventUserSeeder extends Seeder
      */
     public function run()
     {
-        EventUser::factory(30)->create();
+        $i = 1;
+        while($i < count(Event::all())){
+            $event = Event::find($i);
+
+            EventUser::factory()->create([
+                'user_id'=>$event->host_id,
+                'event_id'=>$event->id
+            ]);
+            $i++;
+        }
+
+        $adminEventId = Event::firstWhere('host_id',1)->id; //it will be 1
+
+        EventUser::factory()->create(['user_id'=>5,'event_id'=>$adminEventId]);
+        EventUser::factory()->create(['user_id'=>20,'event_id'=>$adminEventId]);
+        EventUser::factory()->create(['user_id'=>16,'event_id'=>$adminEventId]);
     }
 }

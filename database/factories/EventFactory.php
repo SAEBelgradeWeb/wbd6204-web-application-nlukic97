@@ -23,15 +23,16 @@ class EventFactory extends Factory
     {
 
         $gameStatuses = ['pending','created','cancelled','confirmed'];
+        $day = $this->faker->numberBetween(1,29);
 
         return [
             'title' => $this->faker->word,
             'status' => $gameStatuses[$this->faker->numberBetween(1, 3)],
-            'date' => $this->faker->date(),
+            'date' => $this->faker->date("2021-06-{$day}"),
             'time' => $this->faker->time(),
-            'host_id' => $this->faker->numberBetween(1, 100),
-            'court_id' => $this->faker->numberBetween(1, 20),
-            'player_num' => $this->faker->numberBetween(4, 22),
+            'host_id' => $this->faker->numberBetween(2, 100),
+            'court_id' => $this->faker->numberBetween(1, 15),
+            'player_num' => $this->faker->numberBetween(4, 12),
             'timestamp'=>time()
         ];
     }

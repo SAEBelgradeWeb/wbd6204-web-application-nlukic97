@@ -24,7 +24,7 @@ class CourtFactory extends Factory
         return [
             'title' => $this->faker->word,
             'address'=>$this->faker->address,
-            'location_id'=>$this->faker->numberBetween(0,10),
+            'location_id'=>$this->faker->numberBetween(0,5),
             'price'=>$this->faker->numberBetween(20,100)
         ];
     }

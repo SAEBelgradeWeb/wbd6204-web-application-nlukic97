@@ -22,9 +22,6 @@ class DatabaseSeeder extends Seeder
             CourtSeeder::class,
             EventSeeder::class,
             EventUserSeeder::class,
-            RatingSeeder::class,
-            MessageSeeder::class,
-            PaymentSeeder::class,
         ]);
     }
 }

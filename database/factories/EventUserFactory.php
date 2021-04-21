@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Event;
 use App\Models\EventUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,11 +22,9 @@ class EventUserFactory extends Factory
      */
     public function definition()
     {
-        $statuses = ['pending','accepted','denied']; //I might remove this feature, users can simply join any game
-
         return [
-            'user_id'=>$this->faker->unique()->numberBetween(1,100),
-            'event_id'=>$this->faker->numberBetween(1, 10),
+            'user_id'=>'overridden',
+            'event_id'=>'overridden',
         ];
     }
 }

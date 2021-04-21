@@ -23,10 +23,10 @@ class FriendshipFactory extends Factory
     {
         $options = ['pending','accepted','denied'];
 
-        $num1 = $this->faker->numberBetween(0,100);
-        $num2= $this->faker->numberBetween(0,100);
+        $num1 = $this->faker->unique->numberBetween(1,100);
+        $num2= $this->faker->unique->numberBetween(1,100);
         while($num2 === $num1){
-            $num2 = $this->faker->numberBetween(0,100);
+            $num2 = $this->faker->unique->numberBetween(1,100);
         }
 
         return [
