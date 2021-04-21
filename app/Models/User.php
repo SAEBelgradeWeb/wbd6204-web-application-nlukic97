@@ -68,20 +68,13 @@ class User extends Authenticatable
     //getting friendlist - updated function
     public function getFriendsAttribute()
     {
-//        $friendlist = [];
-        $sentRequests =  $this->friendshipsSent->where('status','accepted');
-//        foreach ($sentRequests as $key => $friendship) {
-//            array_push($friendlist,$friendship->usersReceivers);
-//        }
 
+        $sentRequests =  $this->friendshipsSent->where('status','accepted');
         $receivedRequests =  $this->friendshipsReceived->where('status','accepted');
-//        foreach ($receivedRequests as $key => $friendship) {
-//            array_push($friendlist,$friendship->usersRequesters);
-//        }
 
         $newArr = $sentRequests->merge($receivedRequests);
         return $newArr;
-//        return $friendlist;
+
 
     }
 

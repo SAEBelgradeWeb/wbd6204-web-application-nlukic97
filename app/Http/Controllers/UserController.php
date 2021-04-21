@@ -23,8 +23,6 @@ class UserController extends Controller
             return view('user/auth-user',compact('user')); //return view of other non-friend profile
         } else {
             $user = User::find($id);
-            $pageOwner = false;
-
             if($user === null){
                 return abort(404);
             }

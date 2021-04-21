@@ -18,5 +18,16 @@ class ForgotPasswordController extends Controller
     |
     */
 
+
+    //overriding the functions, since we do not have a reset password form to see, or submit
+    public function showLinkRequestForm(){
+        return abort('404');
+    }
+
+    public function sendResetLinkEmail()
+    {
+        return abort('404');
+    }
+
     use SendsPasswordResetEmails;
 }
