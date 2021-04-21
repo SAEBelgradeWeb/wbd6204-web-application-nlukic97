@@ -40,7 +40,8 @@ Vue.component('change-password', require('./components/userSettings/changePasswo
 Vue.component('locations-and-courts', require('./components/eventCreation/LocationsAndCourts').default);
 
 //Event index components
-Vue.component('event-info', require('./components/events/eventInfo').default);
+Vue.component('event-info', require('./components/eventDisplay/eventInfo').default);
+Vue.component('event-messages', require('./components/eventDisplay/eventMessages').default);
 
 
 /**

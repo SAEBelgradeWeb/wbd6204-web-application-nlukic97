@@ -37,4 +37,10 @@ class Event extends Model
         return  $this->users->firstwhere('id',$this->host_id); //returns the host (creator) of the event
     }
 
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
 }
