@@ -20,7 +20,7 @@
                 age="{{$user->age}}"
                 sex="{{$user->sex}}"
                 city="{{$user->location->city}}"
-                eventCreation="{{$user->eventCreation}}"
+                event="{{$user->event}}"
             ></other-profile-content>--}}
 
     </div>

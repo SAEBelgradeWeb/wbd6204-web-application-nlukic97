@@ -36,7 +36,7 @@ Vue.component('non-friend-profile-picture', require('./components/otherProfile/n
 Vue.component('setting-element', require('./components/userSettings/settingElement').default);
 Vue.component('change-password', require('./components/userSettings/changePassword').default);
 
-// eventCreation components
+// event components
 Vue.component('locations-and-courts', require('./components/eventCreation/LocationsAndCourts').default);
 
 //Event index components
