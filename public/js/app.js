@@ -1845,10 +1845,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1987,6 +1987,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   beforeMount: function beforeMount() {
     this.getLocations();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/eventInfo.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/eventInfo.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "eventInfo",
+  props: ['event', 'court', 'city', 'host'],
+  data: function data() {
+    return {
+      parsedEvent: null,
+      parsedCourt: null,
+      parsedHost: null
+    };
+  },
+  methods: {
+    getUserUrl: function getUserUrl(id) {
+      return "/user/".concat(id);
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.parsedEvent = JSON.parse(this.event);
+    this.parsedHost = JSON.parse(this.host);
+    this.parsedCourt = JSON.parse(this.court);
   }
 });
 
@@ -3266,9 +3324,11 @@ Vue.component('other-profile-picture', __webpack_require__(/*! ./components/othe
 Vue.component('non-friend-profile-picture', __webpack_require__(/*! ./components/otherProfile/nonFriendProfilePicture */ "./resources/js/components/otherProfile/nonFriendProfilePicture.vue").default); // account-settings components
 
 Vue.component('setting-element', __webpack_require__(/*! ./components/userSettings/settingElement */ "./resources/js/components/userSettings/settingElement.vue").default);
-Vue.component('change-password', __webpack_require__(/*! ./components/userSettings/changePassword */ "./resources/js/components/userSettings/changePassword.vue").default); // events components
+Vue.component('change-password', __webpack_require__(/*! ./components/userSettings/changePassword */ "./resources/js/components/userSettings/changePassword.vue").default); // eventCreation components
 
-Vue.component('locations-and-courts', __webpack_require__(/*! ./components/events/LocationsAndCourts */ "./resources/js/components/events/LocationsAndCourts.vue").default);
+Vue.component('locations-and-courts', __webpack_require__(/*! ./components/eventCreation/LocationsAndCourts */ "./resources/js/components/eventCreation/LocationsAndCourts.vue").default); //Event index components
+
+Vue.component('event-info', __webpack_require__(/*! ./components/events/eventInfo */ "./resources/js/components/events/eventInfo.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -3311,7 +3371,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
+ * for eventCreation that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
 // import Echo from 'laravel-echo';
@@ -40307,10 +40367,10 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./resources/js/components/events/LocationsAndCourts.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/events/LocationsAndCourts.vue ***!
-  \***************************************************************/
+/***/ "./resources/js/components/eventCreation/LocationsAndCourts.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/eventCreation/LocationsAndCourts.vue ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -40318,8 +40378,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& */ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&");
-/* harmony import */ var _LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsAndCourts.vue?vue&type=script&lang=js& */ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&");
+/* harmony import */ var _LocationsAndCourts_vue_vue_type_template_id_6f835b3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true& */ "./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true&");
+/* harmony import */ var _LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationsAndCourts.vue?vue&type=script&lang=js& */ "./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -40330,18 +40390,57 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _LocationsAndCourts_vue_vue_type_template_id_6f835b3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _LocationsAndCourts_vue_vue_type_template_id_6f835b3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "283234dc",
+  "6f835b3c",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/events/LocationsAndCourts.vue"
+component.options.__file = "resources/js/components/eventCreation/LocationsAndCourts.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/events/eventInfo.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/events/eventInfo.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _eventInfo_vue_vue_type_template_id_3f73de3d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true& */ "./resources/js/components/events/eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true&");
+/* harmony import */ var _eventInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventInfo.vue?vue&type=script&lang=js& */ "./resources/js/components/events/eventInfo.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _eventInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _eventInfo_vue_vue_type_template_id_3f73de3d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _eventInfo_vue_vue_type_template_id_3f73de3d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "3f73de3d",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/events/eventInfo.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -40793,10 +40892,10 @@ component.options.__file = "resources/js/components/userSettings/settingElement.
 
 /***/ }),
 
-/***/ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -40804,8 +40903,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationsAndCourts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationsAndCourts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/events/eventInfo.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/events/eventInfo.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_eventInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./eventInfo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/eventInfo.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_eventInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -41102,19 +41217,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true& ***!
+  \*****************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_6f835b3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_6f835b3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_283234dc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationsAndCourts_vue_vue_type_template_id_6f835b3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/events/eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/events/eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true& ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_eventInfo_vue_vue_type_template_id_3f73de3d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_eventInfo_vue_vue_type_template_id_3f73de3d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_eventInfo_vue_vue_type_template_id_3f73de3d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true&");
 
 
 /***/ }),
@@ -41306,10 +41438,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/LocationsAndCourts.vue?vue&type=template&id=283234dc&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventCreation/LocationsAndCourts.vue?vue&type=template&id=6f835b3c&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -41377,6 +41509,73 @@ var render = function() {
         [_vm._v("Please select a location")]
       )
     ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/events/eventInfo.vue?vue&type=template&id=3f73de3d&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("ul", [
+      _c("li", [_vm._v("Title: " + _vm._s(this.parsedEvent.title))]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "Players: " +
+            _vm._s(this.parsedEvent.users.length) +
+            " / " +
+            _vm._s(this.parsedEvent.player_num)
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v("Host: "),
+        _c("a", { attrs: { href: _vm.getUserUrl(this.parsedHost.id) } }, [
+          _vm._v(_vm._s(this.parsedHost.name))
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Court")]),
+    _vm._v(" "),
+    _c("ul", [
+      _c("li", [_vm._v(_vm._s(this.parsedCourt.title))]),
+      _vm._v(" "),
+      _c("li", [_vm._v(_vm._s(this.city))]),
+      _vm._v(" "),
+      _c("li", [_vm._v(_vm._s(this.parsedCourt.address))])
+    ]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Participants")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.parsedEvent.users, function(participant) {
+        return _c("a", { attrs: { href: _vm.getUserUrl(participant.id) } }, [
+          _c("li", [_vm._v(_vm._s(participant.name))])
+        ])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []

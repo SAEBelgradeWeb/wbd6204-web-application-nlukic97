@@ -5,7 +5,7 @@
     <h1 class="text-center text-primary">Hey non-participant -Event not full yet</h1>
     <h2 class="text-center text-warning">You can't see the chat, but you CAN join</h2>
     <a href="/payment/{{$event->id}}" class="btn btn-primary">Join event</a>
-    <ul>
+    {{--<ul>
         <li>Title: {{$event->title}}</li>
         <li>Players: {{count($event->users)}} / {{$event->player_num}}</li>
         <li>Host: <a href="/user/{{$event->host->id}}">{{$event->host->name}}</a></li>
@@ -24,6 +24,13 @@
         @foreach($event->users as $user)
             <a href="/user/{{$user->id}}"><li>{{$user->name}}</li></a>
         @endforeach
-    </ul>
+    </ul>--}}
+
+    <event-info
+        event="{{$event}}"
+        court="{{$event->court}}"
+        city="{{$event->court->location->city}}"
+        host="{{$event->host}}"
+    ></event-info>
 </div>
 @endsection

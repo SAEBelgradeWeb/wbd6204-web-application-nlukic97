@@ -13,7 +13,7 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('eventCreation', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->enum('status',['cancelled','pending','confirmed','created']);
@@ -44,6 +44,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('eventCreation');
     }
 }

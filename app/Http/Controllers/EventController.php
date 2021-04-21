@@ -25,7 +25,7 @@ class EventController extends Controller
 
         //safety precaution
         if($event->host === null || $event->status === 'pending'){
-            dd('Error, no host. just in case a game is seeded that does not have a host, or the host in not joined the game. Change seeder'); //just in case a game is seeded that does not have a host.
+//            dd('Error, no host. just in case a game is seeded that does not have a host, or the host in not joined the game. Change seeder'); //just in case a game is seeded that does not have a host.
             return abort('404');
         }
 
