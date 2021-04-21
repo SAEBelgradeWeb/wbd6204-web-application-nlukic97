@@ -19,6 +19,7 @@ class EventUserSeeder extends Seeder
         while($i < count(Event::all())){
             $event = Event::find($i);
 
+            //adding each host to their own game
             EventUser::factory()->create([
                 'user_id'=>$event->host_id,
                 'event_id'=>$event->id

@@ -41,3 +41,4 @@ Route::middleware('auth:api')->get('/checkNonFriendStatus/{id}',[\App\Http\Contr
 Route::middleware('auth:api')->post('/acceptFriendRequest',[\App\Http\Controllers\FriendshipController::class,'acceptFriendRequest']);
 Route::middleware('auth:api')->post('/addFriend',[\App\Http\Controllers\FriendshipController::class,'addFriend']);
 Route::middleware('auth:api')->post('/cancelFriendRequest',[\App\Http\Controllers\FriendshipController::class,'cancelFriendRequest']);
+Route::middleware('auth:api')->post('/rejectFriendRequest',[\App\Http\Controllers\FriendshipController::class,'rejectFriendRequest']);

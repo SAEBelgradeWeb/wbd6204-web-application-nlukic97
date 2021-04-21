@@ -24,7 +24,7 @@ class FriendshipSeeder extends Seeder
         Friendship::create(['receiver_id' =>1,'requester_id' => 4,'status'=> 'accepted']);
         Friendship::create(['receiver_id' => 5,'requester_id' =>1,'status'=> 'accepted']);
 
-        Friendship::create(['receiver_id' => 3,'requester_id' =>1,'status'=> 'denied']);
-        Friendship::create(['receiver_id' =>6,'requester_id' => 1,'status'=> 'denied']);
+        Friendship::create(['receiver_id' => 3,'requester_id' =>1,'status'=> 'pending']);
+        Friendship::create(['receiver_id' =>6,'requester_id' => 1,'status'=> 'accepted']);
     }
 }

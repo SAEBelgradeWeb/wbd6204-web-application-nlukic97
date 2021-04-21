@@ -21,6 +21,9 @@
 
                 <span @click="acceptRequest" class="btn btn-primary" :class="{'d-none':this.btn != 'accept'}"><i class="fas fa-user-check"></i> Accept friend</span>
                 <span class="btn btn-secondary" :class="{'d-none':this.btn != 'acceptSpinner'}"><i class="loadIcon fas fa-spinner"></i> Accept friend</span>
+
+                <span @click="rejectRequest" class="btn btn-danger" :class="{'d-none':this.btn != 'accept'}"><i class="fas fa-user-times"></i> Reject friend</span>
+                <span class="btn btn-secondary" :class="{'d-none':this.btn != 'rejectSpinner'}"><i class="loadIcon fas fa-spinner"></i> Reject friend</span>
             </div>
         </div>
     </div>
@@ -83,7 +86,9 @@
             },
             rejectRequest(){
                 //still need to add this and the button for this
-            }
+                this.btn = 'rejectSpinner';
+                this.axiosRequest('/api/rejectFriendRequest','add');
+            },
             async axiosRequest(url,returnBtn){
                 try {
                     await axios.post(url,{userId: this.id})

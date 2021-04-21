@@ -2237,6 +2237,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "profile-picture",
   props: ['imageurl', 'name', 'username', 'sex', 'id'],
@@ -2307,6 +2310,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     acceptRequest: function acceptRequest() {
       this.btn = 'acceptSpinner';
       this.axiosRequest('/api/acceptFriendRequest', null);
+    },
+    rejectRequest: function rejectRequest() {
+      //still need to add this and the button for this
+      this.btn = 'rejectSpinner';
+      this.axiosRequest('/api/rejectFriendRequest', 'add');
     },
     axiosRequest: function axiosRequest(url, returnBtn) {
       var _this2 = this;
@@ -7847,7 +7855,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* This underneath was a mistake but I kinda like it */\n/*div.row, div.rounded-circle {\n    border:3px solid #fff;\n    background-image:url('/images/profilepic.png');\n    background-size: 80%; background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}*/\ndiv.rounded-circle[data-v-7c404416] {\n    height:160px;\n    width:160px;\n    border:3px solid #fff;\n    background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}\n.loadIcon[data-v-7c404416] {\n    -webkit-animation: 1s spin-data-v-7c404416 infinite linear;\n            animation: 1s spin-data-v-7c404416 infinite linear;\n}\n@-webkit-keyframes spin-data-v-7c404416 {\n0% {transform: rotate(0deg);}\n30% {transform: rotate(-300deg);}\n100% {transform: rotate(-360deg);}\n}\n@keyframes spin-data-v-7c404416 {\n0% {transform: rotate(0deg);}\n30% {transform: rotate(-300deg);}\n100% {transform: rotate(-360deg);}\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* This underneath was a mistake but I kinda like it */\n/*div.row, div.rounded-circle {\n    border:3px solid #fff;\n    background-image:url('/images/profilepic.png');\n    background-size: 80%; background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}*/\ndiv.rounded-circle[data-v-7c404416] {\n    height:160px;\n    width:160px;\n    border:3px solid #fff;\n    background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-color: #fff;\n}\n.loadIcon[data-v-7c404416] {\n    -webkit-animation: 1s spin-data-v-7c404416 infinite linear;\n            animation: 1s spin-data-v-7c404416 infinite linear;\n}\n@-webkit-keyframes spin-data-v-7c404416 {\n0% {transform: rotate(0deg);}\n30% {transform: rotate(-300deg);}\n100% {transform: rotate(-360deg);}\n}\n@keyframes spin-data-v-7c404416 {\n0% {transform: rotate(0deg);}\n30% {transform: rotate(-300deg);}\n100% {transform: rotate(-360deg);}\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41673,6 +41681,31 @@ var render = function() {
           [
             _c("i", { staticClass: "loadIcon fas fa-spinner" }),
             _vm._v(" Accept friend")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "btn btn-danger",
+            class: { "d-none": this.btn != "accept" },
+            on: { click: _vm.rejectRequest }
+          },
+          [
+            _c("i", { staticClass: "fas fa-user-times" }),
+            _vm._v(" Reject friend")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "btn btn-secondary",
+            class: { "d-none": this.btn != "rejectSpinner" }
+          },
+          [
+            _c("i", { staticClass: "loadIcon fas fa-spinner" }),
+            _vm._v(" Reject friend")
           ]
         )
       ])

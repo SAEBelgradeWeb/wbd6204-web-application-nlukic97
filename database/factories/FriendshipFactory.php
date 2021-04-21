@@ -21,7 +21,7 @@ class FriendshipFactory extends Factory
      */
     public function definition()
     {
-        $options = ['pending','accepted','denied'];
+        $options = ['pending','accepted'];
 
         $num1 = $this->faker->unique->numberBetween(2,100);
         $num2= $this->faker->unique->numberBetween(2,100);
@@ -32,7 +32,7 @@ class FriendshipFactory extends Factory
         return [
             'receiver_id' => $num2,
             'requester_id' => $num1,
-            'status'=> $options[$this->faker->numberBetween(0,2)],
+            'status'=> $options[$this->faker->numberBetween(0,1)],
         ];
     }
 }

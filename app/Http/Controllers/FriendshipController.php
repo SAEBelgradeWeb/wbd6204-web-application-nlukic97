@@ -38,9 +38,10 @@ class FriendshipController extends Controller
             if($status === 'pending'){
                 return json_encode(['button'=>'cancel']);
 
-            } else if($status === 'denied'){
-                return json_encode(['button'=>'add']);
             }
+//            else if($status === 'denied'){
+//                return json_encode(['button'=>'add']);
+//            }
 
         } else {
             //If auth user received the friend request from a user with id of $id
@@ -50,9 +51,10 @@ class FriendshipController extends Controller
 
                 if($status === 'pending'){
                     return json_encode(['button'=>'accept']);
-                } else if($status === 'denied'){
-                    return json_encode(['button'=>'add']);
                 }
+//                else if($status === 'denied'){
+//                    return json_encode(['button'=>'add']);
+//                }
             } else {
                 return json_encode(['button'=>'add']);
             }
@@ -67,15 +69,18 @@ class FriendshipController extends Controller
         ]);
 
         $id = $request->all()['userId'];
+
         $row = $this->findRow($id);
 
         if($row != null){
             $row->status ='pending';
+            $row->save();
 
         } else {
             Friendship::create([
                 'requester_id'=>Auth::user()->id,
-                'receiver_id'=> $id
+                'receiver_id'=> $id,
+                'status'=>'pending'
             ]);
         }
     }
@@ -109,5 +114,15 @@ class FriendshipController extends Controller
         ]);
         $id = $request->all()['userId'];
         $this->findRow($id)->delete(); //change to cancelled later
+    }
+
+    public function rejectFriendRequest(Request $request)
+    {
+        $request->validate([
+            'userId'=>'required|integer'
+        ]);
+        $id = $request->all()['userId'];
+        $row = $this->findRow($id);
+        $row->delete();
     }
 }
