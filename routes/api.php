@@ -42,3 +42,7 @@ Route::middleware('auth:api')->post('/acceptFriendRequest',[\App\Http\Controller
 Route::middleware('auth:api')->post('/addFriend',[\App\Http\Controllers\FriendshipController::class,'addFriend']);
 Route::middleware('auth:api')->post('/cancelFriendRequest',[\App\Http\Controllers\FriendshipController::class,'cancelFriendRequest']);
 Route::middleware('auth:api')->post('/rejectFriendRequest',[\App\Http\Controllers\FriendshipController::class,'rejectFriendRequest']);
+
+//search API routes
+//Route::middleware('auth:api')->post('/user-search',[\App\Http\Controllers\UserController::class,'searchUsers']);
+//Route::middleware('auth:api')->post('/event-search',[\App\Http\Controllers\EventController::class,'searchEvents']);

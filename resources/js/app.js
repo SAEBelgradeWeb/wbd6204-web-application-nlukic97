@@ -43,6 +43,10 @@ Vue.component('locations-and-courts', require('./components/eventCreation/Locati
 Vue.component('event-info', require('./components/eventDisplay/eventInfo').default);
 Vue.component('event-messages', require('./components/eventDisplay/eventMessages').default);
 
+//Search components
+Vue.component('user-search', require('./components/search/userSearch').default);
+Vue.component('event-search', require('./components/search/eventSearch').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

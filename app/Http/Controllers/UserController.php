@@ -139,4 +139,11 @@ class UserController extends Controller
 
         return redirect("/user/".Auth::user()->id);
     }
+
+
+    //user search
+    public function indexSearchPage()
+    {
+        return view('/search/user-search');
+    }
 }

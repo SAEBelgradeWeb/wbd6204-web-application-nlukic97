@@ -179,8 +179,10 @@ class EventController extends Controller
         return redirect("/event/{$id}");
     }
 
-    public function dog()
+    public function indexSearchPage()
     {
-        return dd('aye');
+        return view('search/event-search');
     }
+
+
 }

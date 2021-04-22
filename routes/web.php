@@ -52,3 +52,7 @@ Route::get('/cancel-event/{id}',[\App\Http\Controllers\EventController::class,'c
 // --- payment
 Route::get('/payment/{id}',[\App\Http\Controllers\EventController::class,'showPayment'])->middleware('auth');
 Route::get('/pay/{id}',[\App\Http\Controllers\EventController::class,'firstGamePayment'])->middleware('auth');
+
+// ---- Search routes
+Route::get('/event-search',[\App\Http\Controllers\EventController::class,'indexSearchPage'])->middleware('auth');
+Route::get('/user-search',[\App\Http\Controllers\UserController::class,'indexSearchPage'])->middleware('auth');
