@@ -23,4 +23,9 @@ class Location extends Model
         return $this->hasMany(Court::class);
     }
 
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Court;
 use App\Models\Event;
 use App\Models\EventUser;
 use App\Models\User;
@@ -179,10 +180,51 @@ class EventController extends Controller
         return redirect("/event/{$id}");
     }
 
+    //event search
     public function indexSearchPage()
     {
         return view('search/event-search');
     }
+
+
+    //Event filtering
+    public function searchEvents(Request $request)
+    {
+        //this means the user selected 'all'
+        if($request->all()['id'] === 0){
+            $events = Event::where('status','created')
+                ->orderBy('date','DESC')
+                ->orderBy('time','DESC')
+                ->get();
+            foreach ($events as $event){
+                $event['location'] = $event->court->location;
+            }
+            return $events;
+
+        } else { //this means the user has selected a specific location id
+            $request->validate([
+                'id'=>'required|integer|exists:locations,id'
+            ]);
+
+            $filteredEvents = [];
+
+            $id = $request->all()['id'];
+            $courts = Court::where('location_id',$id)->get(); //find the courts that have the selected location
+
+            foreach ($courts as $court){ //one location(city) can have many courts, so we loop through each
+                foreach ($court->events as $event){ //and one court has any events
+                    if($event['status'] === 'created'){
+                        $event['location']= $court->location;
+                        array_push($filteredEvents,$event); //and we add each to the array
+                    }
+                }
+            }
+            return $filteredEvents;
+        }
+
+    }
+
+
 
 
 }
