@@ -3,10 +3,19 @@
         <h3>Messages</h3>
 
         <div>
-            <ul v-for="(message,index) in messages" :key="index">
-<!--                <li><a :href="getUserUrl(message.user_id)">{{users[index].name}}</a></li> &lt;!&ndash; the index of a user is their id. So, we can get their name &ndash;&gt;-->
-                <li><a :href="getUserUrl(message.user_id)">{{getUsersName(message.user_id)}}</a></li> <!-- the index of a user is their id. So, we can get their name -->
-                <li>The users id: {{message.user_id}}</li>
+            <!-- v-if - option 1 ->>> when a user who wrote a message is still a member of the event-->
+            <ul v-for="(message,index) in messages" :key="index" v-if="getUsersName(message.user_id)">
+                <li>
+                    <a :href="getUserUrl(message.user_id)">
+                        <h5>{{getUsersName(message.user_id)}}</h5>
+                    </a>
+                </li>
+
+                <li>{{message.message}}</li>
+            </ul>
+            <!--v-if - option 2 ->>> when a user who wrote a message is not a member of the event-->
+            <ul v-else class="text-muted">
+                <li><h5>Former member</h5></li>
                 <li>{{message.message}}</li>
             </ul>
         </div>
@@ -42,6 +51,7 @@
 
                     i++;
                 }
+                return null;
 
             },
             parseProps(){

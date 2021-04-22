@@ -2080,6 +2080,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "eventMessages",
   props: ['prop_messages', 'prop_users'],
@@ -2105,6 +2114,8 @@ __webpack_require__.r(__webpack_exports__);
 
         i++;
       }
+
+      return null;
     },
     parseProps: function parseProps() {
       this.messages = JSON.parse(this.prop_messages);
@@ -41754,23 +41765,34 @@ var render = function() {
     _c(
       "div",
       _vm._l(_vm.messages, function(message, index) {
-        return _c("ul", { key: index }, [
-          _c("li", [
-            _c("a", { attrs: { href: _vm.getUserUrl(message.user_id) } }, [
-              _vm._v(_vm._s(_vm.getUsersName(message.user_id)))
+        return _vm.getUsersName(message.user_id)
+          ? _c("ul", { key: index }, [
+              _c("li", [
+                _c("a", { attrs: { href: _vm.getUserUrl(message.user_id) } }, [
+                  _c("h5", [_vm._v(_vm._s(_vm.getUsersName(message.user_id)))])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(message.message))])
             ])
-          ]),
-          _vm._v(" "),
-          _c("li", [_vm._v("The users id: " + _vm._s(message.user_id))]),
-          _vm._v(" "),
-          _c("li", [_vm._v(_vm._s(message.message))])
-        ])
+          : _c("ul", { staticClass: "text-muted" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(message.message))])
+            ])
       }),
       0
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("h5", [_vm._v("Former member")])])
+  }
+]
 render._withStripped = true
 
 
