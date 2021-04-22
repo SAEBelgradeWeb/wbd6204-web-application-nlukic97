@@ -193,11 +193,12 @@ class EventController extends Controller
         //this means the user selected 'all'
         if($request->all()['id'] === 0){
             $events = Event::where('status','created')
-                ->orderBy('date','DESC')
-                ->orderBy('time','DESC')
+                ->orderBy('date','ASC')
+                ->orderBy('time','ASC')
                 ->get();
             foreach ($events as $event){
                 $event['location'] = $event->court->location;
+                $event['court'] = $event->court;
             }
             return $events;
 
@@ -215,10 +216,19 @@ class EventController extends Controller
                 foreach ($court->events as $event){ //and one court has any events
                     if($event['status'] === 'created'){
                         $event['location']= $court->location;
+                        $event['court'] = $court->toArray();
                         array_push($filteredEvents,$event); //and we add each to the array
                     }
                 }
             }
+
+            //comparing the time and date of the posts together. The smallest one (soonest game) will be shown first.
+            if($filteredEvents != null){
+                usort($filteredEvents,function($a,$b){
+                    return strcmp($a['date'].$a['time'],$b['date'].$b['time']);
+                });
+            }
+
             return $filteredEvents;
         }
 

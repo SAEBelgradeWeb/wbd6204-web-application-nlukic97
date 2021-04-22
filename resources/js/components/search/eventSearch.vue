@@ -13,6 +13,7 @@
                 <li>{{event.date}} {{event.time}}</li>
                 <li>{{event.location.city}}</li>
                 <li>Max players: {{event.player_num}}</li>
+                <li>Court name: {{event.court.title}}</li>
             </ul>
         </div>
     </div>

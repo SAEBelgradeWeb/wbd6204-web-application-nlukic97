@@ -3137,6 +3137,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "userSearch",
   data: function data() {
@@ -43018,7 +43019,9 @@ var render = function() {
             _vm._v(" "),
             _c("li", [_vm._v(_vm._s(event.location.city))]),
             _vm._v(" "),
-            _c("li", [_vm._v("Max players: " + _vm._s(event.player_num))])
+            _c("li", [_vm._v("Max players: " + _vm._s(event.player_num))]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Court name: " + _vm._s(event.court.title))])
           ])
         })
       ],
