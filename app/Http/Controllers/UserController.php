@@ -144,6 +144,44 @@ class UserController extends Controller
     //user search
     public function indexSearchPage()
     {
-        return view('/search/user-search');
+        $users = []; //just to add an empty array so I can use the same view twice
+        return view('/search/user-search',compact('users'));
+    }
+
+
+    public function getSearchResults(Request $request)
+    {
+
+
+        $request->validate([
+            'query'=>'string|nullable',
+            'location_id'=>'nullable|integer|exists:locations,id'
+        ]);
+
+        $GET = $request->only(['query','location_id']);
+
+        //if anyone tampers with the url and the two requered parameters are missing
+        //this will send them back to the user-search
+        if(count($GET) < 2){
+            return redirect ('/user-search');
+        }
+
+        if($GET['query'] != null AND $GET['location_id'] != null){
+            $users = User::where('name','like',$GET['query']."%")
+                ->where('location_id',$GET['location_id']."%")
+                ->get();
+
+        } else if($GET['query'] === null AND $GET['location_id'] !== null){
+            $users = User::where('location_id',$GET['location_id']."%")->get();
+
+        } else if($GET['query'] !== null AND $GET['location_id'] === null){
+            $users = User::where('name','like',$GET['query']."%")->get();
+        } else if($GET['query'] === null AND $GET['location_id'] === null){
+            $users = User::all();
+        }
+
+
+        return view('/search/user-search',compact('users'));
+
     }
 }

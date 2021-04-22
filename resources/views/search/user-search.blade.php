@@ -8,6 +8,16 @@
             </div>
         </div>
 
-        <user-search></user-search>
+        <form action="/user-search-query" method="GET">
+            <user-search></user-search>
+            <button type="submit">Search</button>
+        </form>
+
+        @foreach($users as $user)
+            <ul>
+                <li>{{$user->name}}</li>
+                <li>{{$user->location->city}}</li>
+            </ul>
+        @endforeach
     </div>
 @endsection

@@ -56,3 +56,4 @@ Route::get('/pay/{id}',[\App\Http\Controllers\EventController::class,'firstGameP
 // ---- Search routes
 Route::get('/event-search',[\App\Http\Controllers\EventController::class,'indexSearchPage'])->middleware('auth');
 Route::get('/user-search',[\App\Http\Controllers\UserController::class,'indexSearchPage'])->middleware('auth');
+Route::get('/user-search-query/',[\App\Http\Controllers\UserController::class,'getSearchResults'])->middleware('auth');

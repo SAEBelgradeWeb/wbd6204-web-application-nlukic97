@@ -21,7 +21,7 @@
 
 <script>
     export default {
-        name: "userSearch",
+        name: "eventSearch",
         data:function(){
             return{
                 locations:null,

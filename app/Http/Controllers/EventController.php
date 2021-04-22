@@ -183,14 +183,14 @@ class EventController extends Controller
     //event search
     public function indexSearchPage()
     {
-        return view('search/event-search');
+        return view('search/event-search',compact('users'));
     }
 
 
     //Event filtering
     public function searchEvents(Request $request)
     {
-        //this means the user selected 'all'
+        //option 1 - this means the user selected 'all'
         if($request->all()['id'] === 0){
             $events = Event::where('status','created')
                 ->orderBy('date','ASC')
@@ -202,7 +202,7 @@ class EventController extends Controller
             }
             return $events;
 
-        } else { //this means the user has selected a specific location id
+        } else { //option 2 - this means the user has selected a specific location id
             $request->validate([
                 'id'=>'required|integer|exists:locations,id'
             ]);
@@ -213,10 +213,10 @@ class EventController extends Controller
             $courts = Court::where('location_id',$id)->get(); //find the courts that have the selected location
 
             foreach ($courts as $court){ //one location(city) can have many courts, so we loop through each
-                foreach ($court->events as $event){ //and one court has any events
+                foreach ($court->events as $event){ //and one court has many events
                     if($event['status'] === 'created'){
-                        $event['location']= $court->location;
-                        $event['court'] = $court->toArray();
+                        $event['location']= $court->location; //adding the location to the data
+                        $event['court'] = $court->toArray(); //adding the court data to the post
                         array_push($filteredEvents,$event); //and we add each to the array
                     }
                 }
