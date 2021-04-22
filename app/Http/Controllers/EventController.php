@@ -183,7 +183,7 @@ class EventController extends Controller
     //event search
     public function indexSearchPage()
     {
-        return view('search/event-search',compact('users'));
+        return view('search/event-search');
     }
 
 
