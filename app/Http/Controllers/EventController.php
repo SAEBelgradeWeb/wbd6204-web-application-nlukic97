@@ -230,16 +230,6 @@ class EventController extends Controller
 
             return $filteredEvents;
         }
-
     }
-
-
-
-    public function sendMessage(Request $request){
-        return $request;
-    }
-
-
-
 
 }

@@ -2171,7 +2171,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     sendMsg: function sendMsg() {
       if (this.sendData.message != null && this.sendData.message != '') {
-        console.log(this.sendData);
         this.axiosMsgPost();
       }
     },
@@ -2190,7 +2189,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 response = _context.sent;
-                console.log(response.data);
+
+                if (response.data == 'reload') {
+                  location.reload();
+                }
+
                 _context.next = 9;
                 break;
 

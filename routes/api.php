@@ -47,4 +47,4 @@ Route::middleware('auth:api')->post('/rejectFriendRequest',[\App\Http\Controller
 Route::middleware('auth:api')->post('/event-search',[\App\Http\Controllers\EventController::class,'searchEvents']);
 
 //send event message
-Route::middleware('auth:api')->post('/sendMessage',[\App\Http\Controllers\EventController::class,'sendMessage']);
+Route::middleware('auth:api')->post('/sendMessage',[\App\Http\Controllers\MessageController::class,'sendMessage']);

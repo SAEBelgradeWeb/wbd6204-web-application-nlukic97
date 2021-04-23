@@ -28,14 +28,15 @@
             },
             sendMsg(){
                 if(this.sendData.message != null && this.sendData.message != ''){
-                    console.log(this.sendData)
                     this.axiosMsgPost()
                 }
             },
             async axiosMsgPost(){
                 try {
                     let response = await axios.post('/api/sendMessage',this.sendData);
-                    console.log(response.data)
+                    if(response.data == 'reload'){
+                        location.reload()
+                    }
                 } catch(e){
 
                 }
