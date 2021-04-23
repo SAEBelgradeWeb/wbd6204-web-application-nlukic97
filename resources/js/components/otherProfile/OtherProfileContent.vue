@@ -47,7 +47,8 @@
             'age',
             'sex',
             'city',
-            'events'
+            'events',
+            'friends_prop'
         ],
         data:function(){
             return {

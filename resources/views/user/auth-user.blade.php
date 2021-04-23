@@ -22,7 +22,7 @@
             sex="{{$user->sex}}"
             city="{{$user->location->city}}"
             events="{{$user->events}}"
-            friends="{{$friends}}"
+            friends_prop="{{$friends}}"
         ></profile-content>
 
 
