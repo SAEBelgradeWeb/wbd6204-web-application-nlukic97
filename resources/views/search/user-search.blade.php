@@ -9,7 +9,17 @@
         </div>
 
         <form action="/user-search-query" method="GET">
-            <user-search></user-search>
+            @if($GET !== null) {{--Send the prop data to display the query inputs --}}
+                <user-search
+                    query_prop="{{$GET['query']}}"
+                    location_id_prop="{{$GET['location_id']}}"
+                ></user-search>
+            @else {{--display empty search bar, and 'all' locations selected --}}
+                <user-search
+                    query_prop=""
+                    location_id_prop=""
+                ></user-search>
+            @endif
             <button type="submit">Search</button>
         </form>
 

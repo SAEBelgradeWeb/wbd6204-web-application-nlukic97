@@ -145,7 +145,8 @@ class UserController extends Controller
     public function indexSearchPage()
     {
         $users = []; //just to add an empty array so I can use the same view twice
-        return view('/search/user-search',compact('users'));
+        $GET = null; //passing this to the user-search view, telling the page to send empty strings as prop data
+        return view('/search/user-search',compact('users','GET'));
     }
 
 
@@ -181,7 +182,7 @@ class UserController extends Controller
         }
 
 
-        return view('/search/user-search',compact('users'));
+        return view('/search/user-search',compact('users','GET'));
 
     }
 }

@@ -3280,6 +3280,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "userSearch",
+  props: ['query_prop', 'location_id_prop'],
   data: function data() {
     return {
       locations: null,
@@ -3322,25 +3323,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 7]]);
       }))();
     },
-    getParams: function getParams() {
+    assignParams: function assignParams() {
       //return the get parameters of a search query.
       var obj = {};
-      var paramsString = location.search.substr(1).split('&'); //so only if there are get parameters in the search
-
-      if (paramsString !== '' && paramsString != null) {
-        //if there is no parameters
-        paramsString.forEach(function (param) {
-          var tmp = param.split('=');
-          obj[tmp[0]] = tmp[1];
-        });
-        this.getRequestData = obj;
-        console.log(this.getRequestData);
-      }
+      this.getRequestData = {
+        location_id: this.location_id_prop,
+        query: this.query_prop
+      };
     }
   },
   beforeMount: function beforeMount() {
     this.getLocations();
-    this.getParams();
+    this.assignParams();
   }
 });
 

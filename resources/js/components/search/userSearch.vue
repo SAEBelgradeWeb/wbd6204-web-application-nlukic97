@@ -27,6 +27,10 @@
 <script>
     export default {
         name: "userSearch",
+        props:[
+            'query_prop',
+            'location_id_prop'
+        ],
         data:function(){
             return{
                 locations:null,
@@ -45,25 +49,18 @@
                     console.log(e)
                 }
             },
-            getParams(){ //return the get parameters of a search query.
+            assignParams(){ //return the get parameters of a search query.
                 let obj = {}
-                let paramsString = location.search.substr(1).split('&');
-
-                //so only if there are get parameters in the search
-                if(paramsString !== '' && paramsString != null){ //if there is no parameters
-                    paramsString.forEach((param)=>{
-                        let tmp = param.split('=')
-                        obj[tmp[0]] = tmp[1]
-                    })
-                    this.getRequestData = obj;
-                    console.log(this.getRequestData)
+                this.getRequestData = {
+                    location_id: this.location_id_prop,
+                    query: this.query_prop,
                 }
 
             }
         },
         beforeMount() {
             this.getLocations()
-            this.getParams()
+            this.assignParams()
         }
     }
 </script>
