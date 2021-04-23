@@ -3271,11 +3271,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "userSearch",
   data: function data() {
     return {
-      locations: null
+      locations: null,
+      getRequestData: {
+        location_id: '',
+        query: ''
+      }
     };
   },
   methods: {
@@ -3310,10 +3321,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, null, [[0, 7]]);
       }))();
+    },
+    getParams: function getParams() {
+      //return the get parameters of a search query.
+      var obj = {};
+      var paramsString = location.search.substr(1).split('&'); //so only if there are get parameters in the search
+
+      if (paramsString !== '' && paramsString != null) {
+        //if there is no parameters
+        paramsString.forEach(function (param) {
+          var tmp = param.split('=');
+          obj[tmp[0]] = tmp[1];
+        });
+        this.getRequestData = obj;
+        console.log(this.getRequestData);
+      }
     }
   },
   beforeMount: function beforeMount() {
     this.getLocations();
+    this.getParams();
   }
 });
 
@@ -43118,7 +43145,14 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("this is the event search vue")]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("div", [
+      _c("label", { attrs: { for: "query" } }, [_vm._v("Search")]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "text", name: "query", id: "query" },
+        domProps: { value: this.getRequestData.query }
+      })
+    ]),
     _vm._v(" "),
     _c("div", [
       _c("label", { attrs: { for: "location_id" } }, [_vm._v("Location")]),
@@ -43127,12 +43161,26 @@ var render = function() {
         "select",
         { attrs: { name: "location_id", id: "location_id" } },
         [
-          _c("option", { attrs: { value: "", selected: "" } }, [_vm._v("All")]),
+          _c(
+            "option",
+            {
+              attrs: { value: "" },
+              domProps: { selected: this.getRequestData.location_id === "" }
+            },
+            [_vm._v("All")]
+          ),
           _vm._v(" "),
           _vm._l(_vm.locations, function(location) {
-            return _c("option", { domProps: { value: location.id } }, [
-              _vm._v(_vm._s(location.city))
-            ])
+            return _c(
+              "option",
+              {
+                domProps: {
+                  selected: location.id == _vm.getRequestData.location_id,
+                  value: location.id
+                }
+              },
+              [_vm._v(_vm._s(location.city) + "\n            ")]
+            )
           })
         ],
         2
@@ -43140,18 +43188,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("label", { attrs: { for: "query" } }, [_vm._v("Search")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "text", name: "query", id: "query" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
