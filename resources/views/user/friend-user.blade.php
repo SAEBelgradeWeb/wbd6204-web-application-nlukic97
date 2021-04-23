@@ -24,6 +24,7 @@
             city="{{$user->location->city}}"
             events="{{$user->events}}"
             friends_prop="{{$friends}}"
+            id_prop="{{$user->id}}"
         ></other-profile-content>
 
 

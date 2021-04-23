@@ -13,7 +13,7 @@
                 </ul>
 
                 <!--Friends area -->
-                <span>Friends:</span>
+                <a :href="getFriendsUri()"><span>Friends:</span></a>
                 <div class="card pl-3 pr-3 pb-3 pt-2">
                     <div class="row">
                         <div class="col-4 text-center pb-2 pt-3" v-for="friend in previewFriends">
@@ -53,7 +53,8 @@
             'sex',
             'city',
             'events',
-            'friends_prop'
+            'friends_prop',
+            'id_prop'
         ],
         data:function(){
             return {
@@ -79,6 +80,9 @@
             },
             makeFriendUrl(friend){
                 return '/user/' + friend.id
+            },
+            getFriendsUri(){
+                return '/friends/'+this.id_prop;
             },
             getFriendAvatar(friend){
                 if(friend.image_url === ''){

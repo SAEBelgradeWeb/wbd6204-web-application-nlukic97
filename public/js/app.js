@@ -2299,7 +2299,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
-  props: ['age', 'sex', 'city', 'events', 'friends_prop'],
+  props: ['age', 'sex', 'city', 'events', 'friends_prop', 'id_prop'],
   data: function data() {
     return {
       modalOpen: false,
@@ -2324,6 +2324,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     makeFriendUrl: function makeFriendUrl(friend) {
       return '/user/' + friend.id;
+    },
+    getFriendsUri: function getFriendsUri() {
+      return '/friends/' + this.id_prop;
     },
     getFriendAvatar: function getFriendAvatar(friend) {
       if (friend.image_url === '') {
@@ -2994,7 +2997,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
-  props: ['age', 'sex', 'city', 'events', 'friends_prop'],
+  props: ['age', 'sex', 'city', 'events', 'friends_prop', 'id_prop'],
   components: {
     AboutProfileModal: _AboutProfileModal_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -3022,6 +3025,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     makeFriendUrl: function makeFriendUrl(friend) {
       return '/user/' + friend.id;
+    },
+    getFriendsUri: function getFriendsUri() {
+      return '/friends/' + this.id_prop;
     },
     getFriendAvatar: function getFriendAvatar(friend) {
       if (friend.image_url === '') {
@@ -42464,7 +42470,9 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("span", [_vm._v("Friends:")]),
+        _c("a", { attrs: { href: _vm.getFriendsUri() } }, [
+          _c("span", [_vm._v("Friends:")])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card pl-3 pr-3 pb-3 pt-2" }, [
           _c(
@@ -43043,7 +43051,9 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("span", [_vm._v("Friends:")]),
+          _c("a", { attrs: { href: _vm.getFriendsUri() } }, [
+            _c("span", [_vm._v("Friends:")])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card pl-3 pr-3 pb-3 pt-2" }, [
             _c(
