@@ -18,10 +18,6 @@
         <ul>
             <a v-for="participant in parsedEvent.users" :href="getUserUrl(participant.id)"><li>{{participant.name}}</li></a>
         </ul>
-
-        <slot></slot> <!-- /eventMessages.vue  <---  it will only be included if I add it in the blade. I might remove this-->
-
-
     </div>
 </template>
 

@@ -42,6 +42,7 @@ Vue.component('locations-and-courts', require('./components/eventCreation/Locati
 //Event index components
 Vue.component('event-info', require('./components/eventDisplay/eventInfo').default);
 Vue.component('event-messages', require('./components/eventDisplay/eventMessages').default);
+Vue.component('send-message-box', require('./components/eventDisplay/sendMessageBox').default);
 
 //Search components
 Vue.component('user-search', require('./components/search/userSearch').default);

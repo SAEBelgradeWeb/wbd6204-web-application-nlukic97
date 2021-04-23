@@ -2026,10 +2026,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "eventInfo",
   props: ['event', 'court', 'city', 'host'],
@@ -2124,6 +2120,95 @@ __webpack_require__.r(__webpack_exports__);
   },
   beforeMount: function beforeMount() {
     this.parseProps();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "sendMessageBox",
+  props: ['event_id_prop'],
+  data: function data() {
+    return {
+      sendData: {
+        message: null,
+        event_id: null
+      }
+    };
+  },
+  methods: {
+    updateMsg: function updateMsg(event) {
+      this.sendData.message = event.data;
+    },
+    sendMsg: function sendMsg() {
+      if (this.sendData.message != null && this.sendData.message != '') {
+        console.log(this.sendData);
+        this.axiosMsgPost();
+      }
+    },
+    axiosMsgPost: function axiosMsgPost() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.post('/api/sendMessage', _this.sendData);
+
+              case 3:
+                response = _context.sent;
+                console.log(response.data);
+                _context.next = 9;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.sendData.event_id = parseInt(this.event_id_prop);
   }
 });
 
@@ -3741,7 +3826,8 @@ Vue.component('change-password', __webpack_require__(/*! ./components/userSettin
 Vue.component('locations-and-courts', __webpack_require__(/*! ./components/eventCreation/LocationsAndCourts */ "./resources/js/components/eventCreation/LocationsAndCourts.vue").default); //Event index components
 
 Vue.component('event-info', __webpack_require__(/*! ./components/eventDisplay/eventInfo */ "./resources/js/components/eventDisplay/eventInfo.vue").default);
-Vue.component('event-messages', __webpack_require__(/*! ./components/eventDisplay/eventMessages */ "./resources/js/components/eventDisplay/eventMessages.vue").default); //Search components
+Vue.component('event-messages', __webpack_require__(/*! ./components/eventDisplay/eventMessages */ "./resources/js/components/eventDisplay/eventMessages.vue").default);
+Vue.component('send-message-box', __webpack_require__(/*! ./components/eventDisplay/sendMessageBox */ "./resources/js/components/eventDisplay/sendMessageBox.vue").default); //Search components
 
 Vue.component('user-search', __webpack_require__(/*! ./components/search/userSearch */ "./resources/js/components/search/userSearch.vue").default);
 Vue.component('event-search', __webpack_require__(/*! ./components/search/eventSearch */ "./resources/js/components/search/eventSearch.vue").default); //friendlist display component
@@ -40902,6 +40988,45 @@ component.options.__file = "resources/js/components/eventDisplay/eventMessages.v
 
 /***/ }),
 
+/***/ "./resources/js/components/eventDisplay/sendMessageBox.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/eventDisplay/sendMessageBox.vue ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _sendMessageBox_vue_vue_type_template_id_4e6df998_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true& */ "./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true&");
+/* harmony import */ var _sendMessageBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sendMessageBox.vue?vue&type=script&lang=js& */ "./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _sendMessageBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _sendMessageBox_vue_vue_type_template_id_4e6df998_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _sendMessageBox_vue_vue_type_template_id_4e6df998_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "4e6df998",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/eventDisplay/sendMessageBox.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/friends/friendList.vue":
 /*!********************************************************!*\
   !*** ./resources/js/components/friends/friendList.vue ***!
@@ -41514,6 +41639,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_sendMessageBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./sendMessageBox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_sendMessageBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/friends/friendList.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************!*\
   !*** ./resources/js/components/friends/friendList.vue?vue&type=script&lang=js& ***!
@@ -41906,6 +42047,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true& ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sendMessageBox_vue_vue_type_template_id_4e6df998_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sendMessageBox_vue_vue_type_template_id_4e6df998_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sendMessageBox_vue_vue_type_template_id_4e6df998_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/friends/friendList.vue?vue&type=template&id=4e58c8be&scoped=true&":
 /*!***************************************************************************************************!*\
   !*** ./resources/js/components/friends/friendList.vue?vue&type=template&id=4e58c8be&scoped=true& ***!
@@ -42240,55 +42398,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("ul", [
-        _c("li", [_vm._v("Title: " + _vm._s(this.parsedEvent.title))]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Players: " +
-              _vm._s(this.parsedEvent.users.length) +
-              " / " +
-              _vm._s(this.parsedEvent.player_num)
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Host: "),
-          _c("a", { attrs: { href: _vm.getUserUrl(this.parsedHost.id) } }, [
-            _vm._v(_vm._s(this.parsedHost.name))
-          ])
+  return _c("div", [
+    _c("ul", [
+      _c("li", [_vm._v("Title: " + _vm._s(this.parsedEvent.title))]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "Players: " +
+            _vm._s(this.parsedEvent.users.length) +
+            " / " +
+            _vm._s(this.parsedEvent.player_num)
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v("Host: "),
+        _c("a", { attrs: { href: _vm.getUserUrl(this.parsedHost.id) } }, [
+          _vm._v(_vm._s(this.parsedHost.name))
         ])
-      ]),
+      ])
+    ]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Court")]),
+    _vm._v(" "),
+    _c("ul", [
+      _c("li", [_vm._v(_vm._s(this.parsedCourt.title))]),
       _vm._v(" "),
-      _c("h1", [_vm._v("Court")]),
+      _c("li", [_vm._v(_vm._s(this.city))]),
       _vm._v(" "),
-      _c("ul", [
-        _c("li", [_vm._v(_vm._s(this.parsedCourt.title))]),
-        _vm._v(" "),
-        _c("li", [_vm._v(_vm._s(this.city))]),
-        _vm._v(" "),
-        _c("li", [_vm._v(_vm._s(this.parsedCourt.address))])
-      ]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("Participants")]),
-      _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.parsedEvent.users, function(participant) {
-          return _c("a", { attrs: { href: _vm.getUserUrl(participant.id) } }, [
-            _c("li", [_vm._v(_vm._s(participant.name))])
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _vm._t("default")
-    ],
-    2
-  )
+      _c("li", [_vm._v(_vm._s(this.parsedCourt.address))])
+    ]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Participants")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.parsedEvent.users, function(participant) {
+        return _c("a", { attrs: { href: _vm.getUserUrl(participant.id) } }, [
+          _c("li", [_vm._v(_vm._s(participant.name))])
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42347,6 +42499,70 @@ var staticRenderFns = [
     return _c("li", [_c("h5", [_vm._v("Former member")])])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/eventDisplay/sendMessageBox.vue?vue&type=template&id=4e6df998&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "label",
+        { staticClass: "font-weight-bold", attrs: { for: "message" } },
+        [_vm._v("Send message")]
+      ),
+      _vm._v(" "),
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.sendData.message,
+            expression: "sendData.message"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { name: "message", id: "message" },
+        domProps: { value: _vm.sendData.message },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.sendData, "message", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "btn btn-primary float-right",
+          on: { click: _vm.sendMsg }
+        },
+        [_vm._v("Send")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

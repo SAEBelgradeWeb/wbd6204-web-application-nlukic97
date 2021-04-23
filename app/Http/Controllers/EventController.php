@@ -235,5 +235,11 @@ class EventController extends Controller
 
 
 
+    public function sendMessage(Request $request){
+        return $request;
+    }
+
+
+
 
 }
