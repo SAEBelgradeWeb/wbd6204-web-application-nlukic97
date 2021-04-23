@@ -74,8 +74,6 @@ class User extends Authenticatable
 
         $newArr = $sentRequests->merge($receivedRequests);
         return $newArr;
-
-
     }
 
 

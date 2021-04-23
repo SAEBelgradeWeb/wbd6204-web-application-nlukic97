@@ -16,11 +16,30 @@ class UserController extends Controller
     }
 
 
+    //utility function
+    public function showUserFriends($user)
+    {
+        $friendships = $user->friends; //getFriendsAttribute defined in User model
+        $friends = collect();
+        foreach ($friendships as $friendship){
+            if($friendship->requester_id == $user->id){
+                $friends->add($friendship->usersReceivers); //defined in Friendship model
+            } else {
+                $friends->add($friendship->usersRequesters); //defined in Friendship model
+            }
+        }
+
+        return $friends;
+    }
+
+
     protected function index($id)
     {
         if(Auth::user()->id == $id){
             $user = Auth::user();
-            return view('user/auth-user',compact('user')); //return view of other non-friend profile
+            $friends = $this->showUserFriends($user);
+            return view('user/auth-user',compact('user','friends')); //return view of other non-friend profile
+
         } else {
             $user = User::find($id);
             if($user === null){
@@ -36,10 +55,8 @@ class UserController extends Controller
                     return view('user/non-friend-user',compact('user')); //return view of other non-friend profile
                 }
             }
-            return view('user/friend-user',compact('user')); //return view of other non-friend profile
-
-
-
+            $friends = $this->showUserFriends($user);
+            return view('user/friend-user',compact('user','friends')); //return view of other non-friend profile
         }
     }
 
@@ -48,15 +65,6 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
         return view('account-settings',compact('user'));
-    }
-
-
-    public function showUserFriends()
-    {
-        $user = User::find(Auth::user()->id);
-        $friends = $user->friends;
-
-        return view('friends',compact('friends'));
     }
 
 
@@ -74,6 +82,7 @@ class UserController extends Controller
     }
 
 
+
     public function updateBio(Request $request)
     {
         $request->validate([
@@ -87,6 +96,7 @@ class UserController extends Controller
     }
 
 
+
     public function updateAccountData(Request $request)
     {
         $request->validate([
@@ -98,6 +108,7 @@ class UserController extends Controller
 
         return $request->all();
     }
+
 
 
     public function changePassword(Request $request)
@@ -114,10 +125,12 @@ class UserController extends Controller
     }
 
 
+
     //uploading the avatar
     public function uploadImagePage(){
         return view('upload-image');
     }
+
 
 
     public function storeImage(Request $request){
@@ -141,6 +154,7 @@ class UserController extends Controller
     }
 
 
+
     //user search
     public function indexSearchPage()
     {
@@ -150,10 +164,9 @@ class UserController extends Controller
     }
 
 
+
     public function getSearchResults(Request $request)
     {
-
-
         $request->validate([
             'query'=>'string|nullable',
             'location_id'=>'nullable|integer|exists:locations,id'
@@ -180,7 +193,6 @@ class UserController extends Controller
         } else if($GET['query'] === null AND $GET['location_id'] === null){
             $users = User::all();
         }
-
 
         return view('/search/user-search',compact('users','GET'));
 

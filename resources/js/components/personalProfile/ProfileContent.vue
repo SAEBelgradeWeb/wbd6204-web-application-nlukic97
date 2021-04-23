@@ -74,7 +74,8 @@
             'age',
             'sex',
             'city',
-            'events'
+            'events',
+            'friends'
         ],
         components:{
           AboutProfileModal
@@ -128,7 +129,6 @@
             aboutModal(){
                 if(this.modalOpen === true){
                     this.modalOpen = false //this is necessary, since the modal will remain true once we exit it.
-                    // this.modalOpen = true
                 } else {
                     this.modalOpen = true
                 }
@@ -144,6 +144,8 @@
                     return b.timestamp - a.timestamp;
                 })
             }
+
+            console.log(this.friends)
         }
     }
 </script>

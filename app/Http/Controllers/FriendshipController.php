@@ -19,6 +19,8 @@ class FriendshipController extends Controller
         return $friend;
     }
 
+
+
     //Utility method: finds a row in the Friendship table -regardless of its status-
     public function findRow($id)
     {
@@ -29,20 +31,18 @@ class FriendshipController extends Controller
         return $row;
     }
 
+
+
     public function checkNonFriendStatus($id) //fix this function up
     {
         // if auth user sent the request to user of id $id
         $friendship = Friendship::where('requester_id',Auth::user()->id)->where('receiver_id',$id)->first();
+
         if($friendship != null){
             $status = $friendship->status;
             if($status === 'pending'){
                 return json_encode(['button'=>'cancel']);
-
             }
-//            else if($status === 'denied'){
-//                return json_encode(['button'=>'add']);
-//            }
-
         } else {
             //If auth user received the friend request from a user with id of $id
             $friendship = Friendship::where('requester_id',$id)->where('receiver_id',Auth::user()->id)->first();
@@ -52,14 +52,12 @@ class FriendshipController extends Controller
                 if($status === 'pending'){
                     return json_encode(['button'=>'accept']);
                 }
-//                else if($status === 'denied'){
-//                    return json_encode(['button'=>'add']);
-//                }
             } else {
                 return json_encode(['button'=>'add']);
             }
         }
     }
+
 
 
     public function addFriend(Request $request)
@@ -86,6 +84,7 @@ class FriendshipController extends Controller
     }
 
 
+
     public function removeFriend($id){
         $friend = $this->acceptedStatusRow($id); //calling a method within the friendship controller using $this
 
@@ -95,6 +94,8 @@ class FriendshipController extends Controller
 
         return redirect("/user/{$id}");
     }
+
+
 
     public function acceptFriendRequest(Request $request){
         $request->validate([
@@ -108,6 +109,7 @@ class FriendshipController extends Controller
     }
 
 
+
     public function cancelFriendRequest(Request $request){
         $request->validate([
             'userId'=>'required|integer'
@@ -115,6 +117,7 @@ class FriendshipController extends Controller
         $id = $request->all()['userId'];
         $this->findRow($id)->delete(); //change to cancelled later
     }
+
 
     public function rejectFriendRequest(Request $request)
     {

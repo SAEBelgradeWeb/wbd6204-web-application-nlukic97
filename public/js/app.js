@@ -2902,7 +2902,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
-  props: ['age', 'sex', 'city', 'events'],
+  props: ['age', 'sex', 'city', 'events', 'friends'],
   components: {
     AboutProfileModal: _AboutProfileModal_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -2944,7 +2944,6 @@ __webpack_require__.r(__webpack_exports__);
     aboutModal: function aboutModal() {
       if (this.modalOpen === true) {
         this.modalOpen = false; //this is necessary, since the modal will remain true once we exit it.
-        // this.modalOpen = true
       } else {
         this.modalOpen = true;
       }
@@ -2960,6 +2959,8 @@ __webpack_require__.r(__webpack_exports__);
         return b.timestamp - a.timestamp;
       });
     }
+
+    console.log(this.friends);
   }
 });
 
