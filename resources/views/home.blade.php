@@ -8,6 +8,7 @@
             <a href="/create-event"><span class="btn btn-primary">Create event</span></a>
             <a href="/event-search"><span class="btn btn-primary">Events</span></a>
             <a href="/user-search"><span class="btn btn-primary">Users</span></a>
+            <a href="/notifications"><span class="btn btn-primary">Notifications</span></a>
         </div>
     </div>
     <div class="row text-center mt-4">

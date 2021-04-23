@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Friendship;
+use App\Models\FriendshipNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -80,6 +81,13 @@ class FriendshipController extends Controller
                 'receiver_id'=> $id,
                 'status'=>'pending'
             ]);
+
+            //sending a notification to the other user
+            FriendshipNotification::create([
+                'sender_id'=>Auth::user()->id,
+                'receiver_id'=>$id,
+                'type'=>'request'
+            ]);
         }
     }
 
@@ -89,7 +97,7 @@ class FriendshipController extends Controller
         $friend = $this->acceptedStatusRow($id); //calling a method within the friendship controller using $this
 
         if($friend != null){
-            $friend->delete(); //change to cancelled later
+            $friend->delete();
         }
 
         return redirect("/user/{$id}");
@@ -106,6 +114,13 @@ class FriendshipController extends Controller
         $friendship = Friendship::where('receiver_id',Auth::user()->id)->where('requester_id',$id)->first();
         $friendship->status = 'accepted';
         $friendship->save();
+
+        //sending a notification to the other user
+        FriendshipNotification::create([
+            'sender_id'=>Auth::user()->id,
+            'receiver_id'=>$id,
+            'type'=>'accept'
+        ]);
     }
 
 
@@ -116,6 +131,11 @@ class FriendshipController extends Controller
         ]);
         $id = $request->all()['userId'];
         $this->findRow($id)->delete(); //change to cancelled later
+
+        //deleting all requests send to the other user (there will only be one but added this just in case)
+        FriendshipNotification::where('sender_id',Auth::user()->id)
+            ->where('receiver_id',$id)
+            ->where('type','request')->delete();
     }
 
 
