@@ -2234,27 +2234,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProfileContent",
   props: ['age', 'sex', 'city', 'events', 'friends_prop'],
   data: function data() {
     return {
-      parsedEvents: null
+      modalOpen: false,
+      parsedEvents: null,
+      previewFriends: [],
+      defaultPicture: {
+        male: '/images/male.jpg',
+        female: '/images/female.jpg'
+      }
     };
   },
   methods: {
+    aboutModal: function aboutModal() {
+      if (this.modalOpen === true) {
+        this.modalOpen = false; //this is necessary, since the modal will remain true once we exit it.
+      } else {
+        this.modalOpen = true;
+      }
+    },
     makeEventUrl: function makeEventUrl(event) {
       return '/event/' + event.id;
+    },
+    makeFriendUrl: function makeFriendUrl(friend) {
+      return '/user/' + friend.id;
+    },
+    getFriendAvatar: function getFriendAvatar(friend) {
+      if (friend.image_url === '') {
+        if (friend.sex === 'male') {
+          return this.defaultPicture.male;
+        } else {
+          return this.defaultPicture.male;
+        }
+      } else {
+        return "/storage/avatars/" + friend.image_url; //this should be changed. The user in the links messes up the entire thing
+      }
     }
   },
   mounted: function mounted() {
     if (this.events != null && this.events != '' && this.events != []) {
-      this.parsedEvents = JSON.parse(this.events);
+      this.parsedEvents = JSON.parse(this.events); //sorting the event based on the timestamp (when it was added)
+
       this.parsedEvents.sort(function (a, b) {
-        // return b.timestamp - a.timestamp;
         return b.timestamp - a.timestamp;
       });
     }
+
+    this.previewFriends = JSON.parse(this.friends_prop).slice(0, 9);
   }
 });
 
@@ -2945,13 +2979,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     if (this.events != null && this.events != '' && this.events != []) {
-      this.parsedEvents = JSON.parse(this.events);
+      this.parsedEvents = JSON.parse(this.events); //sorting the event based on the timestamp (when it was added)
+
       this.parsedEvents.sort(function (a, b) {
         return b.timestamp - a.timestamp;
       });
     }
 
-    console.log(JSON.parse(this.friends_prop));
     this.previewFriends = JSON.parse(this.friends_prop).slice(0, 9);
   }
 });
@@ -8185,7 +8219,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-5b8f3255] {\n    list-style-type:none;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-5b8f3255] {\n    list-style-type:none;\n}\nul.position-relative li[data-v-5b8f3255]:first-child{\n    z-index: 1;\n    right:-10px;\n    top:-15px;\n}\n.col-4 div[data-v-5b8f3255] {\n    /*border: 1px solid purple;*/\n    border-radius: 10px;\n    overflow: hidden;\n    height:80px;\n}\n.col-4 img[data-v-5b8f3255] {\n    width: 100%;\n}\n\n\n/*display of the friends avatar as a square */\n@media only screen and (max-width: 1199px) {\n.col-4 div[data-v-5b8f3255] {\n        height:60px;\n}\n}\n@media only screen and (max-width: 991px) {\n.col-4 div[data-v-5b8f3255] {\n        height:150px;\n}\n}\n@media only screen and (max-width: 767px) {\n.col-4 div[data-v-5b8f3255] {\n        height:105px;\n}\n}\n@media only screen and (max-width: 526px) {\n.col-4 div[data-v-5b8f3255] {\n        height:70px;\n}\n}\n@media only screen and (max-width: 420px) {\n.col-4 div[data-v-5b8f3255] {\n        height:60px;\n}\n}\n@media only screen and (max-width: 383px) {\n.col-4 div[data-v-5b8f3255] {\n        height:50px;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42257,18 +42291,25 @@ var render = function() {
         _vm._v(" "),
         _c("span", [_vm._v("Friends:")]),
         _vm._v(" "),
-        _c("ul", { staticClass: "list-group" }, [
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("Age: " + _vm._s(this.age))
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("sex: " + _vm._s(this.sex))
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("From: " + _vm._s(this.city))
-          ])
+        _c("div", { staticClass: "card pl-3 pr-3 pb-3 pt-2" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.previewFriends, function(friend) {
+              return _c("div", { staticClass: "col-4 text-center pb-2 pt-3" }, [
+                _c("div", [
+                  _c("img", {
+                    attrs: { src: _vm.getFriendAvatar(friend), alt: "" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("a", { attrs: { href: _vm.makeFriendUrl(friend) } }, [
+                  _c("span", [_vm._v(_vm._s(friend.name))])
+                ])
+              ])
+            }),
+            0
+          )
         ])
       ]),
       _vm._v(" "),

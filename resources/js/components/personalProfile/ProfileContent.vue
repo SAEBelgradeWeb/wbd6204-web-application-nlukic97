@@ -120,12 +120,13 @@
         mounted() {
             if(this.events != null && this.events != '' && this.events != []){
                 this.parsedEvents = JSON.parse(this.events)
+
+                //sorting the event based on the timestamp (when it was added)
                 this.parsedEvents.sort(function(a,b){
                     return b.timestamp - a.timestamp;
                 })
             }
 
-            console.log(JSON.parse(this.friends_prop))
             this.previewFriends = (JSON.parse(this.friends_prop)).slice(0,9)
         }
     }

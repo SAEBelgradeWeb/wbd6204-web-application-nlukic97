@@ -14,11 +14,16 @@
 
                 <!--Friends area -->
                 <span>Friends:</span>
-                <ul class="list-group">
-                    <li class="list-group-item">Age: {{this.age}}</li>
-                    <li class="list-group-item">sex: {{this.sex}}</li>
-                    <li class="list-group-item">From: {{this.city}}</li>
-                </ul>
+                <div class="card pl-3 pr-3 pb-3 pt-2">
+                    <div class="row">
+                        <div class="col-4 text-center pb-2 pt-3" v-for="friend in previewFriends">
+                            <div>
+                                <img :src="getFriendAvatar(friend)" alt=""> <!--For some reason, I am not able to make this into a constant square-->
+                            </div>
+                            <a :href="makeFriendUrl(friend)"><span>{{friend.name}}</span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-1"></div> <!--Phantom div to keep the content centered-->
 
@@ -52,22 +57,51 @@
         ],
         data:function(){
             return {
-                parsedEvents:null
+                modalOpen:false,
+                parsedEvents:null,
+                previewFriends:[],
+                defaultPicture:{
+                    male:'/images/male.jpg',
+                    female:'/images/female.jpg'
+                }
             }
         },
         methods:{
+            aboutModal(){
+                if(this.modalOpen === true){
+                    this.modalOpen = false //this is necessary, since the modal will remain true once we exit it.
+                } else {
+                    this.modalOpen = true
+                }
+            },
             makeEventUrl(event){
                 return '/event/' + event.id
+            },
+            makeFriendUrl(friend){
+                return '/user/' + friend.id
+            },
+            getFriendAvatar(friend){
+                if(friend.image_url === ''){
+                    if(friend.sex === 'male'){
+                        return this.defaultPicture.male
+                    } else {
+                        return this.defaultPicture.male
+                    }
+                } else {
+                    return "/storage/avatars/"+friend.image_url //this should be changed. The user in the links messes up the entire thing
+                }
             }
         },
         mounted() {
             if(this.events != null && this.events != '' && this.events != []){
                 this.parsedEvents = JSON.parse(this.events)
+
+                //sorting the event based on the timestamp (when it was added)
                 this.parsedEvents.sort(function(a,b){
-                    // return b.timestamp - a.timestamp;
                     return b.timestamp - a.timestamp;
                 })
             }
+            this.previewFriends = (JSON.parse(this.friends_prop)).slice(0,9)
         }
     }
 </script>
@@ -75,6 +109,62 @@
 <style scoped>
     ul {
         list-style-type:none;
+
+    }
+
+    ul.position-relative li:first-child{
+        z-index: 1;
+        right:-10px;
+        top:-15px;
+    }
+
+    .col-4 div {
+        /*border: 1px solid purple;*/
+        border-radius: 10px;
+        overflow: hidden;
+        height:80px;
+    }
+
+    .col-4 img {
+        width: 100%;
+    }
+
+
+    /*display of the friends avatar as a square */
+    @media only screen and (max-width: 1199px) {
+        .col-4 div {
+            height:60px;
+        }
+    }
+
+    @media only screen and (max-width: 991px) {
+        .col-4 div {
+            height:150px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .col-4 div {
+            height:105px;
+        }
+    }
+
+
+    @media only screen and (max-width: 526px) {
+        .col-4 div {
+            height:70px;
+        }
+    }
+
+    @media only screen and (max-width: 420px) {
+        .col-4 div {
+            height:60px;
+        }
+    }
+    @media only screen and (max-width: 383px) {
+        .col-4 div {
+            height:50px;
+        }
     }
 
 </style>
