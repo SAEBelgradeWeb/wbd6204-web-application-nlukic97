@@ -25,7 +25,7 @@
 
         @foreach($users as $user)
             <ul>
-                <li>{{$user->name}}</li>
+                <a href="/user/{{$user->id}}"><li>{{$user->name}}</li></a>
                 <li>{{$user->location->city}}</li>
             </ul>
         @endforeach

@@ -2,12 +2,6 @@
 
 @section('content')
 <div class="container">
-    @foreach($friends as $friend)
-    <ul>
-        <li>{{$friend->name}}</li>
-        <li>{{$friend->age}}</li>
-        <li>{{$friend->sex}}</li>
-    </ul>
-    @endforeach
+    <friend-list friends_prop="{{$friends}}"></friend-list>
 </div>
 @endsection

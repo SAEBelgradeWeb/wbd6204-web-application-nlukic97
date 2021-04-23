@@ -20,6 +20,7 @@ class EventController extends Controller
     public function indexEvent($id)
     {
         $event = Event::find($id);
+//        dd($event);
         if($event == null){
             return abort('404');
         }
@@ -61,8 +62,6 @@ class EventController extends Controller
                 return view('event/non-participant/event',compact('event'));
             }
         }
-
-//        return view('event/event',compact('event')); //just returns it as a normal event
     }
 
     public function createNewEvent(Request $request)

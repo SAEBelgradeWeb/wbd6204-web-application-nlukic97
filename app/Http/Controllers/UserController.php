@@ -16,8 +16,8 @@ class UserController extends Controller
     }
 
 
-    //utility function
-    public function showUserFriends($user)
+    // --------------------     utility function
+    public function showUserFriends($user) //enter a user id, and you will see all their friends
     {
         $friendships = $user->friends; //getFriendsAttribute defined in User model
         $friends = collect();
@@ -28,7 +28,6 @@ class UserController extends Controller
                 $friends->add($friendship->usersRequesters); //defined in Friendship model
             }
         }
-
         return $friends;
     }
 
@@ -46,7 +45,6 @@ class UserController extends Controller
                 return abort(404);
             }
 
-
             $friendLink = $user->friends->firstwhere('requester_id',Auth::user()->id);
             if($friendLink === [] OR $friendLink === null){ //means that $user didn't accept any requests from auth
                 $friendLink = $user->friends->firstwhere('receiver_id',Auth::user()->id);
@@ -58,6 +56,38 @@ class UserController extends Controller
             $friends = $this->showUserFriends($user);
             return view('user/friend-user',compact('user','friends')); //return view of other non-friend profile
         }
+    }
+
+
+    public function indexFriendlistPage($id)
+    {
+
+        if($id == Auth::user()->id){ //if the auth user is looking for
+            $user = Auth::user();
+            $friends = $this->showUserFriends($user); //get Auth users friends
+            return view('friends',compact('friends'));
+
+        } else {
+            $user = User::find($id);
+            if($user === null){
+                return abort('404');
+            }
+            $friends = $this->showUserFriends($user); //get the other users friends
+
+            $isFriend = false;
+            foreach ($friends as $friend){
+                if($friend->id == Auth::user()->id){ //if one of the users has the id of the auth user, they are friends
+                    $isFriend = true;
+                    break;
+                }
+            }
+
+            if($isFriend === false){
+                return abort('404');
+            }
+        }
+
+        return view('friends',compact('friends'));
     }
 
 
@@ -195,6 +225,5 @@ class UserController extends Controller
         }
 
         return view('/search/user-search',compact('users','GET'));
-
     }
 }

@@ -47,6 +47,9 @@ Vue.component('event-messages', require('./components/eventDisplay/eventMessages
 Vue.component('user-search', require('./components/search/userSearch').default);
 Vue.component('event-search', require('./components/search/eventSearch').default);
 
+//friendlist display component
+Vue.component('friend-list', require('./components/friends/friendList').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
