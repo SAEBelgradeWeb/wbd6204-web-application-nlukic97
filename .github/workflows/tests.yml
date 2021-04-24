@@ -14,7 +14,7 @@ jobs:
       - name: Create Database
         run: |
           sudo systemctl start mysql
-          mysql --user="root" --password="test" -e "CREATE DATABASE wbd6204_final character set UTF8mb4 collate utf8mb4_bin;"
+          mysql --user="root" --password="" -e "CREATE DATABASE laravel character set UTF8mb4 collate utf8mb4_bin;"
       - name: Remove composer.lock
         run: rm composer.lock
       - name: Install Composer Dependencies
