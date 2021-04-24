@@ -56,7 +56,7 @@ class EventStatusUpdate extends Command
             $eventTimestamp = Carbon::parse("$event->date $event->time")->getTimestamp();
             $currTimestamp = Carbon::now()->getTimestamp();
 
-            //if the difference between the timestamps are less than 6 hours
+            //if the difference between the timestamps are less than 6 hours for each game
             if(($eventTimestamp - $currTimestamp) <= ($this->hours *60*60)){
                 $this->checkPlayerCount($event);
             }
@@ -79,7 +79,7 @@ class EventStatusUpdate extends Command
         ]);
         $this->sendNotifications($event,$status);
     }
-    
+
     public function sendNotifications($event,$status){
         foreach ($event->users as $user){
             EventNotification::create([
