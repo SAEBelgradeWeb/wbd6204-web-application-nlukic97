@@ -13,6 +13,7 @@
                             <li>Type: {{$notif->source}}</li>
                             <li>...sent a new <a href="/event/{{$notif->event_id}}">message</a></li>
                             <li>Status: {{$notif->seen}}</li>
+                            <li>time: {{$notif->created_at}}</li>
                         </ul>
                         @elseif($notif->source === 'friendship' AND $notif->type === 'request')
                         <ul>
@@ -20,6 +21,7 @@
                             <li>Type: {{$notif->source}}</li>
                             <li>...has sent you a friend request</li>
                             <li>Status: {{$notif->seen}}</li>
+                            <li>time: {{$notif->created_at}}</li>
                         </ul>
                     @elseif($notif->source === 'friendship' AND $notif->type === 'accept')
                         <ul>
@@ -27,6 +29,7 @@
                             <li>Type: {{$notif->source}}</li>
                             <li>...has accepted your friend request</li>
                             <li>Status: {{$notif->seen}}</li>
+                            <li>time: {{$notif->created_at}}</li>
                         </ul>
                         @endif
 
