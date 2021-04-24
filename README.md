@@ -1,5 +1,7 @@
 # HoopShooters
  _hoopshooters.com_
+ 
+[![Laravel Dusk Tests](https://github.com/SAEBelgradeWeb/wbd6204-web-application-nlukic97/actions/workflows/tests.yml/badge.svg)](https://github.com/SAEBelgradeWeb/wbd6204-web-application-nlukic97/actions/workflows/tests.yml)
 
 Google Docs Documentation: 
 _https://docs.google.com/document/d/1xyKK3HZJWcTu-FQt0D4eE4jL0h1QM5KMkQPc_QuNXwI/edit?usp=sharing_
