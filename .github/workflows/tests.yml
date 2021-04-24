@@ -29,12 +29,12 @@ jobs:
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
       - name: Run Laravel Server
         run: php artisan serve &
-      - name: Run artisan tests
-        run: php artisan dusk
+      - name: Run unit and feature tests
+        run: php artisan test
       - name: Run Dusk Tests
         env:
           APP_URL: "http://127.0.0.1:8000"
-        run: php artisan test
+        run: php artisan dusk
       - name: Upload Screenshots
         if: failure()
         uses: actions/upload-artifact@v2
