@@ -23,21 +23,6 @@ class ExampleTest extends DuskTestCase
             $browser->pause(1500);
 
             $browser->assertSee('Admin2 Adminovic2');
-
-            $browser->click('a[href="/event-search"]');
-            $browser->pause(2000);
-
-            $browser->click('select');
-            $browser->click('option[value="1"]');
-
-            $browser->pause(1000);
-            $browser->click("a[href='/event/1']");
-
-            $browser->pause(1500);
-            $browser->assertSee('Host: Admin Adminovic');
-
-
-
         });
     }
 }
