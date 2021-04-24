@@ -17,12 +17,12 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/');
-            $browser->type('email', 'admin2@admin.com');
+            $browser->type('email', 'admin@admin.com');
             $browser->type('password', 'admin1234');
             $browser->press('Login');
             $browser->pause(1500);
 
-            $browser->assertSee('Admin2 Adminovic2');
+            $browser->assertSee('Admin Adminovic');
         });
     }
 }
