@@ -1,9 +1,9 @@
 name: Laravel Dusk Tests
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 jobs:
   dusk-php:
     runs-on: ubuntu-latest
