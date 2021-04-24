@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Court;
 use App\Models\Event;
+use App\Models\EventNotification;
 use App\Models\EventUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -168,11 +169,21 @@ class EventController extends Controller
         // and the game has status of 'created' --> which can still be cancelled
         if( $event != null
             AND $event->host_id == Auth::user()->id
-            AND $event->status == 'created')
-        {
+            AND $event->status == 'created') {
+
             $event->update([
                 'status'=>'cancelled'
             ]);
+
+            foreach ($event->users as $user) {
+                if($user->id != $event->host_id){
+                    EventNotification::create([
+                        'receiver_id'=>$user->id,
+                        'event_id'=>$event->id,
+                        'type'=>'cancelled'
+                    ]);
+                }
+            }
 
         }
 

@@ -31,6 +31,25 @@
                             <li>Status: {{$notif->seen}}</li>
                             <li>time: {{$notif->created_at}}</li>
                         </ul>
+
+                        @elseif($notif->source === 'event' AND $notif->type === 'cancelled')
+                            <ul>
+                                <li><a href="/event/{{$notif->event_id}}">Event</a></li>
+                                <li>Type: {{$notif->source}}</li>
+                                <li>... has been cancelled</li>
+                                <li>Status: {{$notif->seen}}</li>
+                                <li>time: {{$notif->created_at}}</li>
+                            </ul>
+
+                        {{--still have to make the chron lob that would make an event confirmed and tell everyone--}}
+                    @elseif($notif->source === 'event' AND $notif->type === 'confirmed')
+                        <ul>
+                            <li><a href="/event/{{$notif->event_id}}">Event</a></li>
+                            <li>Type: {{$notif->source}}</li>
+                            <li>... has been confirmed</li>
+                            <li>Status: {{$notif->seen}}</li>
+                            <li>time: {{$notif->created_at}}</li>
+                        </ul>
                         @endif
 
 

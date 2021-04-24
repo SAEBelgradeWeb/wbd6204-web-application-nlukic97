@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\EventNotification;
 use App\Models\FriendshipNotification;
 use App\Models\MessageNotification;
 use App\Models\User;
@@ -14,8 +16,7 @@ class NotificationController extends Controller
     {
         $unsortedNotifications = collect();
 
-        // 1 - friendship notifications
-
+        // 1 ----------------------------- friendship notifications----------------------------
         $friendNotifications = FriendshipNotification::where('receiver_id',Auth::user()->id)->get();
         //these two loops are needed. The first collection is to be displayed to the user upon load
         foreach ($friendNotifications as $item){
@@ -30,8 +31,7 @@ class NotificationController extends Controller
             $item->save();
         }
 
-        // 2 - message notifications
-
+        // 2 ----------------------------- message notifications----------------------------
         $msgNotifications = MessageNotification::where('receiver_id',Auth::user()->id)->get();
         foreach ($msgNotifications as $item){
             $unsortedNotifications->add($item);//adding any existing notification to collection
@@ -43,20 +43,21 @@ class NotificationController extends Controller
             $item->save();
         }
 
-        $notifications = $unsortedNotifications->sortByDesc('created_at');
-//        dd($notifications);
 
+        // 3 ----------------------------- event notifications----------------------------
+        $eventNotifications = EventNotification::where('receiver_id',Auth::user()->id)->get();
+        foreach ($eventNotifications as $item){
+            $unsortedNotifications->add($item); //adding any existing notification to collection
+        }
 
-        // 3 - event notifications   ---- still to be made
-        /*$eventNotifications = MessageNotification::where('receiver_id',Auth::user()->id)
-            ->orderBy('updated_at','DESC')
-            ->get();
-
-        $msgCopy = FriendshipNotification::where('receiver_id',Auth::user()->id)->get();
-        foreach ($msgCopy as $item){
+        $eventNotificationsCopy = EventNotification::where('receiver_id',Auth::user()->id)->get();
+        foreach ($eventNotificationsCopy as $item){
             $item->seen = 1;
             $item->save();
-        }*/
+        }
+
+
+        $notifications = $unsortedNotifications->sortByDesc('created_at');
         return view('notifications',compact('notifications'));
     }
 }
