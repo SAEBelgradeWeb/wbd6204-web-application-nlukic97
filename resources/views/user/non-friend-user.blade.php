@@ -13,15 +13,5 @@
             <other-profile-bio
                 bio="{{$user->bio}}"
             ></other-profile-bio>
-
-
-        {{-- Hide this from any visitor that is not our friend --}}
-{{--            <other-profile-content
-                age="{{$user->age}}"
-                sex="{{$user->sex}}"
-                city="{{$user->location->city}}"
-                event="{{$user->event}}"
-            ></other-profile-content>--}}
-
     </div>
 @endsection

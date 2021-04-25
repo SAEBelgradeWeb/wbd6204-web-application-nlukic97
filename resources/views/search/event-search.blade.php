@@ -2,12 +2,15 @@
 
 @section('content')
     <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8 text-center">
-                <h1>Event search page</h1>
-                <event-search></event-search>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">Please select a location.</h2>
             </div>
         </div>
+
+        {{--the event filter results component--}}
+        <event-search></event-search>
+
 
     </div>
 @endsection

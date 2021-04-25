@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'location_id' => '1',
             'email' => 'admin@admin.com',
             'username' => 'Adminsky',
-            'image_url' => 'ZRvfy3XNjnh4NDjmXCjApm8p3M1jsu1JX73IpWrP.jpg',
+            'image_url' => '0eCLjuK6Hq69Xi0ZY5htykp5MIIcrfiJOebHSrb9.jpg',
             'bio'=>'',
             'email_verified_at' => now(),
             'password' => Hash::make('admin1234'), // password

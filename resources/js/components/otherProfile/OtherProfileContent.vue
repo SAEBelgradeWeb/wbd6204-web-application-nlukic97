@@ -5,7 +5,7 @@
             <div class=" col-lg-4 col-md-10 col-10">
 
                 <!--About area-->
-                <span>About:</span>
+                <h4 class="pl-2">About</h4>
                 <ul class="list-group">
                     <li class="list-group-item">Age: {{this.age}}</li>
                     <li class="list-group-item">sex: {{this.sex}}</li>
@@ -13,8 +13,11 @@
                 </ul>
 
                 <!--Friends area -->
-                <a :href="getFriendsUri()"><span>Friends:</span></a>
-                <div class="card pl-3 pr-3 pb-3 pt-2">
+                <div class="d-flex justify-content-between pt-3">
+                    <h4 class="pl-2">Friends</h4>
+                    <p class="d-inline-block pr-2"><a :href="getFriendsUri()">See all</a></p>
+                </div>
+                <div class="card pl-3 pr-3">
                     <div class="row">
                         <div class="col-4 text-center pb-2 pt-3" v-for="friend in previewFriends">
                             <div>
@@ -31,12 +34,11 @@
             <!--  Content - could be reserved for past activities (played games and such)           -->
             <div class="col-lg-7 col-md-12 col-12">
                 <ul class="list-group">
-                    <li><span>Activity</span></li>
+                    <li><h4 class="text-center">Events</h4></li>
 
                     <li class="list-group-item mb-4" v-for="event in parsedEvents">
-                        <a :href="makeEventUrl(event)"><h3>{{event.title}}</h3></a>
-                        <p>Time: {{event.time}}</p>
-                        <p>Date: {{event.date}}</p>
+                        <a :href="makeEventUrl(event)"><h4>{{event.title}}</h4></a>
+                        <p>{{event.date}} at {{event.time}}</p>
                     </li>
 
                 </ul>
@@ -123,52 +125,12 @@
     }
 
     .col-4 div {
-        /*border: 1px solid purple;*/
-        border-radius: 10px;
         overflow: hidden;
-        height:80px;
     }
 
     .col-4 img {
         width: 100%;
-    }
-
-
-    /*display of the friends avatar as a square */
-    @media only screen and (max-width: 1199px) {
-        .col-4 div {
-            height:60px;
-        }
-    }
-
-    @media only screen and (max-width: 991px) {
-        .col-4 div {
-            height:150px;
-        }
-    }
-
-    @media only screen and (max-width: 767px) {
-        .col-4 div {
-            height:105px;
-        }
-    }
-
-
-    @media only screen and (max-width: 526px) {
-        .col-4 div {
-            height:70px;
-        }
-    }
-
-    @media only screen and (max-width: 420px) {
-        .col-4 div {
-            height:60px;
-        }
-    }
-    @media only screen and (max-width: 383px) {
-        .col-4 div {
-            height:50px;
-        }
+        border-radius: 10px;
     }
 
 </style>

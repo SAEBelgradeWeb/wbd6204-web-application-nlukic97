@@ -1,20 +1,30 @@
 <template>
     <div>
-        <h1>this is the event search vue</h1>
-        <div>
-            <label for="location_id">Location</label>
-            <select name="location_id" id="location_id" @input="handleSelectChange($event)">
-                <option value="0" selected>All</option>
-                <option v-for="location in locations" :value="location.id">{{location.city}}</option>
-            </select>
+        <div class="row d-flex justify-content-center">
+            <div class="form-row">
+                <select name="location_id" id="location_id" class="form-control" @input="handleSelectChange($event)">
+                    <option value="0" selected>All</option>
+                    <option v-for="location in locations" :value="location.id">{{location.city}}</option>
+                </select>
+            </div>
+        </div>
 
-            <ul v-for="event in events">
-                <li><a :href="getEventURI(event.id)">{{event.title}}</a></li>
-                <li>{{event.date}} {{event.time}}</li>
-                <li>{{event.location.city}}</li>
-                <li>Max players: {{event.player_num}}</li>
-                <li>Court name: {{event.court.title}}</li>
-            </ul>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6" v-for="event in events">
+                <ul class="m-3 p-0 card d-flex justify-content-center pl-3 pr-3 pt-3 pb-2">
+                    <li>
+                        <div class="d-flex justify-content-between">
+                            <h4><a :href="getEventURI(event.id)">{{event.title}}</a></h4>
+                            <p class="d-inline-block">{{event.location.city}}</p>
+                        </div>
+                    </li>
+                    <li><span>Players:</span> {{event.player_num}}.</li>
+                    <li><span>Court:</span> "{{event.court.title}}"</li>
+                    <li><span>Address:</span> {{event.court.address}}, {{event.location.city}}.</li>
+                    <li><span>Time:</span> {{event.date}} at {{event.time}}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -64,5 +74,13 @@
 </script>
 
 <style scoped>
+    ul {
+        list-style-type:none;
+        margin:0;
+        /*padding:0!important;*/
+    }
 
+    span {
+        font-weight: bold;
+    }
 </style>
