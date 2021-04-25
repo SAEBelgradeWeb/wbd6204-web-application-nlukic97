@@ -88,8 +88,30 @@ class User extends Authenticatable
     }
 
 
+    // Notifications --------------
     public function friendshipNotifications()
     {
         return $this->hasMany(FriendshipNotification::class,'receiver_id','id');
+    }
+
+    public function messageNotifications()
+    {
+        return $this->hasMany(MessageNotification::class,'receiver_id','id');
+    }
+
+    public function eventNotifications()
+    {
+        return $this->hasMany(EventNotification::class,'receiver_id','id');
+    }
+
+
+    // getting the number of all unseen notification
+    public function getUnseenNotificationsAttribute()
+    {
+        $unseenFriendReq = count($this->friendshipNotifications->where('seen',false));
+        $unseerMsgNotif = count($this->messageNotifications->where('seen',false));
+        $unseerEventNotif = count($this->eventNotifications->where('seen',false));
+
+        return $unseenFriendReq + $unseerMsgNotif + $unseerEventNotif;
     }
 }

@@ -155,6 +155,7 @@ class UserController extends Controller
     }
 
 
+
     //user search
     public function indexSearchPage()
     {

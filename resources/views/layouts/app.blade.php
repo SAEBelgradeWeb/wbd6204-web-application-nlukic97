@@ -63,6 +63,16 @@
                                     <a class="dropdown-item" href="/user/{{Auth::user()->id}}">
                                         {{ __('Profile') }}
                                     </a>
+
+                                    @if(Auth::user()->UnseenNotifications <= 0 OR str_replace('/','',$_SERVER['REQUEST_URI']) == 'notifications')
+                                        <a class="dropdown-item" href="/notifications">
+                                            {{ __('Notifications') }}
+                                        </a>
+                                    @else
+                                        <a class="dropdown-item" href="/notifications">
+                                            {{ __('Notifications') }} {{Auth::user()->UnseenNotifications }}
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('account-settings') }}">
                                         {{ __('Settings') }}
                                     </a>
