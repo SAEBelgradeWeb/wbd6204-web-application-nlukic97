@@ -35,8 +35,8 @@ Route::get('/friends/{id}', [App\Http\Controllers\UserController::class, 'indexF
 Route::get('/removeFriend/{id}', [App\Http\Controllers\FriendshipController::class, 'removeFriend'])->middleware('auth');
 
 
-Route::get('/upload-image', [App\Http\Controllers\UserController::class, 'uploadImagePage'])->middleware('auth');
-Route::post('/upload-image', [App\Http\Controllers\UserController::class, 'storeImage'])->middleware('auth');
+Route::get('/upload-image', [App\Http\Controllers\ImageUploadController::class, 'uploadImagePage'])->middleware('auth');
+Route::post('/upload-image', [App\Http\Controllers\ImageUploadController::class, 'storeImage'])->middleware('auth');
 
 // event routes
 Route::get('/event/{id}',[\App\Http\Controllers\EventController::class,'indexEvent'])->middleware('auth');

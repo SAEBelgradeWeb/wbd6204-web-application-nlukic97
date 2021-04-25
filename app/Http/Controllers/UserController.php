@@ -155,36 +155,6 @@ class UserController extends Controller
     }
 
 
-
-    //uploading the avatar
-    public function uploadImagePage(){
-        return view('upload-image');
-    }
-
-
-
-    public function storeImage(Request $request){
-        $request->validate([
-            'avatar'=>'required|image'
-        ]);
-
-        $path = $request->file('avatar')->store('public/avatars');
-        $imageName = str_replace('public/avatars/','',$path);
-
-        $user = User::find(Auth::user()->id);
-
-        if($user->image_url != '' OR $user->image_url != null){ //deletes the old profile image
-            unlink(getcwd()."\\storage\\avatars\\".$user->image_url); //check if this executes properly on the server
-        }
-
-        $user->image_url = $imageName;
-        $user->save();
-
-        return redirect("/user/".Auth::user()->id);
-    }
-
-
-
     //user search
     public function indexSearchPage()
     {
