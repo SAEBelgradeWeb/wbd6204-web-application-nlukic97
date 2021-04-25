@@ -1,20 +1,20 @@
 <template>
     <div>
-        <div>
-            <label for="cities">Location_id</label>
-            <select name="cities" id="cities" @change="addCourts">
+        <div class="form-group row">
+            <label for="cities" class="form-text m-0">City</label>
+            <select class="form-control" name="cities" id="cities" @change="addCourts">
                 <option value=""></option>
                 <option v-for="city in cities" :value="city.id">{{city.city}}</option>
             </select>
         </div>
 
-        <div>
-            <label for="court_id">court_id</label>
-            <select name="court_id" id="court_id" :class="{'d-none' : this.displayCourtSelect === false}">
+        <div class="form-group row">
+            <label for="court_id" class="form-text m-0">Court</label>
+            <select class="form-control" name="court_id" id="court_id" :class="{'d-none' : this.displayCourtSelect === false}">
                 <option value=""></option>
                 <option v-for="court in courts" :value="court.id">{{court.title}} - {{court.price}} $</option>
             </select>
-            <span :class="{'d-none' : this.displayCourtSelect === true, 'text-danger' : 1 == 1}">Please select a location</span>
+            <span :class="{'d-none' : this.displayCourtSelect === true, 'text-danger form-control bg-light' : 1 == 1}">Please select a city</span>
         </div>
     </div>
 </template>

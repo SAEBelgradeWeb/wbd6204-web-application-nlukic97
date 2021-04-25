@@ -70,10 +70,12 @@ class EventController extends Controller
     {
         $request->validate([
             'title'=>'required|string',
-            'date'=>'required',
-            'time'=>'required',
-            'court_id'=>'required'
+            'date'=>'required|date',
+            'time'=>'required|date_format:H:i',
+            'court_id'=>'required',
+            'player_num'=>'required|integer|max:10|min:2'
         ]);
+
 
         $request['status'] = 'pending';
         $request['host_id'] = Auth::user()->id;

@@ -3322,6 +3322,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "eventSearch",
   data: function data() {
@@ -42396,12 +42400,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [
-      _c("label", { attrs: { for: "cities" } }, [_vm._v("Location_id")]),
+    _c("div", { staticClass: "form-group row" }, [
+      _c("label", { staticClass: "form-text m-0", attrs: { for: "cities" } }, [
+        _vm._v("City")
+      ]),
       _vm._v(" "),
       _c(
         "select",
         {
+          staticClass: "form-control",
           attrs: { name: "cities", id: "cities" },
           on: { change: _vm.addCourts }
         },
@@ -42418,12 +42425,17 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c("label", { attrs: { for: "court_id" } }, [_vm._v("court_id")]),
+    _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        { staticClass: "form-text m-0", attrs: { for: "court_id" } },
+        [_vm._v("Court")]
+      ),
       _vm._v(" "),
       _c(
         "select",
         {
+          staticClass: "form-control",
           class: { "d-none": this.displayCourtSelect === false },
           attrs: { name: "court_id", id: "court_id" }
         },
@@ -42444,10 +42456,10 @@ var render = function() {
         {
           class: {
             "d-none": this.displayCourtSelect === true,
-            "text-danger": 1 == 1
+            "text-danger form-control bg-light": 1 == 1
           }
         },
-        [_vm._v("Please select a location")]
+        [_vm._v("Please select a city")]
       )
     ])
   ])
@@ -43591,7 +43603,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row d-flex justify-content-center" }, [
-      _c("div", { staticClass: "form-row" }, [
+      _c("div", { staticClass: "col-5" }, [
         _c(
           "select",
           {
@@ -43621,57 +43633,54 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row" },
+      { staticClass: "row mt-4" },
       _vm._l(_vm.events, function(event) {
-        return _c("div", { staticClass: "col-lg-4 col-md-6 col-sm-6" }, [
-          _c(
-            "ul",
-            {
-              staticClass:
-                "m-3 p-0 card d-flex justify-content-center pl-3 pr-3 pt-3 pb-2"
-            },
-            [
-              _c("li", [
-                _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _c("h4", [
-                    _c("a", { attrs: { href: _vm.getEventURI(event.id) } }, [
-                      _vm._v(_vm._s(event.title))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "d-inline-block" }, [
-                    _vm._v(_vm._s(event.location.city))
+        return _c("div", { staticClass: "col-lg-4 col-md-6 col-sm-6 mb-4" }, [
+          _c("ul", { staticClass: "p-0 card d-flex justify-content-center" }, [
+            _c("li", { staticClass: "card-header" }, [
+              _c("div", { staticClass: "d-flex justify-content-between" }, [
+                _c("h4", [
+                  _c("a", { attrs: { href: _vm.getEventURI(event.id) } }, [
+                    _vm._v(_vm._s(event.title))
                   ])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "d-inline-block" }, [
+                  _vm._v(_vm._s(event.location.city))
                 ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("Players:")]),
-                _vm._v(" " + _vm._s(event.player_num) + ".")
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("Court:")]),
-                _vm._v(' "' + _vm._s(event.court.title) + '"')
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("Address:")]),
-                _vm._v(
-                  " " +
-                    _vm._s(event.court.address) +
-                    ", " +
-                    _vm._s(event.location.city) +
-                    "."
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("span", [_vm._v("Time:")]),
-                _vm._v(" " + _vm._s(event.date) + " at " + _vm._s(event.time))
               ])
-            ]
-          )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "card-body" }, [
+              _c("ul", [
+                _c("li", [
+                  _c("span", [_vm._v("Players:")]),
+                  _vm._v(" " + _vm._s(event.player_num) + ".")
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("span", [_vm._v("Court:")]),
+                  _vm._v(' "' + _vm._s(event.court.title) + '"')
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("span", [_vm._v("Address:")]),
+                  _vm._v(
+                    " " +
+                      _vm._s(event.court.address) +
+                      ", " +
+                      _vm._s(event.location.city) +
+                      "."
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("span", [_vm._v("Time:")]),
+                  _vm._v(" " + _vm._s(event.date) + " at " + _vm._s(event.time))
+                ])
+              ])
+            ])
+          ])
         ])
       }),
       0
