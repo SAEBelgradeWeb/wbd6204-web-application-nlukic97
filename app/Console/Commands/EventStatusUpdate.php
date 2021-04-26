@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\EventNotification;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class EventStatusUpdate extends Command
 {
@@ -88,6 +89,8 @@ class EventStatusUpdate extends Command
                 'type'=>$status
             ]);
         }
+
+        Log::info('Izvrseno');
     }
 
 
