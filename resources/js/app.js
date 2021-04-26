@@ -46,7 +46,7 @@ Vue.component('send-message-box', require('./components/eventDisplay/sendMessage
 
 //user search components
 Vue.component('user-search', require('./components/search/userSearch').default);
-Vue.component('user-search', require('./components/search/userSearch').default);
+Vue.component('event-search', require('./components/search/eventSearch').default);
 
 //event search components
 Vue.component('individual-user-result', require('./components/search/individualUserResult').default);

@@ -60,8 +60,8 @@
     }
     img {
         border-radius: 10px;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 
 </style>

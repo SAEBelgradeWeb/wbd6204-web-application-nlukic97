@@ -1,20 +1,13 @@
 <template>
     <div>
+        <h3>Info</h3>
         <ul>
-            <li>Title: {{this.parsedEvent.title}}</li>
             <li>Players: {{(this.parsedEvent.users).length}} / {{this.parsedEvent.player_num}}</li>
             <li>Host: <a :href="getUserUrl(this.parsedHost.id)">{{this.parsedHost.name}}</a></li>
+            <li>"{{this.parsedCourt.title}}", {{this.parsedCourt.address}}, {{this.city}}</li>
         </ul>
 
-        <h1>Court</h1>
-        <ul>
-            <li>{{this.parsedCourt.title}}</li>
-
-            <li>{{this.city}}</li>
-            <li>{{this.parsedCourt.address}}</li>
-        </ul>
-
-        <h1>Participants</h1>
+        <h3>Participants</h3>
         <ul>
             <a v-for="participant in parsedEvent.users" :href="getUserUrl(participant.id)"><li>{{participant.name}}</li></a>
         </ul>
@@ -52,5 +45,7 @@
 </script>
 
 <style scoped>
-
+    ul {
+        list-style-type: none;
+    }
 </style>

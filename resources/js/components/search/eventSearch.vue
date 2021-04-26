@@ -60,7 +60,6 @@
                 try {
                     let response = await axios.post('/api/event-search',{id:data})
                     this.events = response.data
-                    console.log(this.events)
                 } catch(e){
                     console.log(e)
                 }
