@@ -2,15 +2,15 @@
     <div>
         <h3>Messages</h3>
 
-        <div>
+        <div class="card">
             <!-- v-if - option 1 ->>> when a user who wrote a message is still a member of the event-->
             <div v-for="(message,index) in messages"
                  :key="index"
                  v-if="getUsersName(message.user_id)"
-                 class="d-flex justify-content"
+                 class="card-body d-flex justify-content mt-3 mb-4 p-2"
             >
                 <img :src="getUsersImage(message.user_id)" alt="">
-                <div>
+                <div class="ml-3">
                     <a :href="getUserUrl(message.user_id)">
                         <h5>{{getUsersName(message.user_id)}}</h5>
                     </a>

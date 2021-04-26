@@ -43067,21 +43067,35 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
+      { staticClass: "card" },
       _vm._l(_vm.messages, function(message, index) {
         return _vm.getUsersName(message.user_id)
-          ? _c("div", { key: index, staticClass: "d-flex justify-content" }, [
-              _c("img", {
-                attrs: { src: _vm.getUsersImage(message.user_id), alt: "" }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("a", { attrs: { href: _vm.getUserUrl(message.user_id) } }, [
-                  _c("h5", [_vm._v(_vm._s(_vm.getUsersName(message.user_id)))])
-                ]),
+          ? _c(
+              "div",
+              {
+                key: index,
+                staticClass: "card-body d-flex justify-content mt-3 mb-4 p-2"
+              },
+              [
+                _c("img", {
+                  attrs: { src: _vm.getUsersImage(message.user_id), alt: "" }
+                }),
                 _vm._v(" "),
-                _c("div", [_vm._v(_vm._s(message.message))])
-              ])
-            ])
+                _c("div", { staticClass: "ml-3" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: _vm.getUserUrl(message.user_id) } },
+                    [
+                      _c("h5", [
+                        _vm._v(_vm._s(_vm.getUsersName(message.user_id)))
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(_vm._s(message.message))])
+                ])
+              ]
+            )
           : _c("ul", { staticClass: "text-muted" }, [
               _vm._m(0),
               _vm._v(" "),
