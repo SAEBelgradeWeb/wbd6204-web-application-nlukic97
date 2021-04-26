@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <form action="/user-search-query" method="GET">
+        <form action="/user-search-query" method="GET" class="mb-3">
             @if($GET !== null) {{--Send the prop data to display the query inputs --}}
                 <user-search
                     query_prop="{{$GET['query']}}"
@@ -20,14 +20,13 @@
                     location_id_prop=""
                 ></user-search>
             @endif
-            <button type="submit">Search</button>
         </form>
 
         @foreach($users as $user)
-            <ul>
-                <a href="/user/{{$user->id}}"><li>{{$user->name}}</li></a>
-                <li>{{$user->location->city}}</li>
-            </ul>
+            <individual-user-result
+                user_prop="{{$user}}"
+                city_prop="{{$user->location->city}}"
+            ></individual-user-result>
         @endforeach
     </div>
 @endsection

@@ -44,9 +44,12 @@ Vue.component('event-info', require('./components/eventDisplay/eventInfo').defau
 Vue.component('event-messages', require('./components/eventDisplay/eventMessages').default);
 Vue.component('send-message-box', require('./components/eventDisplay/sendMessageBox').default);
 
-//Search components
+//user search components
 Vue.component('user-search', require('./components/search/userSearch').default);
-Vue.component('event-search', require('./components/search/eventSearch').default);
+Vue.component('user-search', require('./components/search/userSearch').default);
+
+//event search components
+Vue.component('individual-user-result', require('./components/search/individualUserResult').default);
 
 //friendlist display component
 Vue.component('friend-list', require('./components/friends/friendList').default);

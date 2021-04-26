@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <h1>this is the event search vue</h1>
-        <div>
+    <div class="row d-flex justify-content-center">
+        <div class="form-group col-md-3 col-10">
             <label for="query">Search</label>
-            <input type="text" name="query" id="query" :value="this.getRequestData.query">
+            <input class='form-control' type="text" name="query" id="query" :value="this.getRequestData.query">
         </div>
 
-        <div>
+        <div class="form-group col-md-3 col-10">
             <label for="location_id">Location</label>
-            <select name="location_id" id="location_id">
+            <select class='form-control' name="location_id" id="location_id">
                 <option value="" :selected="this.getRequestData.location_id === '' ">All</option>
 
                 <option
@@ -19,6 +18,9 @@
                 </option>
 
             </select>
+        </div>
+        <div class="form-group col-md-2 col-10 text-center">
+            <button class="btn btn-primary" type="submit">Search</button>
         </div>
 
     </div>
@@ -66,5 +68,8 @@
 </script>
 
 <style scoped>
+    button {
+        margin-top:31px;
+    }
 
 </style>

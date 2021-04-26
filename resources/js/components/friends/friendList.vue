@@ -1,13 +1,11 @@
 <template>
-    <div class="row">
-        <div class="col-12 text-center">
-            <h3>FriendsList</h3>
+    <div class="row d-flex justify-content-around">
+        <div v-for="friend in friends" class="card mb-2 col-lg-8 col-md-7 col-sm-9 col-10">
+            <div class="card-body d-flex justify-content-start align-items-center">
+                <div><img :src="getImageUrl(friend)" alt=""></div>
+                <a :href="getFriendUrl(friend.id)"><h3 class="pl-4">{{friend.name}}</h3></a>
+            </div>
         </div>
-
-        <ul v-for="friend in friends" class="col-12">
-            <li><img :src="getImageUrl(friend)" alt=""></li>
-            <a :href="getFriendUrl(friend.id)"><li>{{friend.name}}</li></a>
-        </ul>
 
     </div>
 </template>
@@ -51,5 +49,13 @@
 </script>
 
 <style scoped>
+    div.card-body {
+        height:122px;
+    }
+    img {
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+    }
 
 </style>
