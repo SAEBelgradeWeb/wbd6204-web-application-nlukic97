@@ -2240,6 +2240,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "friendDisplay",
   props: ['friends_prop'],
@@ -42676,11 +42678,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "row" },
     [
-      _c("h1", [_vm._v("FriendsList")]),
+      _vm._m(0),
       _vm._v(" "),
       _vm._l(_vm.friends, function(friend) {
-        return _c("ul", [
+        return _c("ul", { staticClass: "col-12" }, [
           _c("li", [
             _c("img", { attrs: { src: _vm.getImageUrl(friend), alt: "" } })
           ]),
@@ -42694,7 +42697,16 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 text-center" }, [
+      _c("h3", [_vm._v("FriendsList")])
+    ])
+  }
+]
 render._withStripped = true
 
 

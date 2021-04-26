@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <h1>FriendsList</h1>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3>FriendsList</h3>
+        </div>
 
-        <ul v-for="friend in friends">
+        <ul v-for="friend in friends" class="col-12">
             <li><img :src="getImageUrl(friend)" alt=""></li>
             <a :href="getFriendUrl(friend.id)"><li>{{friend.name}}</li></a>
         </ul>
