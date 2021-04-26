@@ -20,6 +20,7 @@
             </div>
             <!--v-if - option 2 ->>> when a user who wrote a message is not a member of the event-->
             <ul v-else class="text-muted">
+                <div></div>
                 <li><h5>Former member</h5></li>
                 <li>{{message.message}}</li>
             </ul>

@@ -2083,6 +2083,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "eventMessages",
   props: ['prop_messages', 'prop_users'],
@@ -8497,7 +8498,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv.card-body[data-v-4e58c8be] {\n    height:122px;\n}\nimg[data-v-4e58c8be] {\n    border-radius: 50%;\n    width: 80px;\n    height: 80px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv.card-body[data-v-4e58c8be] {\n    height:122px;\n}\nimg[data-v-4e58c8be] {\n    border-radius: 50%;\n    height: 80px;\n    width: 80px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -43097,6 +43098,8 @@ var render = function() {
               ]
             )
           : _c("ul", { staticClass: "text-muted" }, [
+              _c("div"),
+              _vm._v(" "),
               _vm._m(0),
               _vm._v(" "),
               _c("li", [_vm._v(_vm._s(message.message))])
