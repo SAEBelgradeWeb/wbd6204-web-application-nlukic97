@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-8 text-center">
+            <div class="col-md-8 text-center" id="notificationList">
                 <h1>Notifications</h1>
 
                 @foreach($notifications as $notif)

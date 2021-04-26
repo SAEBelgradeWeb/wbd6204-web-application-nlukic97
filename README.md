@@ -9,6 +9,9 @@ _https://docs.google.com/document/d/1xyKK3HZJWcTu-FQt0D4eE4jL0h1QM5KMkQPc_QuNXwI
 made by nlukic97 
 _https://www.github.com/nlukic97_
 
+Live server:
+_http://hoopshooters.club/_
+
 # About
 Picture a situation: You like playing basketball, but none of your friends are into it, or you moved to a new city and 
 you don't know anybody who plays basketball. This is the exact question a developer was faced with. After much 
