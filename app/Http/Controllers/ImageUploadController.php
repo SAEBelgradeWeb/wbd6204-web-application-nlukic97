@@ -25,7 +25,7 @@ class ImageUploadController extends Controller
         $imageName = str_replace('public/avatars/','',$path);
 
         //changing the size of the image to be 300 x 300 -> fit, not resize.
-        $image = Image::make(getcwd()."\\storage\\avatars\\".$imageName)
+        $image = Image::make(getcwd()."/storage/avatars/".$imageName)
             ->orientate()
             ->fit(300,300, function ($constraint) {
                 $constraint->upsize();
