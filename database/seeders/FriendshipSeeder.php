@@ -14,8 +14,8 @@ class FriendshipSeeder extends Seeder
      */
     public function run()
     {
-        Friendship::factory(10)->create();
 
+        //not using a factory because I do not want to risk causing errors
 
         //creating admin friendship rows
         Friendship::create(['receiver_id' => 1,'requester_id' => 2,'status'=> 'pending']);

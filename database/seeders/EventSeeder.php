@@ -19,7 +19,7 @@ class EventSeeder extends Seeder
         Event::create([
             'title' => 'Admin\'s event',
             'status' => 'created',
-            'date' => "2021-06-28",
+            'date' => "2021-04-28",
             'time' =>'16:00',
             'host_id' => 1,
             'court_id' => 1,

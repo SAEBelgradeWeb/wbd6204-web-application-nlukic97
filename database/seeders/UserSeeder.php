@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'location_id' => '1',
             'email' => 'admin@admin.com',
             'username' => 'Adminsky',
-            'image_url' => '0eCLjuK6Hq69Xi0ZY5htykp5MIIcrfiJOebHSrb9.jpg',
+            'image_url' => '',
             'bio'=>'',
             'email_verified_at' => now(),
             'password' => Hash::make('admin1234'), // password
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         ]);
 
 
-        User::factory(98)->create();
+        User::factory(8)->create();
 
         User::create([
             'name' => 'Admin2 Adminovic2',
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             'location_id' => '1',
             'email' => 'admin2@admin.com',
             'username' => 'Adminsky2',
-            'image_url' => 'ZRvfy3XNjnh4NDjmXCjApm8p3M1jsu1JX73IpWrP.jpg',
+            'image_url' => '',
             'bio'=>'',
             'email_verified_at' => now(),
             'password' => Hash::make('admin1234'), // password

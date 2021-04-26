@@ -17,7 +17,7 @@ class MessageSeeder extends Seeder
     {
 
 
-        $usersIds = [1,2,4,5,7];
+        $usersIds = [1,2,4,5,7]; //the users that are in the game 1, owned by user 1
         $i = 1;
         while($i < count($usersIds)){
 

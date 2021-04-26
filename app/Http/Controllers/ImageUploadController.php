@@ -36,7 +36,7 @@ class ImageUploadController extends Controller
         $user = User::find(Auth::user()->id);
 
         //deleting the old profile picture
-        $deleteImagePath = getcwd()."\\storage\\avatars\\".$user->image_url;
+        $deleteImagePath = getcwd()."/storage/avatars/".$user->image_url;
         if($user->image_url != '' OR $user->image_url != null){ //delete old profile picture
             if(file_exists($deleteImagePath)){
                 unlink($deleteImagePath); //check if this executes properly on the server

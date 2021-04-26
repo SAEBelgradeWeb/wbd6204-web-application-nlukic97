@@ -26,11 +26,11 @@ class EventFactory extends Factory
         $day = $this->faker->numberBetween(1,29);
 
         return [
-            'title' => $this->faker->word,
+            'title' => $this->faker->catchPhrase,
             'status' => $gameStatuses[$this->faker->numberBetween(1, 3)],
-            'date' => $this->faker->date("2021-06-{$day}"),
+            'date' => $this->faker->date("2021-05-{$day}"),
             'time' => $this->faker->time(),
-            'host_id' => $this->faker->numberBetween(2, 100),
+            'host_id' => $this->faker->numberBetween(2, 10),
             'court_id' => $this->faker->numberBetween(1, 15),
             'player_num' => $this->faker->numberBetween(4, 12),
             'timestamp'=>time()
